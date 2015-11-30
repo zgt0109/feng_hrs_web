@@ -8,4 +8,16 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+
+# semantic-ui
+Rails.application.config.assets.precompile += %w(
+  semantic-ui/dist/semantic.js
+  semantic-ui/dist/semantic.css
+)
+
+# layout
+Rails.application.config.assets.precompile += %w(
+  applicant.js applicant.css
+  enterprise.js enterprise.css
+  admin.js admin.css
+)

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title 淘帮忙 - 免费蓝领求职平台
+    = stylesheet_link_tag    'application'
+    = stylesheet_link_tag    'applicant'
+    = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")
+    = csrf_meta_tags
+
+  body class="#{render_main_class}"
+    = yield
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'applicant'
+    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
+    = yield :javascript
