@@ -5,8 +5,16 @@ class ApplicationController < ActionController::Base
 
   layout :init_layout
 
+  before_action Proc.new{
+    authenticate_enterprise! if params[:controller] =~ /^enterprise/
+  }
+
   private
     def init_layout
-      params[:controller].split('/').first
+      if params[:controller] =~ /^devise/
+        'application'
+      else
+        params[:controller].split('/').first
+      end
     end
 end

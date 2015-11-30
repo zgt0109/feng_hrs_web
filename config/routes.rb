@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :enterprises
   # 求职者
   scope module: 'applicant' do
     root 'dashboard#index'
