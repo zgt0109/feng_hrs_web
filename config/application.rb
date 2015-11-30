@@ -17,6 +17,19 @@ Bundler.require(*Rails.groups)
 
 module FengHrsWeb
   class Application < Rails::Application
+
+    # Setting for Rspec
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_spece: false,
+        routing_specs: false,
+        controller_specs: false,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+    end
+
     config.generators.helper = false
     config.generators.assets = false
     # Settings in config/environments/* take precedence over those specified here.
