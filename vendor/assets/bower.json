@@ -1,6 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "semantic-ui": "2.1.6"
+    "semantic-ui": "2.1.6",
+    "moment": "2.10.6"
   }
 }

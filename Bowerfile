@@ -1,1 +1,3 @@
 asset 'semantic-ui', '2.1.6'
+
+asset 'moment', '2.10.6'
