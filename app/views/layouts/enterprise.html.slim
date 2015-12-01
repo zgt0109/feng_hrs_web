@@ -11,7 +11,8 @@ html
     = render 'layouts/enterprise/nav'
     .ui.bottom.attached.segment
       = render 'layouts/enterprise/sidebar'
-      = yield
+      .pusher
+        = yield
     = javascript_include_tag 'application'
     = javascript_include_tag 'enterprise'
     = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
