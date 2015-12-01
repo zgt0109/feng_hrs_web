@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130113424) do
+ActiveRecord::Schema.define(version: 20151201025413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20151130113424) do
   add_index "enterprises", ["email"], name: "index_enterprises_on_email", unique: true, using: :btree
   add_index "enterprises", ["reset_password_token"], name: "index_enterprises_on_reset_password_token", unique: true, using: :btree
   add_index "enterprises", ["unlock_token"], name: "index_enterprises_on_unlock_token", unique: true, using: :btree
+
+  create_table "intentions_positions", id: false, force: :cascade do |t|
+    t.integer "intention_id", null: false
+    t.integer "position_id",  null: false
+  end
+
+  add_index "intentions_positions", ["intention_id", "position_id"], name: "index_intentions_positions_on_intention_id_and_position_id", using: :btree
+  add_index "intentions_positions", ["position_id", "intention_id"], name: "index_intentions_positions_on_position_id_and_intention_id", using: :btree
 
   create_table "labor_intentions", force: :cascade do |t|
     t.integer  "labor_id"
@@ -88,6 +96,24 @@ ActiveRecord::Schema.define(version: 20151130113424) do
   add_index "labors", ["name"], name: "index_labors_on_name", using: :btree
   add_index "labors", ["province"], name: "index_labors_on_province", using: :btree
   add_index "labors", ["state"], name: "index_labors_on_state", using: :btree
+
+  create_table "positions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "name_seo"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "positions", ["deleted_at"], name: "index_positions_on_deleted_at", using: :btree
+  add_index "positions", ["lft"], name: "index_positions_on_lft", using: :btree
+  add_index "positions", ["name"], name: "index_positions_on_name", using: :btree
+  add_index "positions", ["name_seo"], name: "index_positions_on_name_seo", using: :btree
+  add_index "positions", ["parent_id"], name: "index_positions_on_parent_id", using: :btree
+  add_index "positions", ["rgt"], name: "index_positions_on_rgt", using: :btree
 
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"

@@ -42,6 +42,8 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.3)
+    awesome_nested_set (3.0.2)
+      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -77,6 +79,9 @@ GEM
     capistrano3-puma (1.2.1)
       capistrano (~> 3.0)
       puma (>= 2.6)
+    china_city (0.0.4)
+      jquery-rails
+      rails (>= 3.1.0)
     choice (0.2.0)
     code_analyzer (0.4.5)
       sexp_processor
@@ -364,12 +369,14 @@ PLATFORMS
 DEPENDENCIES
   aasm
   annotate
+  awesome_nested_set
   bower-rails
   brakeman
   byebug
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma
+  china_city
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
