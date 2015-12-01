@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201025413) do
+ActiveRecord::Schema.define(version: 20151201033942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.string   "name"
+    t.string   "province"
+    t.string   "city"
+    t.string   "district"
+    t.string   "address"
+    t.text     "introduction"
+    t.datetime "deleted_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "companies", ["city"], name: "index_companies_on_city", using: :btree
+  add_index "companies", ["deleted_at"], name: "index_companies_on_deleted_at", using: :btree
+  add_index "companies", ["district"], name: "index_companies_on_district", using: :btree
+  add_index "companies", ["enterprise_id"], name: "index_companies_on_enterprise_id", using: :btree
+  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
+  add_index "companies", ["province"], name: "index_companies_on_province", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -115,6 +135,7 @@ ActiveRecord::Schema.define(version: 20151201025413) do
   add_index "positions", ["parent_id"], name: "index_positions_on_parent_id", using: :btree
   add_index "positions", ["rgt"], name: "index_positions_on_rgt", using: :btree
 
+  add_foreign_key "companies", "enterprises"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end

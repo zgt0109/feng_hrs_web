@@ -38,4 +38,5 @@ class Enterprise < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
   has_many :labors
+  has_many :companies
 end
