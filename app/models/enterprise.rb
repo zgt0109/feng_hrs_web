@@ -39,4 +39,5 @@ class Enterprise < ActiveRecord::Base
          :confirmable, :lockable
   has_many :labors
   has_many :companies
+  has_many :contacts
 end

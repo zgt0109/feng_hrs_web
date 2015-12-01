@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201033942) do
+ActiveRecord::Schema.define(version: 20151201035341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,22 @@ ActiveRecord::Schema.define(version: 20151201033942) do
   add_index "companies", ["enterprise_id"], name: "index_companies_on_enterprise_id", using: :btree
   add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
   add_index "companies", ["province"], name: "index_companies_on_province", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.string   "name"
+    t.string   "mobile"
+    t.string   "gender"
+    t.datetime "deleted_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "contacts", ["deleted_at"], name: "index_contacts_on_deleted_at", using: :btree
+  add_index "contacts", ["enterprise_id"], name: "index_contacts_on_enterprise_id", using: :btree
+  add_index "contacts", ["gender"], name: "index_contacts_on_gender", using: :btree
+  add_index "contacts", ["mobile"], name: "index_contacts_on_mobile", using: :btree
+  add_index "contacts", ["name"], name: "index_contacts_on_name", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -136,6 +152,7 @@ ActiveRecord::Schema.define(version: 20151201033942) do
   add_index "positions", ["rgt"], name: "index_positions_on_rgt", using: :btree
 
   add_foreign_key "companies", "enterprises"
+  add_foreign_key "contacts", "enterprises"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end
