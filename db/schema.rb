@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130094835) do
+ActiveRecord::Schema.define(version: 20151130113424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 20151130094835) do
   add_index "enterprises", ["reset_password_token"], name: "index_enterprises_on_reset_password_token", unique: true, using: :btree
   add_index "enterprises", ["unlock_token"], name: "index_enterprises_on_unlock_token", unique: true, using: :btree
 
+  create_table "labor_intentions", force: :cascade do |t|
+    t.integer  "labor_id"
+    t.string   "salary"
+    t.string   "province"
+    t.string   "city"
+    t.string   "district"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "labor_intentions", ["city"], name: "index_labor_intentions_on_city", using: :btree
+  add_index "labor_intentions", ["district"], name: "index_labor_intentions_on_district", using: :btree
+  add_index "labor_intentions", ["labor_id"], name: "index_labor_intentions_on_labor_id", using: :btree
+  add_index "labor_intentions", ["province"], name: "index_labor_intentions_on_province", using: :btree
+  add_index "labor_intentions", ["salary"], name: "index_labor_intentions_on_salary", using: :btree
+
   create_table "labors", force: :cascade do |t|
     t.integer  "enterprise_id"
     t.string   "name"
@@ -73,5 +89,6 @@ ActiveRecord::Schema.define(version: 20151130094835) do
   add_index "labors", ["province"], name: "index_labors_on_province", using: :btree
   add_index "labors", ["state"], name: "index_labors_on_state", using: :btree
 
+  add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end
