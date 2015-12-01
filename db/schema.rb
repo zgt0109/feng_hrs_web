@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201035341) do
+ActiveRecord::Schema.define(version: 20151201071506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,24 @@ ActiveRecord::Schema.define(version: 20151201035341) do
   add_index "enterprises", ["reset_password_token"], name: "index_enterprises_on_reset_password_token", unique: true, using: :btree
   add_index "enterprises", ["unlock_token"], name: "index_enterprises_on_unlock_token", unique: true, using: :btree
 
+  create_table "industries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "name_seo"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "industries", ["deleted_at"], name: "index_industries_on_deleted_at", using: :btree
+  add_index "industries", ["lft"], name: "index_industries_on_lft", using: :btree
+  add_index "industries", ["name"], name: "index_industries_on_name", using: :btree
+  add_index "industries", ["name_seo"], name: "index_industries_on_name_seo", using: :btree
+  add_index "industries", ["parent_id"], name: "index_industries_on_parent_id", using: :btree
+  add_index "industries", ["rgt"], name: "index_industries_on_rgt", using: :btree
+
   create_table "intentions_positions", id: false, force: :cascade do |t|
     t.integer "intention_id", null: false
     t.integer "position_id",  null: false
@@ -86,6 +104,39 @@ ActiveRecord::Schema.define(version: 20151201035341) do
 
   add_index "intentions_positions", ["intention_id", "position_id"], name: "index_intentions_positions_on_intention_id_and_position_id", using: :btree
   add_index "intentions_positions", ["position_id", "intention_id"], name: "index_intentions_positions_on_position_id_and_intention_id", using: :btree
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.integer  "company_id"
+    t.integer  "contact_id"
+    t.integer  "position_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.string   "gender"
+    t.integer  "age_min"
+    t.integer  "age_max"
+    t.integer  "salary_basic"
+    t.integer  "salary_min"
+    t.integer  "salary_max"
+    t.string   "state"
+    t.datetime "deleted_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "jobs", ["age_max"], name: "index_jobs_on_age_max", using: :btree
+  add_index "jobs", ["age_min"], name: "index_jobs_on_age_min", using: :btree
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+  add_index "jobs", ["contact_id"], name: "index_jobs_on_contact_id", using: :btree
+  add_index "jobs", ["deleted_at"], name: "index_jobs_on_deleted_at", using: :btree
+  add_index "jobs", ["enterprise_id"], name: "index_jobs_on_enterprise_id", using: :btree
+  add_index "jobs", ["gender"], name: "index_jobs_on_gender", using: :btree
+  add_index "jobs", ["name"], name: "index_jobs_on_name", using: :btree
+  add_index "jobs", ["position_id"], name: "index_jobs_on_position_id", using: :btree
+  add_index "jobs", ["salary_basic"], name: "index_jobs_on_salary_basic", using: :btree
+  add_index "jobs", ["salary_max"], name: "index_jobs_on_salary_max", using: :btree
+  add_index "jobs", ["salary_min"], name: "index_jobs_on_salary_min", using: :btree
+  add_index "jobs", ["state"], name: "index_jobs_on_state", using: :btree
 
   create_table "labor_intentions", force: :cascade do |t|
     t.integer  "labor_id"
@@ -153,6 +204,10 @@ ActiveRecord::Schema.define(version: 20151201035341) do
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "contacts"
+  add_foreign_key "jobs", "enterprises"
+  add_foreign_key "jobs", "positions"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end
