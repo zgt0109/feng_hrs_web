@@ -23,7 +23,7 @@ module ScaffoldHelper
   end
 
   # saffold
-  %w().each do |model|
+  %w(labor).each do |model|
     class_eval{
       # new
       define_method "render_scaffold_new_#{model}_path" do

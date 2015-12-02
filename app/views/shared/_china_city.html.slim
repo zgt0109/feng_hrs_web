@@ -1,0 +1,27 @@
+- if form.object.try(:district).blank?
+  .field
+    label 地址
+    .fields.three.city-group
+      .field.four.wide
+        = form.select :province, options_for_select(ChinaCity.list),  {include_blank: true}, {class: 'ui  dropdown fluid select city-select'}
+      .field.four.wide
+        = form.select :city, [],  {include_blank: true}, {class: 'ui  dropdown fluid select city-select'}
+      .field.four.wide
+        = form.select :district, [],  {include_blank: true}, {class: 'ui  dropdown fluid select city-select'}
+- else
+  - province = form.object.province
+  - city = form.object.city
+  - district = form.object.district
+  - provinces  = ChinaCity.list
+  - cities     = ChinaCity.list(province)
+  - districtes = ChinaCity.list(city)
+
+  .field
+    label 地址
+    .fields.three.city-group
+      .field.four.wide
+        = form.select :province, options_for_select(provinces, province),  {include_blank: true}, {class: 'ui dropdown fluid select city-select'}
+      .field.four.wide
+        = form.select :city, options_for_select(cities, city),  {include_blank: true}, {class: 'ui dropdown fluid select city-select'}
+      .field.four.wide
+        = form.select :district, options_for_select(districtes, district),  {include_blank: true}, {class: 'ui dropdown fluid select city-select'}

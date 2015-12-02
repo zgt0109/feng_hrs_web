@@ -1,0 +1,38 @@
+- if labor.errors.any?
+  = render partial: 'shared/errors', locals: { model: labor }
+
+= form_for render_scaffold_form_path(labor), remote: remote, html: { class: 'ui form' } do |f|
+  h2 基本信息
+  .ui.divider
+  .field.four.wide
+    = f.label :idcard
+    = f.text_field :idcard
+
+  .field.four.wide
+    = f.label :name
+    = f.text_field :name
+
+  .field.four.wide
+    = f.label :mobile
+    = f.text_field :mobile
+
+  = render partial: 'shared/china_city', locals: {form: f}
+
+  h2 找活要求
+  .ui.divider
+  = f.fields_for :intention_attributes, @labor.intention do |intention_form|
+    = render partial: 'shared/china_city', locals: {form: intention_form}
+
+    .field.four.wide
+      = intention_form.label :salary, '期望薪资'
+      = intention_form.select :salary, LaborIntention.salary.options,{include_blank: false},{class: 'ui dropdown'}
+
+    .field.four.wide
+      = intention_form.label :position_ids, '期望岗位'
+      = intention_form.select :position_ids, nested_set_options(Position, @position) {|i| "#{'-' * i.level} #{i.name}" },
+              {include_blank: true}, class: 'ui dropdown'
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_labors_path
+
+= javascript_include_tag 'china_city/jquery.china_city'

@@ -1,0 +1,25 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_labor_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Labor.human_attribute_name(:id)
+          th = Labor.human_attribute_name(:name)
+          th = Labor.human_attribute_name(:age)
+          th = Labor.human_attribute_name(:mobile)
+          th = Labor.human_attribute_name(:channel)
+          th = Labor.human_attribute_name(:state)
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @labors
+
+    .ui.borderless.pagination.menu.floated.right
+      = paginate @labors
