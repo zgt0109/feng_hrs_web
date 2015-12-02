@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202085003) do
+ActiveRecord::Schema.define(version: 20151202085830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "published_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.integer  "enterprise_id"
@@ -51,6 +59,21 @@ ActiveRecord::Schema.define(version: 20151202085003) do
   add_index "contacts", ["gender"], name: "index_contacts_on_gender", using: :btree
   add_index "contacts", ["mobile"], name: "index_contacts_on_mobile", using: :btree
   add_index "contacts", ["name"], name: "index_contacts_on_name", using: :btree
+
+  create_table "debits", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.integer  "bank_id"
+    t.string   "name"
+    t.string   "account"
+    t.string   "deposit"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "debits", ["account"], name: "index_debits_on_account", using: :btree
+  add_index "debits", ["bank_id"], name: "index_debits_on_bank_id", using: :btree
+  add_index "debits", ["enterprise_id"], name: "index_debits_on_enterprise_id", using: :btree
+  add_index "debits", ["name"], name: "index_debits_on_name", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -181,6 +204,8 @@ ActiveRecord::Schema.define(version: 20151202085003) do
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
+  add_foreign_key "debits", "banks"
+  add_foreign_key "debits", "enterprises"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end
