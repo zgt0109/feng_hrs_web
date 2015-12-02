@@ -58,6 +58,8 @@ gem 'seedbank'
 gem 'enumerize'
 gem 'paranoia'
 gem 'aasm'
+gem 'awesome_nested_set'
+gem 'china_city'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
