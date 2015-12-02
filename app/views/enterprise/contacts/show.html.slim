@@ -13,12 +13,12 @@
     .three.wide.column
       = Contact.human_attribute_name('mobile')
     .four.wide.column
-      = @contact.mobile
+      = render_common_mobile @contact.mobile
   .row
     .three.wide.column
       = Contact.human_attribute_name('gender')
     .four.wide.column
-      = @contact.gender
+      = @contact.gender_text
   .row
     .three.wide.column
       = t("action.created_at")
