@@ -1,0 +1,27 @@
+/*
+ *= require semantic-ui/dist/semantic
+ *= require index.scss
+ */
+
+ #tools .item.header{
+   background-image: image-url('logo.png');
+   background-repeat: no-repeat;
+   background-position: 20px 3px;
+   width: 200px;
+ }
+ #tools .item.header > span{
+   display: none;
+ }
+
+ .ui.thin.left.sidebar{
+   width: 200px;
+ }
+ .ui.visible.thin.left.sidebar ~ .pusher {
+   -webkit-transform: translate3d(200px, 0, 0);
+   transform: translate3d(200px, 0, 0);
+   padding: 10px;
+ }
+ .pushable > .pusher
+ {
+   padding: 10px;
+ }
