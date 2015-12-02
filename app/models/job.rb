@@ -33,10 +33,12 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :contact
 
-  enumerize :unit, in: [:month, :hour], default: :month
+  enumerize :unit, in: [:permonth, :perhour], default: :permonth
   enumerize :channel, in: [:cash, :card], default: :cash
   enumerize :wageday_unit, in: [:month, :day], default: :month
 
   validates_presence_of :name, :wage, :unit, :worktime, :royalty, :bonus,
                         :channel, :wageday, :wageday_unit, :advance
+
+  default_scope { order("updated_at desc") }
 end

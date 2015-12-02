@@ -1,0 +1,70 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = Job.human_attribute_name(:id)
+    .four.wide.column
+      = @job.id
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('name')
+    .four.wide.column
+      = @job.name
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('wage')
+    .four.wide.column
+      = @job.wage
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('unit')
+    .four.wide.column
+      = @job.unit_text
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('worktime')
+    .four.wide.column
+      = @job.worktime
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('royalty')
+    .four.wide.column
+      = @job.royalty
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('bonus')
+    .four.wide.column
+      = @job.bonus
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('channel')
+    .four.wide.column
+      = @job.channel_text
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('wageday')
+    .four.wide.column
+      = @job.wageday
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('wageday_unit')
+    .four.wide.column
+      = @job.wageday_unit_text
+  .row
+    .three.wide.column
+      = Job.human_attribute_name('advance')
+    .four.wide.column
+      = @job.advance
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = @job.created_at
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = @job.updated_at
+
+  .row
+    = render_scaffold_edit_job_path_link(@job)
+    = render_scaffold_jobs_path

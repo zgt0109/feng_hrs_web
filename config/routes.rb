@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     concerns :enterpriseable
     resources :contacts
     resources :companies
+    resources :jobs
   end
 
   # 送人方

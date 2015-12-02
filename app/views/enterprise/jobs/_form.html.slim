@@ -1,0 +1,59 @@
+- if job.errors.any?
+  = render partial: 'shared/errors', locals: { model: job }
+
+= form_for render_scaffold_form_path(job), remote: remote, html: { class: 'ui form' } do |f|
+  h3.ui.header = Job.human_attribute_name(:name)
+  .field
+    = render_job_text_field(f, :name)
+
+  h3.ui.header = Job.human_attribute_name(:wage)
+  .fields
+    .field
+      .ui.action.input.labeled
+        .ui.basic.label = Job.human_attribute_name(:wage)
+        = render_job_text_field(f, :wage)
+        = f.select :unit, Job.unit.options {|u| [u.first, u.last]}, {},
+          class: 'ui compact selection dropdown'
+
+    .field
+      .ui.labeled.input
+        .ui.label.basic
+          = Job.human_attribute_name(:worktime)
+        = render_job_text_field(f, :worktime)
+
+    .field
+      .ui.labeled.input
+        .ui.label.basic
+          = Job.human_attribute_name(:royalty)
+        = render_job_text_field(f, :royalty)
+
+    .field
+      .ui.labeled.input
+        .ui.label.basic
+          = Job.human_attribute_name(:bonus)
+        = render_job_text_field(f, :bonus)
+
+  h3.ui.header = Job.human_attribute_name(:channel)
+  .fields
+    .field
+      = f.select :channel, Job.channel.options {|c| [c.first, c.last]}, {},
+        class: "ui dropdown"
+
+    .field
+      .ui.action.input.labeled
+        .ui.basic.label = Job.human_attribute_name(:wageday)
+        = f.text_field :wageday, placeholder: t('.holder.wageday'), title: t('.popup.wageday'),
+          class: "popmessage"
+        = f.select :wageday_unit, Job.wageday_unit.options {|u| [u.first, u.last]}, {},
+          class: 'ui compact selection dropdown'
+
+    .field
+      .ui.labeled.input
+        .ui.label.basic
+          => check_box_tag :isAdvance
+          = Job.human_attribute_name(:advance)
+        = render_job_text_field(f, :advance)
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_jobs_path

@@ -34,7 +34,7 @@ FactoryGirl.define do
     association :contact
     name "Rails工程师"
     wage 10000
-    unit "month"
+    unit "permonth"
     worktime 10
     royalty 1000
     bonus 2000
