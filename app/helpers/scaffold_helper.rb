@@ -45,14 +45,14 @@ module ScaffoldHelper
 
       # edit
       define_method "render_scaffold_edit_#{model}_path", ->(object) do
-        html_class= "ui button positive"
+        html_class= "item"
         link_to [:edit, get_biz_domain, object], class: html_class do
           content_tag(:i, nil, class: 'edit icon') + t("action.edit")
         end
       end
 
       define_method "render_scaffold_edit_#{model}_path_link", ->(object) do
-        html_class= "item"
+        html_class= "ui button positive"
         link_to [:edit, get_biz_domain, object], class: html_class do
           content_tag(:i, nil, class: 'edit icon') + t("action.edit")
         end
