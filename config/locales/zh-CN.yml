@@ -15,6 +15,8 @@ zh-CN:
   enterprise:
     jobs:
       form:
+        new_company: 新增公司
+        new_contact: 新增联系人
         holder:
           name: 请填写职位名称
           wage: 请填写员工薪资

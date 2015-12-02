@@ -3,10 +3,24 @@
 
 = form_for render_scaffold_form_path(job), remote: remote, html: { class: 'ui form' } do |f|
   h3.ui.header = Job.human_attribute_name(:name)
-  .field
-    = render_job_text_field(f, :name)
+  .fields
+    .field
+      = render_job_text_field(f, :name)
 
-  h3.ui.header = Job.human_attribute_name(:wage)
+    .field
+      .company-field
+        => f.select :company_id, current_enterprise.companies.map {|c| [c.name, c.id]},
+          {}, class: 'ui dropdown'
+        = link_to t('.new_company'), new_zhao_company_path, remote: true,
+          class: "ui button"
+
+    .field
+      .contact-field
+        => f.select :contact_id, current_enterprise.contacts.map {|c| [c.name, c.id]},
+          {}, class: 'ui dropdown'
+        = link_to t('.new_contact'), new_zhao_contact_path, remote: true,
+          class: "ui button"
+
   .fields
     .field
       .ui.action.input.labeled

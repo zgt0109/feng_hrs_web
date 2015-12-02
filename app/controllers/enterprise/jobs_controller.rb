@@ -42,6 +42,7 @@ class Enterprise::JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:name, :wage, :unit, :worktime, :royalty, :bonus, :channel, :wageday, :wageday_unit, :advance)
+      params.require(:job).permit(:name, :wage, :unit, :worktime, :royalty,
+      :bonus, :channel, :wageday, :wageday_unit, :advance, :company_id, :contact_id)
     end
 end

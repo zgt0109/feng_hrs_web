@@ -1,0 +1,6 @@
+$('.ui.modal .header').html('新增合作企业');
+$('.ui.modal .content').html("<%= j (render partial: 'form', locals: { company: @company, remote: true }) %>");
+$('.city-group').china_city();
+$('.ui.dropdown').dropdown();
+$('.popmessage').popup();
+$('.ui.modal').modal('show');
