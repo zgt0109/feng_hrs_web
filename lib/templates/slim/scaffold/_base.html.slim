@@ -1,0 +1,16 @@
+= content_tag_for(:tr, <%= singular_table_name %>) do | data |
+  td = render_scaffold_checkbox_one
+  td = data.id
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  td = data.<%= attribute.name %>
+<% end -%>
+  td = data.created_at
+  td = data.updated_at
+  td
+    .ui.teal.buttons.tiny
+      = render_scaffold_<%= singular_table_name %>_path data
+      .ui.floating.dropdown.icon.button
+        i.dropdown.icon
+        .menu
+          = render_scaffold_edit_<%= singular_table_name %>_path data
+          = render_saffold_destroy_<%= singular_table_name %>_path data

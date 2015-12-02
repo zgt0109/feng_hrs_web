@@ -1,0 +1,13 @@
+- if <%= singular_table_name %>.errors.any?
+  = render partial: 'shared/errors', locals: { model: <%=singular_table_name %> }
+
+= form_for render_scaffold_form_path(<%= singular_table_name %>), remote: remote, html: { class: 'ui form' } do |f|
+<% attributes.each do |attribute| -%>
+  .field
+    = f.label :<%= attribute.column_name %>
+    = f.<%= attribute.field_type %> :<%= attribute.column_name %>
+<% end -%>
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_<%= plural_table_name %>_path

@@ -1,0 +1,27 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = <%= class_name %>.human_attribute_name(:id)
+    .four.wide.column
+      = @<%= singular_table_name %>.id
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  .row
+    .three.wide.column
+      = <%= class_name %>.human_attribute_name('<%= attribute.name %>')
+    .four.wide.column
+      = @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = @<%= singular_table_name %>.created_at
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = @<%= singular_table_name %>.updated_at
+
+  .row
+    = render_scaffold_edit_<%= singular_table_name %>_path_link(@<%= singular_table_name %>)
+    = render_scaffold_<%= plural_table_name %>_path

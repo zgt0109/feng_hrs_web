@@ -1,0 +1,23 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_<%= singular_table_name %>_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = <%= class_name %>.human_attribute_name(:id)
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+          th = <%= class_name %>.human_attribute_name('<%= attribute.name %>')
+<% end -%>
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @<%= plural_table_name %>
+
+    .ui.borderless.pagination.menu.floated.right
+      / = paginate @<%= plural_table_name %>
