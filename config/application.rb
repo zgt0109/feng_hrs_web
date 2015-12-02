@@ -17,6 +17,9 @@ Bundler.require(*Rails.groups)
 
 module FengHrsWeb
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
 
     # Setting for Rspec
     config.generators do |g|
