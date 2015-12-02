@@ -105,6 +105,29 @@ ActiveRecord::Schema.define(version: 20151202085003) do
   add_index "intentions_positions", ["intention_id", "position_id"], name: "index_intentions_positions_on_intention_id_and_position_id", using: :btree
   add_index "intentions_positions", ["position_id", "intention_id"], name: "index_intentions_positions_on_position_id_and_intention_id", using: :btree
 
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.integer  "company_id"
+    t.integer  "contact_id"
+    t.string   "name"
+    t.integer  "wage"
+    t.string   "unit"
+    t.integer  "worktime"
+    t.integer  "royalty"
+    t.integer  "bonus"
+    t.string   "channel"
+    t.integer  "wageday"
+    t.string   "wageday_unit"
+    t.integer  "advance"
+    t.datetime "deleted_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+  add_index "jobs", ["contact_id"], name: "index_jobs_on_contact_id", using: :btree
+  add_index "jobs", ["enterprise_id"], name: "index_jobs_on_enterprise_id", using: :btree
+
   create_table "labor_intentions", force: :cascade do |t|
     t.integer  "labor_id"
     t.string   "salary"
@@ -181,6 +204,9 @@ ActiveRecord::Schema.define(version: 20151202085003) do
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "contacts"
+  add_foreign_key "jobs", "enterprises"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
 end
