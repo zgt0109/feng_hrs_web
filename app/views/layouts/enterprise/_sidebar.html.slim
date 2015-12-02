@@ -1,22 +1,6 @@
 .ui.vertical.thin.menu.sidebar
-  a.item
-    i.gamepad.icon
-    span 我的工友
-  a.item
-    i.video.camera.icon
-    span 发布招聘信息
-  a.item
-    i.video.play.icon
-    span 测试信息
-  a.item
-    i.video.camera.icon
-    span 发布招聘信息
-  a.item
-    i.video.play.icon
-    span 测试信息
-  a.item
-    i.video.camera.icon
-    span 发布招聘信息
-  a.item
-    i.video.play.icon
-    span 测试信息
+
+  - @_menus.each do |node|
+    = link_to node.uri, class:"item" do
+      i class="icon #{node.icon}"
+      span = node.name

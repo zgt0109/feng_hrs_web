@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202022129) do
+ActiveRecord::Schema.define(version: 20151202085003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,8 +151,12 @@ ActiveRecord::Schema.define(version: 20151202022129) do
   add_index "labors", ["province"], name: "index_labors_on_province", using: :btree
   add_index "labors", ["state"], name: "index_labors_on_state", using: :btree
 
-  create_table "papers", force: :cascade do |t|
-    t.string   "title"
+  create_table "menus", force: :cascade do |t|
+    t.string   "name"
+    t.string   "domain"
+    t.string   "uri"
+    t.string   "icon"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -174,12 +178,6 @@ ActiveRecord::Schema.define(version: 20151202022129) do
   add_index "positions", ["name_seo"], name: "index_positions_on_name_seo", using: :btree
   add_index "positions", ["parent_id"], name: "index_positions_on_parent_id", using: :btree
   add_index "positions", ["rgt"], name: "index_positions_on_rgt", using: :btree
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"

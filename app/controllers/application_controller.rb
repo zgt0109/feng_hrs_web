@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     authenticate_enterprise! if params[:controller] =~ /^enterprise/
   }
 
+  before_action :setup_menu
+
   private
     def init_layout
       if params[:controller] =~ /^devise/
@@ -21,5 +23,10 @@ class ApplicationController < ActionController::Base
       else
         params[:controller].split('/').first
       end
+    end
+
+
+    def setup_menu
+      @_menus = Menu.with_domain( request.path.slice(/zhao|song|hr|admin/) )
     end
 end
