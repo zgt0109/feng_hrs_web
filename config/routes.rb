@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # 企业用户业务
   concern :enterpriseable do
     get 'profile' => 'profiles#index'
+    resource :debit, only: [:new, :create, :show]
   end
 
   # 招聘方

@@ -4,6 +4,8 @@ zh-CN:
       labor: 工友
       contact: 联系人
       company: 合作企业
+      debit: 借记卡
+      bank: 银行
     attributes:
       common: &common
         province: 省份
@@ -41,3 +43,8 @@ zh-CN:
         location: 企业地址
         address: 详细地址
         introduction: 企业介绍
+      debit:
+        bank_id: 银行名称
+        name: 用户名
+        account: 银行账号
+        deposit: 开户行
