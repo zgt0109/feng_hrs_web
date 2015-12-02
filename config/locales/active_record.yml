@@ -1,4 +1,29 @@
 zh-CN:
   activerecord:
     models:
+      labor: 工友
     attributes:
+      common: &common
+        province: 省份
+        city: 城市
+        district: 区/县
+      labor:
+        <<: *common
+        id: 编号
+        name: 姓名
+        mobile: 手机
+        idcard: 身份证
+        gender: 性别
+        birthday: 出生年月
+        age: 性别/年龄
+        channel: 来源
+        state: 状态
+        state/yidengji: 已登记
+        state/yibaoming: 已报名
+        state/yimianshi: 已面试
+        state/yiruzhi: 已入职
+        state/yilizhi: 已离职
+        state/weiruzhi: 未入职
+      labor/intention:
+        salary: 期望薪资
+        position_ids: 期望职位

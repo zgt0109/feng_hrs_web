@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :song, module: 'enterprise' do
     root 'dashboard#song'
     concerns :enterpriseable
+    resources :labors
   end
 
   # 企业HR
@@ -31,4 +32,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
   end
+
+  mount ChinaCity::Engine => '/china_city'
 end
