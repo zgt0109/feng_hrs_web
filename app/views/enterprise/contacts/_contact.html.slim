@@ -1,0 +1,16 @@
+= content_tag_for(:tr, contact) do | data |
+  td = render_scaffold_checkbox_one
+  td = data.id
+  td = data.name
+  td = data.mobile
+  td = data.gender
+  td = data.created_at
+  td = data.updated_at
+  td
+    .ui.teal.buttons.tiny
+      = render_scaffold_contact_path data
+      .ui.floating.dropdown.icon.button
+        i.dropdown.icon
+        .menu
+          = render_scaffold_edit_contact_path data
+          = render_saffold_destroy_contact_path data

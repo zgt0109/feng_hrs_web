@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :zhao, module: 'enterprise' do
     root 'dashboard#zhao'
     concerns :enterpriseable
+    resources :contacts
   end
 
   # 送人方
