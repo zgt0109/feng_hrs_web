@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # 求职者
   scope module: 'applicant' do
     root 'dashboard#index'
+
   end
 
   # 企业用户业务
   concern :enterpriseable do
+    get 'profile' => 'profiles#index'
   end
 
   # 招聘方
