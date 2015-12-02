@@ -3,6 +3,7 @@ zh-CN:
     models:
       labor: 工友
       contact: 联系人
+      company: 合作企业
     attributes:
       common: &common
         province: 省份
@@ -28,9 +29,15 @@ zh-CN:
       labor/intention:
         salary: 期望薪资
         position_ids: 期望职位
-
       contact:
         id: 编号
         name: 姓名
         mobile: 电话号码
         gender: 性别
+      company:
+        <<: *common
+        id: 编号
+        name: 企业名称
+        location: 企业地址
+        address: 详细地址
+        introduction: 企业介绍

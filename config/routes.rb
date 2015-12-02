@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     root 'dashboard#zhao'
     concerns :enterpriseable
     resources :contacts
+    resources :companies
   end
 
   # 送人方
