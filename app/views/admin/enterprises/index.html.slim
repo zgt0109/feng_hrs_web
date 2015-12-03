@@ -1,0 +1,20 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Enterprise.human_attribute_name(:id)
+          th = Enterprise.human_attribute_name('email')
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @enterprises
+
+    .ui.borderless.pagination.menu.floated.right
+      / = paginate @enterprises
