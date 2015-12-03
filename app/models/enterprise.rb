@@ -43,4 +43,5 @@ class Enterprise < ActiveRecord::Base
   has_many :companies
   has_many :contacts
   has_many :jobs
+  has_one  :debit
 end

@@ -6,6 +6,8 @@ zh-CN:
       company: 合作企业
       job: 招聘
       enterprise: 用户
+      debit: 借记卡
+      bank: 银行
     attributes:
       common: &common
         province: 省份
@@ -55,3 +57,8 @@ zh-CN:
       enterprise:
         id: 编号
         email: 邮箱
+      debit:
+        bank_id: 银行名称
+        name: 用户名
+        account: 银行账号
+        deposit: 开户行

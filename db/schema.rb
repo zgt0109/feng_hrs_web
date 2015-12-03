@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20151203061908) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
+  create_table "banks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "published_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.integer  "enterprise_id"
     t.string   "name"
@@ -78,6 +86,21 @@ ActiveRecord::Schema.define(version: 20151203061908) do
   add_index "contacts", ["gender"], name: "index_contacts_on_gender", using: :btree
   add_index "contacts", ["mobile"], name: "index_contacts_on_mobile", using: :btree
   add_index "contacts", ["name"], name: "index_contacts_on_name", using: :btree
+
+  create_table "debits", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.integer  "bank_id"
+    t.string   "name"
+    t.string   "account"
+    t.string   "deposit"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "debits", ["account"], name: "index_debits_on_account", using: :btree
+  add_index "debits", ["bank_id"], name: "index_debits_on_bank_id", using: :btree
+  add_index "debits", ["enterprise_id"], name: "index_debits_on_enterprise_id", using: :btree
+  add_index "debits", ["name"], name: "index_debits_on_name", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -231,6 +254,8 @@ ActiveRecord::Schema.define(version: 20151203061908) do
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
+  add_foreign_key "debits", "banks"
+  add_foreign_key "debits", "enterprises"
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs", "contacts"
   add_foreign_key "jobs", "enterprises"
