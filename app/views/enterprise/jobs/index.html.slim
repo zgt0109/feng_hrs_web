@@ -1,0 +1,30 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_job_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Job.human_attribute_name(:id)
+          th = Job.human_attribute_name('name')
+          th = Job.human_attribute_name('wage')
+          th = Job.human_attribute_name('unit')
+          th = Job.human_attribute_name('worktime')
+          th = Job.human_attribute_name('royalty')
+          th = Job.human_attribute_name('bonus')
+          th = Job.human_attribute_name('channel')
+          th = Job.human_attribute_name('wageday')
+          th = Job.human_attribute_name('wageday_unit')
+          th = Job.human_attribute_name('advance')
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @jobs
+
+    .ui.borderless.pagination.menu.floated.right
+      / = paginate @jobs

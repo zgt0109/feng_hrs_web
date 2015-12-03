@@ -11,3 +11,28 @@ zh-CN:
     updated_at: 更新于
     deleted_at: 删除于
     check_all: 全选
+
+  enterprise:
+    jobs:
+      form:
+        new_company: 新增公司
+        new_contact: 新增联系人
+        holder:
+          name: 请填写职位名称
+          wage: 请填写员工薪资
+          worktime: 请填写工作时常
+          royalty: 请填写提成
+          bonus: 请填写奖金
+          wageday: 请填写工资发放的日期
+          advance: 请填写多少天后可预支工资
+        popup:
+          name: 职位的标题（如：Rails工程师）
+          wage: 员工的薪资（如：5000）
+          worktime: 员工的工作时间（如：8）
+          royalty: 员工的提成（如：1000）
+          bonus: 员工的奖金（如：5000）
+          wageday: 每个月几号发放工资（1~30内的数字，如：15）
+          advance: 工作多少天后可预支工资（如：15）
+          unit: 工资的计费方式
+          channel: 工资的发放方式
+          wageday_unit: 工资如何发放
