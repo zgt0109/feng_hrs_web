@@ -37,6 +37,12 @@ RSpec.describe Job, type: :model do
   it { should belong_to(:enterprise) }
   it { should belong_to(:contact) }
   it { should belong_to(:company) }
+  it { should have_one(:job_quantity) }
+  it { should have_many(:job_commission_people) }
+  it { should have_many(:job_commission_days) }
+  it { should accept_nested_attributes_for(:job_quantity).allow_destroy(true) }
+  it { should accept_nested_attributes_for(:job_commission_people).allow_destroy(true) }
+  it { should accept_nested_attributes_for(:job_commission_days).allow_destroy(true) }
 
   describe "岗位标题" do
     it { should validate_presence_of(:name) }
@@ -55,11 +61,11 @@ RSpec.describe Job, type: :model do
   end
 
   describe "提成" do
-    it { should validate_presence_of(:royalty) }
+    # it { should validate_presence_of(:royalty) }
   end
 
   describe "奖金" do
-    it { should validate_presence_of(:bonus) }
+    # it { should validate_presence_of(:bonus) }
   end
 
   describe "工资发放方式" do
@@ -75,7 +81,7 @@ RSpec.describe Job, type: :model do
   end
 
   describe "预支工资" do
-    it { should validate_presence_of(:advance) }
+    # it { should validate_presence_of(:advance) }
   end
 
 end

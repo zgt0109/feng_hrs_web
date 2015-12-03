@@ -32,13 +32,18 @@ class Job < ActiveRecord::Base
   belongs_to :enterprise
   belongs_to :company
   belongs_to :contact
+  has_one :job_quantity
+  has_many :job_commission_people
+  has_many :job_commission_days
+  accepts_nested_attributes_for :job_quantity, :job_commission_people,
+                                :job_commission_days, allow_destroy: true
 
   enumerize :unit, in: [:permonth, :perhour], default: :permonth
   enumerize :channel, in: [:cash, :card], default: :cash
   enumerize :wageday_unit, in: [:month, :day], default: :month
 
-  validates_presence_of :name, :wage, :unit, :worktime, :royalty, :bonus,
-                        :channel, :wageday, :wageday_unit, :advance
+  validates_presence_of :name, :wage, :unit, :worktime,
+                        :channel, :wageday, :wageday_unit
 
   default_scope { order("updated_at desc") }
 end

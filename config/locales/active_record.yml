@@ -62,3 +62,6 @@ zh-CN:
         name: 用户名
         account: 银行账号
         deposit: 开户行
+        job/wish_male_count: 男
+        wish_female_count: 女
+        wish_unkown_count: 不限

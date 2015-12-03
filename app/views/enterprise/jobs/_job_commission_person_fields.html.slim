@@ -1,0 +1,32 @@
+.fields.nested-fields
+  .field
+    .ui.labeled.input
+      = f.hidden_field :unit, value: 'permonth'
+
+      = f.select :gender, JobCommissionPerson.gender.options {|g| [g.first, g,last] },
+        {}, class: 'ui dropdown compact'
+
+  .field
+    .ui.labeled.input
+      = f.label :amount, '金额', class: "ui label basic"
+      = f.text_field :amount, placeholder: '元/人/月'
+
+  .field
+    .ui.labeled.input
+      = f.label :deadline, '共返利', class: "ui label basic"
+      = f.text_field :deadline, placeholder: '月'
+
+  .field
+    .ui.labeled.input
+      = f.label :check, '每月', class: "ui label basic"
+      = f.text_field :check, placeholder: '号对名单'
+
+  .field
+    = f.text_field :remit, placeholder: '天之内到账'
+
+  .field
+    = link_to_remove_association f do
+      i.minus.circle.icon.red.big
+
+javascript:
+  $('.ui.dropdown').dropdown();
