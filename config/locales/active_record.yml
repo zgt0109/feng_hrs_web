@@ -5,6 +5,7 @@ zh-CN:
       contact: 联系人
       company: 合作企业
       job: 招聘
+      enterprise: 用户
     attributes:
       common: &common
         province: 省份
@@ -51,3 +52,6 @@ zh-CN:
         channel: 工资发放
         wageday: 工资发放日
         advance: 预支工资
+      enterprise:
+        id: 编号
+        email: 邮箱

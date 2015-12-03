@@ -1,0 +1,74 @@
+.ui.grid
+  .row
+    .wide.column
+      h2 基本信息
+      .ui.divider
+  .row
+    .three.wide.column
+      = Labor.human_attribute_name('id')
+    .four.wide.column
+      = @labor.id
+  .row
+    .three.wide.column
+      = Labor.human_attribute_name('name')
+    .four.wide.column
+      = @labor.name
+
+  .row
+    .three.wide.column
+      = Labor.human_attribute_name('age')
+    .four.wide.column
+      = render_labor_gender_with_age @labor
+
+  .row
+    .three.wide.column
+      = Labor.human_attribute_name('mobile')
+    .four.wide.column
+      = render_common_mobile @labor.mobile
+
+  .row
+    .three.wide.column
+      = Labor.human_attribute_name('idcard')
+    .four.wide.column
+      = @labor.idcard
+  .row
+    .three.wide.column
+      | 现居住地
+    .four.wide.column
+      = render_common_china_city_address @labor
+
+  .row
+    .wide.column
+      h2 找活要求
+      .ui.divider
+  .row
+    .three.wide.column
+      | 期望工作地
+    .four.wide.column
+      = render_common_china_city_address @labor.intention
+  .row
+    .three.wide.column
+      | 期望薪资
+    .four.wide.column
+      = @labor.intention.salary_text
+  .row
+    .three.wide.column
+      | 期望岗位
+    .four.wide.column
+      - @labor.intention.positions.each do |position|
+        = position.name
+
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = l @labor.created_at, format: :long
+
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = l @labor.updated_at, format: :long
+
+  .row
+    = render_scaffold_labors_path

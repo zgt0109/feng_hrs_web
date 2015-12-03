@@ -16,12 +16,12 @@ module LaborHelper
 
   # 工友来源显示
   def render_labor_channel(labor)
-    content_tag(:span, labor.channel_text, class: 'ui teal mini button')
+    content_tag(:span, labor.channel_text, class: 'ui teal small label')
   end
 
   # 工友状态显示
   def render_labor_state(labor)
-    content_tag(:span, labor.aasm.human_state, class: 'ui teal mini button')
+    content_tag(:span, labor.aasm.human_state, class: 'ui teal small label')
   end
 
 end

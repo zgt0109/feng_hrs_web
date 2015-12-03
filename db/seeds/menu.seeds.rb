@@ -37,7 +37,7 @@ end
 end
 
 [
-  {name: '企业用户', uri: '/admin/enterprise', icon: 'rocket'},
+  {name: '企业用户', uri: '/admin/enterprises', icon: 'rocket'},
   {name: '工友管理', uri: '/admin/labors', icon: 'users'},
   {name: '联系人管理', uri: '/admin/contacts', icon: 'diamond'},
   {name: '代招企业', uri: '/admin/companies', icon: 'puzzle'},

@@ -37,6 +37,11 @@ Rails.application.routes.draw do
   # 运营管理
   namespace :admin do
     root 'dashboard#index'
+    resources :enterprises, only: [:index, :show]
+    resources :labors, only: [:index, :show]
+    resources :contacts, only: [:index, :show]
+    resources :companies, only: [:index, :show]
+    resources :jobs, only: [:index, :show]
   end
 
   mount ChinaCity::Engine => '/china_city'

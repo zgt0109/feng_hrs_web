@@ -34,6 +34,8 @@
 class Enterprise < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
+
+  default_scope { order('created_at desc') }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
