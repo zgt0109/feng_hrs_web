@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203080015) do
+ActiveRecord::Schema.define(version: 20151203095423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,17 @@ ActiveRecord::Schema.define(version: 20151203080015) do
 
   add_index "intentions_positions", ["intention_id", "position_id"], name: "index_intentions_positions_on_intention_id_and_position_id", using: :btree
   add_index "intentions_positions", ["position_id", "intention_id"], name: "index_intentions_positions_on_position_id_and_intention_id", using: :btree
+
+  create_table "job_commission_days", force: :cascade do |t|
+    t.integer  "job_id"
+    t.string   "gender"
+    t.integer  "deadline"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "job_commission_days", ["job_id"], name: "index_job_commission_days_on_job_id", using: :btree
 
   create_table "job_commission_people", force: :cascade do |t|
     t.integer  "job_id"
@@ -229,6 +240,7 @@ ActiveRecord::Schema.define(version: 20151203080015) do
 
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
+  add_foreign_key "job_commission_days", "jobs"
   add_foreign_key "job_commission_people", "jobs"
   add_foreign_key "job_quantities", "jobs"
   add_foreign_key "jobs", "companies"

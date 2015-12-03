@@ -1,0 +1,22 @@
+.nested-fields.fields
+  .field
+    .ui.labeled.input
+      = f.select :gender, JobCommissionDay.gender.options {|g| [g.first, g,last] },
+        {}, class: 'ui dropdown compact'
+
+  .field
+    .ui.labeled.input
+      = f.label :deadline, '入职', class: "ui label basic"
+      = f.text_field :deadline, placeholder: '天'
+
+  .field
+    .ui.labeled.input
+      = f.label :amount, '返', class: "ui label basic"
+      = f.text_field :amount, placeholder: '元'
+
+  .field
+    = link_to_remove_association f do
+      i.minus.circle.icon.red.big
+
+javascript:
+  $('.ui.dropdown').dropdown();

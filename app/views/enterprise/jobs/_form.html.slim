@@ -2,22 +2,26 @@
   = render partial: 'shared/errors', locals: { model: job }
 
 = form_for render_scaffold_form_path(job), remote: remote, html: { class: 'ui form' } do |f|
-  h3.ui.header = Job.human_attribute_name(:name)
+  h3.ui.dividing.header 职位信息
   .fields
     .field
-      = render_job_text_field(f, :name)
+      .ui.labeled.input
+        = f.label :name, class: "ui label basic"
+        = render_job_text_field(f, :name)
+
+    .field
+      .ui.action.input
+        = f.select :company_id, current_enterprise.companies.map {|c| [c.name, c.id]},
+          {}, class: 'ui dropdown company-field'
+        = link_to t('.new_company'), new_zhao_company_path, remote: true,
+          class: "ui button"
 
     .field.inline
-      = f.select :company_id, current_enterprise.companies.map {|c| [c.name, c.id]},
-        {}, class: 'ui dropdown company-field'
-      = link_to t('.new_company'), new_zhao_company_path, remote: true,
-        class: "ui button"
-
-    .field.inline
-      = f.select :contact_id, current_enterprise.contacts.map {|c| [c.name, c.id]},
-        {}, class: 'ui dropdown contact-field'
-      = link_to t('.new_contact'), new_zhao_contact_path, remote: true,
-        class: "ui button"
+      .ui.action.input
+        = f.select :contact_id, current_enterprise.contacts.map {|c| [c.name, c.id]},
+          {}, class: 'ui dropdown contact-field'
+        = link_to t('.new_contact'), new_zhao_contact_path, remote: true,
+          class: "ui button"
 
   .fields
     .field
@@ -43,7 +47,7 @@
         = f.label :bonus, class: "ui label basic"
         = render_job_text_field(f, :bonus)
 
-  h3.ui.header 性别要求
+  h3.ui.dividing.header 性别要求
   .fields
     = f.fields_for :job_quantity_attributes, @job.job_quantity do |jq|
       .field
@@ -61,8 +65,7 @@
             = jq.label :wish_unkown_count, '不限'
           = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人'
 
-
-  h3.ui.header = Job.human_attribute_name(:channel)
+  h3.ui.dividing.header = Job.human_attribute_name(:channel)
   .fields
     .field
       = f.select :channel, Job.channel.options {|c| [c.first, c.last]}, {},
@@ -83,20 +86,30 @@
           = Job.human_attribute_name(:advance)
         = render_job_text_field(f, :advance)
 
-  h3.ui.header 佣金
-  .field
+  h3.ui.dividing.header 佣金
+  .field.inline
     .ui.buttons.commission
       a.ui.button.first.teal 按月返利/管理费
       a.ui.button.second 按时返利/外包红利
       a.ui.button.third 按天返利/招聘费
+    .ui.checkbox
+      = check_box_tag :isLong
+      label 是否长期返费
 
   #job_commission_people
-    = f.fields_for :job_commission_people do |jc|
-      = render 'job_commission_person_fields', f: jc
-
+    = f.fields_for :job_commission_people do |pf|
+      = render 'job_commission_person_fields', f: pf
     = link_to_add_association f, :job_commission_people do
       i.add.circle.icon.green.big
 
+  #job_commission_day
+    = f.fields_for :job_commission_days do |df|
+      = render 'job_commission_day_fields', f: df
+    = link_to_add_association f, :job_commission_days do
+      i.add.circle.icon.green.big
+
+  .field
+    = hidden_field_tag :commission_flg, 'person'
 
   .field
     = f.submit class: "ui positive button"

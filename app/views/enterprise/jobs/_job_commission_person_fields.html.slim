@@ -1,8 +1,8 @@
-.fields
-  = f.hidden_field :unit, value: 'permonth'
-
+.fields.nested-fields
   .field
     .ui.labeled.input
+      = f.hidden_field :unit, value: 'permonth'
+
       = f.select :gender, JobCommissionPerson.gender.options {|g| [g.first, g,last] },
         {}, class: 'ui dropdown compact'
 
@@ -23,6 +23,10 @@
 
   .field
     = f.text_field :remit, placeholder: '天之内到账'
+
+  .field
+    = link_to_remove_association f do
+      i.minus.circle.icon.red.big
 
 javascript:
   $('.ui.dropdown').dropdown();

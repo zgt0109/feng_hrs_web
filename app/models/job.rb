@@ -34,7 +34,9 @@ class Job < ActiveRecord::Base
   belongs_to :contact
   has_one :job_quantity
   has_many :job_commission_people
-  accepts_nested_attributes_for :job_quantity, :job_commission_people, allow_destroy: true
+  has_many :job_commission_days
+  accepts_nested_attributes_for :job_quantity, :job_commission_people,
+                                :job_commission_days, allow_destroy: true
 
   enumerize :unit, in: [:permonth, :perhour], default: :permonth
   enumerize :channel, in: [:cash, :card], default: :cash

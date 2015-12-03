@@ -4,6 +4,7 @@
 //= require_directory ./plugins
 //= require 'china_city/jquery.china_city'
 
+
 // semantic-ui
 $(function(){
   // 下拉菜单

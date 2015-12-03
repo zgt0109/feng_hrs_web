@@ -3,6 +3,9 @@ $ ->
   $('#job_commission_people a.add_fields').data('association-insertion-method', 'before').
                                            data('association-insertion-node', 'this')
 
+  $('#job_commission_day a.add_fields').data('association-insertion-method', 'before').
+                                        data('association-insertion-node', 'this')
+
   # 测试信息
   # job advanced
   $(':checkbox[name=isAdvance]').change ->
@@ -22,9 +25,28 @@ $ ->
     $(unkown).attr('disabled', !this.checked)
 
   # commission
+  $('#job_commission_day').hide()
   $('.ui.buttons.commission .button').click ->
+    $('.remove_fields.dynamic').click()
+    $('.add_fields').click()
+
     $('.ui.buttons.commission .button').removeClass('teal')
     $(this).addClass('teal')
     if $(this).hasClass('first') || $(this).hasClass('second')
-      tmp = if $(this).hasClass('first') then '月' else '天'
+      if $(this).hasClass('first')
+        tmp   = '月'
+        unit  = 'permonth'
+      else
+        tmp  = '时'
+        unit = 'perhour'
+
+      $('#commission_flg').val('person')
+      $('[id^=job_job_commission_people_attributes][id$=unit]').val(unit)
       $('[id^=job_job_commission_people_attributes][id$=amount]').attr('placeholder', '元/人/'+tmp)
+      $('#job_commission_people').show()
+      $('#job_commission_day').hide()
+
+    if $(this).hasClass('third')
+      $('#commission_flg').val('day')
+      $('#job_commission_people').hide()
+      $('#job_commission_day').show()
