@@ -22,4 +22,13 @@ $(function(){
     $('#job_advance').attr('disabled', !this.checked);
   })
 
+
+  // 重新定义 modal 中返回按钮的作用
+  $('.ui.modal').delegate('.ui.negative.button', 'click', function(){
+    $('.ui.modal').modal('hide');
+    event.preventDefault();
+  })
+
+
+
 })

@@ -7,19 +7,17 @@
     .field
       = render_job_text_field(f, :name)
 
-    .field
-      .company-field
-        => f.select :company_id, current_enterprise.companies.map {|c| [c.name, c.id]},
-          {}, class: 'ui dropdown'
-        = link_to t('.new_company'), new_zhao_company_path, remote: true,
-          class: "ui button"
+    .field.inline
+      = f.select :company_id, current_enterprise.companies.map {|c| [c.name, c.id]},
+        {}, class: 'ui dropdown company-field'
+      = link_to t('.new_company'), new_zhao_company_path, remote: true,
+        class: "ui button"
 
-    .field
-      .contact-field
-        => f.select :contact_id, current_enterprise.contacts.map {|c| [c.name, c.id]},
-          {}, class: 'ui dropdown'
-        = link_to t('.new_contact'), new_zhao_contact_path, remote: true,
-          class: "ui button"
+    .field.inline
+      = f.select :contact_id, current_enterprise.contacts.map {|c| [c.name, c.id]},
+        {}, class: 'ui dropdown contact-field'
+      = link_to t('.new_contact'), new_zhao_contact_path, remote: true,
+        class: "ui button"
 
   .fields
     .field

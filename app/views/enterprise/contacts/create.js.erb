@@ -2,8 +2,7 @@
   $('.ui.message.error').remove();
   $('.ui.modal .content').prepend("<%= j(render 'shared/errors', model: @contact) %>");
 <% else %>
-  alert('success');
-  $('.contact-field').html("<%= j(select_tag 'job[contact_id]', options_from_collection_for_select(current_enterprise.contacts, :id, :name), {class: 'ui dropdown'}) %>");
+  $('.contact-field').replaceWith("<%= j(select_tag 'job[contact_id]', options_from_collection_for_select(current_enterprise.contacts, :id, :name), {class: 'ui dropdown contact-field'}) %>");
   $('.ui.dropdown').dropdown();
   $('.ui.modal').modal('hide');
 <% end %>
