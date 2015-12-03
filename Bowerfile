@@ -1,3 +1,9 @@
 asset 'semantic-ui', '2.1.6'
-
 asset 'moment', '2.10.6'
+
+
+# old
+asset 'font-awesome'
+asset 'ionicons'
+asset 'bootstrap'
+asset 'slick-carousel'
