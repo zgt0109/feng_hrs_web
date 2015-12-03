@@ -2,17 +2,15 @@
   td = render_scaffold_checkbox_one
   td = data.id
   td = data.name
-  td = data.wage
-  td = data.unit_text
-  td = data.worktime
-  td = data.royalty
-  td = data.bonus
-  td = data.channel_text
-  td = data.wageday
-  td = data.wageday_unit_text
-  td = data.advance
-  td =render_plugin_moment data.created_at
-  td =render_plugin_moment data.updated_at
+  td = render_job_string(%W(#{number_to_currency(data.wage, format: '%n', precision: 0)} #{data.unit_text}))
+  td = t('.worktime', worktime: data.worktime)
+  td = t('.wage_channel', channel: data.channel_text,
+       wageday_unit: data.wageday_unit_text, wageday: data.wageday)
+  td = number_to_currency(data.royalty, format: '¥%n', precision: 0)
+  td = number_to_currency(data.bonus, format: '¥%n', precision: 0)
+  td = render_job_advance(data)
+  td = render_plugin_moment data.created_at
+  td = render_plugin_moment data.updated_at
   td
     .ui.teal.buttons.tiny
       = render_scaffold_job_path data

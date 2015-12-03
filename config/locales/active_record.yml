@@ -51,3 +51,6 @@ zh-CN:
         channel: 工资发放
         wageday: 工资发放日
         advance: 预支工资
+        job/wish_male_count: 男
+        wish_female_count: 女
+        wish_unkown_count: 不限

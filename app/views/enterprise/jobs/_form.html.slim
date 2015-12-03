@@ -45,6 +45,27 @@
           = Job.human_attribute_name(:bonus)
         = render_job_text_field(f, :bonus)
 
+  h3.ui.header 性别要求
+  .fields
+    = f.fields_for :job_quantity_attributes, @job.job_quantity do |jq|
+      .field
+        .ui.labeled.input
+          .ui.label.basic
+            = jq.label :wish_male_count, '男'
+          = jq.text_field :wish_male_count
+      .field
+        .ui.labeled.input
+          .ui.label.basic
+            = jq.label :wish_female_count, '女'
+          = jq.text_field :wish_female_count
+      .field
+        .ui.labeled.input
+          .ui.label.basic
+            => check_box_tag :wish_unkown_count
+            = jq.label :wish_unkown_count, '不限'
+          = jq.text_field :wish_unkown_count
+
+
   h3.ui.header = Job.human_attribute_name(:channel)
   .fields
     .field
@@ -65,6 +86,13 @@
           => check_box_tag :isAdvance
           = Job.human_attribute_name(:advance)
         = render_job_text_field(f, :advance)
+
+  h3.ui.header 佣金
+  .field
+    .large.ui.buttons
+      a.ui.button.teal One
+      a.ui.button Two
+      a.ui.button Three
 
   .field
     = f.submit class: "ui positive button"

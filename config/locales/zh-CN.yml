@@ -14,6 +14,10 @@ zh-CN:
 
   enterprise:
     jobs:
+      job:
+        wage_channel: '以%{channel}方式%{wageday_unit}，%{wageday}号发放'
+        advance: '%{advance}天后可预支工资'
+        worktime: '每月工作%{worktime}小时'
       form:
         new_company: 新增公司
         new_contact: 新增联系人
