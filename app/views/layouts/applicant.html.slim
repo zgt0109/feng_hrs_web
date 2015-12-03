@@ -2,12 +2,16 @@ doctype html
 html
   head
     title 淘帮忙 - 免费蓝领求职平台
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     = stylesheet_link_tag    'application'
     = stylesheet_link_tag    'applicant'
     = stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css")
     = csrf_meta_tags
 
   body class="#{render_main_class}"
+    = render 'layouts/applicant/top'
     = yield
     = javascript_include_tag 'application'
     = javascript_include_tag 'applicant'
