@@ -1,0 +1,20 @@
+= content_tag_for(:tr, job) do | data |
+  td = render_scaffold_checkbox_one
+  td = data.id
+  td = data.name
+  td = data.wage
+  td = data.unit_text
+  td = data.worktime
+  td = data.royalty
+  td = data.bonus
+  td = data.channel_text
+  td = data.wageday
+  td = data.wageday_unit_text
+  td = data.advance
+  td =render_plugin_moment data.created_at
+  td =render_plugin_moment data.updated_at
+  td
+    .ui.teal.buttons.tiny
+      = render_scaffold_job_path data
+      .ui.floating.dropdown.icon.button
+        i.dropdown.icon

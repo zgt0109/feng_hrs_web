@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :labors, only: [:index, :show]
     resources :contacts, only: [:index, :show]
     resources :companies, only: [:index, :show]
+    resources :jobs, only: [:index, :show]
   end
 
   mount ChinaCity::Engine => '/china_city'

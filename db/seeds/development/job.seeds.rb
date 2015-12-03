@@ -3,7 +3,7 @@ sequence_max = 5
 
 puts "-"*50
 puts "创建测试招聘信息......"
-# 联系人
+# 招聘职位
 after "development:enterprise" do
   enterprise = Enterprise.find_by_email('zhao@91tbm.com')
   (sequence_min..sequence_max).each do |job_seq|
@@ -15,10 +15,9 @@ after "development:enterprise" do
       royalty: 1000,
       bonus: 2000,
       channel: "cash",
-      wageday: '15',
-      wageday_unit: 'permonth',
+      wageday: 15,
+      wageday_unit: "permonth",
       advance: 10
-    )
-    enterprise.save
+      )
   end
 end
