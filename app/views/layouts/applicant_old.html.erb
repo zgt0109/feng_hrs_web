@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>淘帮忙-免费蓝领招聘平台</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <%= stylesheet_link_tag    'applicant_old' %>
+  <!--[if lt IE 9]>
+  <%= javascript_include_tag 'html5shiv/dist/html5shiv.min' %>
+  <%= javascript_include_tag 'respond/dest/respond.min' %>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body id="<%= params[:controller].gsub('/','-') %>" class="<%= params[:action] %>">
+  <%= render 'layouts/applicant_old/header' %>
+  <%= yield %>
+  <%= render 'layouts/applicant_old/footer' %>
+  <%= javascript_include_tag 'applicant_old' %>
+  <%= yield :js %>
+</body>
+</html>

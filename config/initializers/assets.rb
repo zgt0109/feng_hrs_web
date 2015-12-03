@@ -23,3 +23,11 @@ Rails.application.config.assets.precompile += %w(
   china_city/jquery.china_city.js
   enterprise/jobs.js
 )
+
+# old
+
+Rails.application.config.assets.precompile += %w(
+  applicant_old.js applicant_old.css
+)
+Rails.application.config.assets.precompile << %r(fontawesome-webfont.(?:eot|svg|ttf|woff|woff2?)$)
+Rails.application.config.assets.precompile << %r(eot|svg|ttf|woff|woff2)

@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
 
   private
     def init_layout
-      if params[:controller] =~ /^devise/
-        'application'
+      case params[:controller]
+      when /^applicant|^devise/
+        'applicant_old'
       else
         params[:controller].split('/').first
       end
