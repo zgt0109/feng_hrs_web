@@ -22,27 +22,25 @@
   .fields
     .field
       .ui.action.input.labeled
-        .ui.basic.label = Job.human_attribute_name(:wage)
+        .ui.basic.label
+          = Job.human_attribute_name(:wage)
         = render_job_text_field(f, :wage)
         = f.select :unit, Job.unit.options {|u| [u.first, u.last]}, {},
           class: 'ui compact selection dropdown'
 
     .field
       .ui.labeled.input
-        .ui.label.basic
-          = Job.human_attribute_name(:worktime)
+        = f.label :worktime, class: "ui label basic"
         = render_job_text_field(f, :worktime)
 
     .field
       .ui.labeled.input
-        .ui.label.basic
-          = Job.human_attribute_name(:royalty)
+        = f.label :royalty, class: "ui label basic"
         = render_job_text_field(f, :royalty)
 
     .field
       .ui.labeled.input
-        .ui.label.basic
-          = Job.human_attribute_name(:bonus)
+        = f.label :bonus, class: "ui label basic"
         = render_job_text_field(f, :bonus)
 
   h3.ui.header 性别要求
@@ -50,20 +48,18 @@
     = f.fields_for :job_quantity_attributes, @job.job_quantity do |jq|
       .field
         .ui.labeled.input
-          .ui.label.basic
-            = jq.label :wish_male_count, '男'
-          = jq.text_field :wish_male_count
+          = jq.label :wish_male_count, '男', class: "ui label basic"
+          = jq.text_field :wish_male_count, placeholder: '男员工人数'
       .field
         .ui.labeled.input
-          .ui.label.basic
-            = jq.label :wish_female_count, '女'
-          = jq.text_field :wish_female_count
+          = jq.label :wish_female_count, '女', class: "ui label basic"
+          = jq.text_field :wish_female_count, placeholder: '女员工人数'
       .field
         .ui.labeled.input
           .ui.label.basic
             => check_box_tag :wish_unkown_count
             = jq.label :wish_unkown_count, '不限'
-          = jq.text_field :wish_unkown_count
+          = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人'
 
 
   h3.ui.header = Job.human_attribute_name(:channel)
@@ -89,10 +85,18 @@
 
   h3.ui.header 佣金
   .field
-    .large.ui.buttons
-      a.ui.button.teal One
-      a.ui.button Two
-      a.ui.button Three
+    .ui.buttons.commission
+      a.ui.button.first.teal 按月返利/管理费
+      a.ui.button.second 按时返利/外包红利
+      a.ui.button.third 按天返利/招聘费
+
+  #job_commission_people
+    = f.fields_for :job_commission_people do |jc|
+      = render 'job_commission_person_fields', f: jc
+
+    = link_to_add_association f, :job_commission_people do
+      i.add.circle.icon.green.big
+
 
   .field
     = f.submit class: "ui positive button"

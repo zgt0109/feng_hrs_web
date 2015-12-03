@@ -14,6 +14,7 @@ class Enterprise::JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @job.job_commission_people.build
     respond_with(@job)
   end
 
@@ -44,6 +45,7 @@ class Enterprise::JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:name, :wage, :unit, :worktime, :royalty,
       :bonus, :channel, :wageday, :wageday_unit, :advance, :company_id, :contact_id,
-      job_quantity_attributes: [:wish_male_count, :wish_female_count, :wish_unkown_count])
+      job_quantity_attributes: [:wish_male_count, :wish_female_count, :wish_unkown_count],
+      job_commission_people_attributes: [:id, :unit, :gender, :amount, :deadline, :check, :remit, :_destroy])
     end
 end
