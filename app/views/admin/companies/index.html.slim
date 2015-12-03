@@ -1,0 +1,22 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Company.human_attribute_name(:id)
+          th = Company.human_attribute_name('name')
+          th = Company.human_attribute_name('address')
+          th = Company.human_attribute_name('introduction')
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @companies
+
+    .ui.borderless.pagination.menu.floated.right
+      / = paginate @companies
