@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   before_action Proc.new{
     authenticate_enterprise! if params[:controller] =~ /^enterprise/
+    authenticate_admin! if params[:controller] =~ /^admin/
   }
 
   before_action :setup_menu
