@@ -1,0 +1,34 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = Contact.human_attribute_name(:id)
+    .four.wide.column
+      = @contact.id
+  .row
+    .three.wide.column
+      = Contact.human_attribute_name('name')
+    .four.wide.column
+      = @contact.name
+  .row
+    .three.wide.column
+      = Contact.human_attribute_name('mobile')
+    .four.wide.column
+      = render_common_mobile @contact.mobile
+  .row
+    .three.wide.column
+      = Contact.human_attribute_name('gender')
+    .four.wide.column
+      = @contact.gender_text
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = l @contact.created_at, format: :long
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = l @contact.updated_at, format: :long
+
+  .row
+    = render_scaffold_contacts_path

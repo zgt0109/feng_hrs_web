@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     resources :enterprises, only: [:index, :show]
     resources :labors, only: [:index, :show]
+    resources :contacts, only: [:index, :show]
   end
 
   mount ChinaCity::Engine => '/china_city'
