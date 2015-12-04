@@ -1,70 +1,35 @@
-.ui.grid
-  .row
-    .three.wide.column
-      = Job.human_attribute_name(:id)
-    .four.wide.column
-      = @job.id
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('name')
-    .four.wide.column
-      = @job.name
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('wage')
-    .four.wide.column
-      = @job.wage
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('unit')
-    .four.wide.column
-      = @job.unit_text
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('worktime')
-    .four.wide.column
-      = @job.worktime
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('royalty')
-    .four.wide.column
-      = @job.royalty
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('bonus')
-    .four.wide.column
-      = @job.bonus
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('channel')
-    .four.wide.column
-      = @job.channel_text
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('wageday')
-    .four.wide.column
-      = @job.wageday
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('wageday_unit')
-    .four.wide.column
-      = @job.wageday_unit_text
-  .row
-    .three.wide.column
-      = Job.human_attribute_name('advance')
-    .four.wide.column
-      = @job.advance
-  .row
-    .three.wide.column
-      = t("action.created_at")
-    .four.wide.column
-      = @job.created_at
-  .row
-    .three.wide.column
-      = t("action.updated_at")
-    .four.wide.column
-      = @job.updated_at
+.ui.divided.items
+  .item
+    .content
+      a.header = @job.name
 
-  .row
+  .item
+    .image
+      img src="/images/wireframe/image.png" /
+    .content
+      .description
+        p = render_job_string('职位编号: ', @job.id)
+        p = render_job_string('招聘企业: ', @job.company.name)
+        p = render_job_string('企业地址: ', render_common_china_city_address(@job.company), @job.company.address)
+        p = render_job_string('员工薪资: ', render_job_string(%W(#{number_to_currency(@job.wage, format: '%n', precision: 0)} #{@job.unit_text})))
+        p = render_job_string('工作时常: ', '每月工作', @job.worktime, '小时')
+        p = render_job_string('提成: ', number_to_currency(@job.royalty, format: '¥%n', precision: 0))
+        p = render_job_string('奖金: ', number_to_currency(@job.bonus, format: '¥%n', precision: 0))
+        p = render_job_string('工资发放: ', '以', @job.channel_text, '方式', @job.wageday_unit_text, '，', @job.wageday, '号发放')
+        p = render_job_string('预支工资: ', @job.advance, '天后可预支工资')
+        p = render_job_string('联系人: ', @job.contact.name, "(#{render_common_mobile @job.contact.mobile})")
+        p = render_job_string('最近更新: ', l(@job.updated_at, format: :long))
+        p = render_job_string('创建时间: ', l(@job.created_at, format: :long))
+
+      .extra
+        .ui.label.basic.teal 提成
+        .ui.label.basic.teal 奖金
+        .ui.label.basic.teal 可预支工资
+
+      .ui.divider.horizontal 佣金
+      = render_job_commission(@job).html_safe
+
+
+  .item
     = render_scaffold_edit_job_path_link(@job)
     = render_scaffold_jobs_path
