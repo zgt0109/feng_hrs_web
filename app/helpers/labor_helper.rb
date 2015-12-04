@@ -16,12 +16,30 @@ module LaborHelper
 
   # 工友来源显示
   def render_labor_channel(labor)
-    content_tag(:span, labor.channel_text, class: 'ui teal small label')
+    channel = labor.channel_text
+    if channel == '登记'
+      content_tag(:span, channel, class: 'ui teal small label')
+    else
+      content_tag(:span, channel, class: 'ui blue small label')
+    end
+
   end
 
   # 工友状态显示
   def render_labor_state(labor)
-    content_tag(:span, labor.aasm.human_state, class: 'ui teal small label')
+    state = labor.aasm.human_state
+    if labor.yidengji?
+      content_tag(:span, state, class: 'ui teal small label')
+    elsif labor.yibaoming?
+      content_tag(:span, state, class: 'ui blue small label')
+    elsif labor.yimianshi?
+      content_tag(:span, state, class: 'ui olive small label')
+    elsif labor.yiruzhi?
+      content_tag(:span, state, class: 'ui green small label')
+    elsif labor.yilizhi?
+      content_tag(:span, state, class: 'ui red small label')
+    else
+      content_tag(:span, state, class: 'ui grey small label')
+    end
   end
-
 end
