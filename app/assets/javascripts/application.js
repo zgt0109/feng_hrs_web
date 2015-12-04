@@ -4,6 +4,11 @@
 //= require_directory ./plugins
 //= require 'china_city/jquery.china_city'
 
+//= require simple-module/lib/module.js
+//= require simple-hotkeys/lib/hotkeys.js
+//= require simple-uploader/lib/uploader.js
+//= require simditor/lib/simditor.js
+
 
 // semantic-ui
 $(function(){
@@ -30,5 +35,11 @@ $(function(){
     $('.ui.modal').modal('hide');
     event.preventDefault();
   })
+
+  // 编辑器
+  var editor = new Simditor({
+    textarea: $('#editor')
+    //optional options
+  });
 
 })

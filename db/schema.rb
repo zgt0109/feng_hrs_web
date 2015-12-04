@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203095423) do
+ActiveRecord::Schema.define(version: 20151204083910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,19 @@ ActiveRecord::Schema.define(version: 20151203095423) do
   add_index "enterprises", ["email"], name: "index_enterprises_on_email", unique: true, using: :btree
   add_index "enterprises", ["reset_password_token"], name: "index_enterprises_on_reset_password_token", unique: true, using: :btree
   add_index "enterprises", ["unlock_token"], name: "index_enterprises_on_unlock_token", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "industries", force: :cascade do |t|
     t.string   "name"
@@ -269,6 +282,16 @@ ActiveRecord::Schema.define(version: 20151203095423) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "positions", force: :cascade do |t|
     t.string   "name"

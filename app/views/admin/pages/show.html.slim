@@ -1,0 +1,35 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = Page.human_attribute_name(:id)
+    .four.wide.column
+      = @page.id
+  .row
+    .three.wide.column
+      = Page.human_attribute_name('name')
+    .four.wide.column
+      = @page.name
+  .row
+    .three.wide.column
+      = Page.human_attribute_name('slug')
+    .four.wide.column
+      = @page.slug
+  .row
+    .three.wide.column
+      = Page.human_attribute_name('content')
+    .four.wide.column
+      = @page.content
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = @page.created_at
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = @page.updated_at
+
+  .row
+    = render_scaffold_edit_page_path_link(@page)
+    = render_scaffold_pages_path

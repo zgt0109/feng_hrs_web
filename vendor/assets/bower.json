@@ -3,6 +3,7 @@
   "dependencies": {
     "semantic-ui": "2.1.6",
     "moment": "2.10.6",
+    "simditor": "2.3.5",
     "font-awesome": "latest",
     "ionicons": "latest",
     "bootstrap": "latest",

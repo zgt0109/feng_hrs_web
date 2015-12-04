@@ -1,5 +1,6 @@
 /*
  *= require semantic-ui/dist/semantic
+ *= require simditor/styles/simditor.css
  */
 
  #tools .item.header{
@@ -33,4 +34,9 @@
    &:before {
      background-color: #4B4B4B;
    }
+ }
+
+// 编辑框
+ #editor{
+   display: none;
  }
