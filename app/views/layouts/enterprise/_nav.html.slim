@@ -31,7 +31,7 @@
           i.lock.icon
           | 账户安全
         .ui.divider
-        .item
+        = link_to destroy_enterprise_session_path, class: 'item', method: :delete do
           i.sign.out.icon
           | 退出
     a.item
