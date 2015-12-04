@@ -1,0 +1,18 @@
+- if page.errors.any?
+  = render partial: 'shared/errors', locals: { model: page }
+
+= form_for render_scaffold_form_path(page), remote: remote, html: { class: 'ui form' } do |f|
+  .fields
+    .field.four.wide
+      = f.label :name
+      = f.text_field :name
+    .field.four.wide
+      = f.label :slug
+      = f.text_field :slug
+  .field
+    = f.label :content
+    = f.text_field :content, id: 'editor'
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_pages_path

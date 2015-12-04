@@ -8,6 +8,7 @@ zh-CN:
       enterprise: 用户
       debit: 借记卡
       bank: 银行
+      page: 内容管理
     attributes:
       common: &common
         province: 省份
@@ -65,3 +66,7 @@ zh-CN:
         job/wish_male_count: 男
         wish_female_count: 女
         wish_unkown_count: 不限
+      page:
+        name: 标题
+        slug: 链接
+        content: 内容
