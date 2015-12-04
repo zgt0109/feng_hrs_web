@@ -23,22 +23,22 @@ class Admin::PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     @page.save
-    respond_with(@page)
+    respond_with(@page, location: admin_pages_path)
   end
 
   def update
     @page.update(page_params)
-    respond_with(@page)
+    respond_with(@page, location: admin_pages_path)
   end
 
   def destroy
     @page.destroy
-    respond_with(@page)
+    respond_with(@page, location: admin_pages_path)
   end
 
   private
     def set_page
-      @page = Page.find(params[:id])
+      @page = Page.friendly.find(params[:id])
     end
 
     def page_params

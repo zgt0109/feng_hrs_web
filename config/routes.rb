@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # 求职者
   scope module: 'applicant' do
     root 'dashboard#old'
-
+    resources :pages, only: [:index, :show]
   end
 
   # 企业用户业务

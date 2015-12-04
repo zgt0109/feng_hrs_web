@@ -1,0 +1,69 @@
+#applicant-pages .row{
+  background-color: #ccc;
+}
+
+.col-200-l {
+    float: left;
+    width: 200px;
+}
+
+#applicant-pages .help-center .help-slider {
+    background-color: #fff;
+    margin-top: 15px;
+    border: 1px #ccc solid;
+}
+
+.help-center .help-slider .title {
+    color: #333;
+    font-size: 14px;
+    padding: 6px 10px 6px 20px;
+    margin-top: 0;
+    border-bottom: 1px #ccc solid;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.help-center .help-slider dl {
+    color: #666;
+    font-size: 13px;
+}
+.help-center .help-slider dl dt {
+    margin: 10px 0 10px 10px;
+    position: relative;
+    cursor: pointer;
+    padding: 0 0 0 5px;
+    line-height: 1.2em;
+    border-left: 5px #fff solid;
+}
+.help-center .help-slider dl dt:hover,
+.help-center .help-slider dl .active {
+    color: #FC8611;
+    border-left: 5px #FC8611 solid;
+}
+
+.help-center .help-slider dl dd a {
+    color: #666;
+    display: block;
+    padding: 5px 0 5px 25px;
+    text-decoration: none;
+}
+
+.help-center .help-slider dl dd a:hover {
+    color: #FC8611;
+}
+
+
+.col-780-r {
+    float: right;
+    width: 910px;
+}
+#applicant-pages .help-content {
+    background-color: #fff;
+    min-height: 600px;
+    padding: 10px 30px;
+    margin-top: 15px;
+}
+
+#applicant-pages .help-content .title h3 {
+    text-align: center;
+}
