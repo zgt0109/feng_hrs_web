@@ -4,7 +4,8 @@ class Enterprise::JobsController < ApplicationController
   respond_to :html
 
   def index
-    @jobs = current_enterprise.jobs.page params[:page]
+    @jobs = current_enterprise.jobs.includes(:job_quantity, :company).
+            page params[:page]
     respond_with(@jobs)
   end
 
