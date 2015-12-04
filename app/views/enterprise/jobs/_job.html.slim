@@ -1,5 +1,5 @@
 = content_tag_for(:tr, job) do | data |
-  td = render_scaffold_checkbox_one
+  td = render_scaffold_checkbox_one(data.id) if render_job_current_zhao
   td = data.id
   td = data.name
   td = render_job_string(%W(#{number_to_currency(data.wage, format: '%n', precision: 0)} #{data.unit_text}))
@@ -13,9 +13,11 @@
   td = render_plugin_moment data.updated_at
   td
     .ui.teal.buttons.tiny
-      = render_scaffold_job_path data
+      = render_scaffold_job_path data unless @labor_ids
+      = link_to '报名', appoint_song_appointments_path(job_id: data, labor_ids: @labor_ids), class: 'ui button' if @labor_ids
       .ui.floating.dropdown.icon.button
         i.dropdown.icon
         .menu
-          = render_scaffold_edit_job_path data
-          = render_saffold_destroy_job_path data
+          - if render_job_current_zhao
+            = render_scaffold_edit_job_path data
+            = render_saffold_destroy_job_path data

@@ -13,4 +13,9 @@ module JobHelper
   def render_job_advance(data)
     data.advance.blank? ? '不可预支' : t('.advance', advance: data.advance)
   end
+
+  # 区分zhao和song
+  def render_job_current_zhao(param=nil)
+    current_page?('/zhao/jobs') ? param || true : nil
+  end
 end

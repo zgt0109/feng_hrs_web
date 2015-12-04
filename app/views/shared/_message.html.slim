@@ -1,0 +1,8 @@
+- if content
+  .ui.message.olive
+    ul.list
+      - if content.respond_to?(:each)
+        - content.each do |c|
+          li = c
+      - else
+        li = content

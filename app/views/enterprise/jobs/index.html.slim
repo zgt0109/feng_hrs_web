@@ -1,8 +1,11 @@
+= render 'shared/message', content: @labor_names
+
 .ui.grid
   .sixteen.wide.column
-    = render_scaffold_checkbox_selectall
-    = render_scaffold_checkbox_delete
-    = render_scaffold_new_job_path
+    - if render_job_current_zhao
+      = render_scaffold_checkbox_selectall
+      = render_scaffold_checkbox_delete
+      = render_scaffold_new_job_path
 
     table.ui.very.basic.selectable.table
       thead

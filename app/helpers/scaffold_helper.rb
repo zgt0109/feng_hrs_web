@@ -1,8 +1,8 @@
 module ScaffoldHelper
   # 选择一条数据
-  def render_scaffold_checkbox_one
+  def render_scaffold_checkbox_one(id, bool=false)
     content_tag(:div, class: 'ui checkbox') do
-      check_box_tag('singular_check') + label_tag(nil)
+      check_box_tag('singular_check', id, false, disabled: bool) + label_tag(nil)
     end
   end
 

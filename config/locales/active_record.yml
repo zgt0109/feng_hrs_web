@@ -65,3 +65,10 @@ zh-CN:
         job/wish_male_count: 男
         wish_female_count: 女
         wish_unkown_count: 不限
+      appointment:
+        state:
+          yibaoming: 已报名
+          yimianshi: 已面试
+          yiruzhi: 已入职
+          yilizhi: 已离职
+          weiruzhi: 未入职

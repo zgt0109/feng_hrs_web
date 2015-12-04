@@ -39,6 +39,7 @@ require 'rails_helper'
 RSpec.describe Labor, type: :model do
   it { should belong_to(:enterprise) }
   it { should have_one(:intention) }
+  it { should have_one(:job) }
 
 	it "标准数据" do
 		expect(build(:labor)).to be_valid

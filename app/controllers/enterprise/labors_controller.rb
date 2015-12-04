@@ -8,6 +8,11 @@ class Enterprise::LaborsController < ApplicationController
     respond_with(@labors)
   end
 
+  def appointed_labors
+    @labors = Labor.where(id: current_enterprise.zhao.map(&:labor)).page params[:page]
+    render :index
+  end
+
   def show
     respond_with(@labor)
   end

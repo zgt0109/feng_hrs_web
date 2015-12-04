@@ -1,25 +1,36 @@
+= render 'shared/message', content: notice
+
 .ui.grid
   .sixteen.wide.column
-    = render_scaffold_checkbox_selectall
-    = render_scaffold_checkbox_delete
-    = render_scaffold_new_labor_path
+    - if !render_zhao_labor_isIndex
+      = render_scaffold_checkbox_selectall
+      = render_scaffold_checkbox_delete
+      = render_scaffold_new_labor_path
+      = link_to '报名', 'javascript:;', class: 'ui button olive small appointment'
 
     table.ui.very.basic.selectable.table
       thead
         tr
-          th
-          th = Labor.human_attribute_name(:id)
+          - if !render_zhao_labor_isIndex
+            th
+            th = Labor.human_attribute_name(:id)
           th = Labor.human_attribute_name(:name)
           th = Labor.human_attribute_name(:age)
           th = Labor.human_attribute_name(:mobile)
-          th = Labor.human_attribute_name(:channel)
-          th = Labor.human_attribute_name(:state)
-          th = t("action.created_at")
-          th = t("action.deleted_at")
-          th = t("action.options")
+          - if !render_zhao_labor_isIndex
+            th = Labor.human_attribute_name(:channel)
+            th = Labor.human_attribute_name(:state)
+            th = t("action.created_at")
+            th = t("action.deleted_at")
+            th = t("action.options")
+          - if render_zhao_labor_isIndex
+            th 所报职位
 
       tbody
         = render @labors
 
     .ui.borderless.pagination.menu.floated.right
       = paginate @labors
+
+- content_for :javascript do
+  = javascript_include_tag "enterprise/appointment"
