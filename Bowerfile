@@ -3,7 +3,7 @@ asset 'moment', '2.10.6'
 
 
 # old
-asset 'font-awesome'
-asset 'ionicons'
-asset 'bootstrap'
-asset 'slick-carousel'
+asset 'font-awesome', '4.5.0'
+asset 'ionicons', '2.0.0'
+asset 'bootstrap', '3.3.6'
+asset 'slick-carousel', '1.5.9'

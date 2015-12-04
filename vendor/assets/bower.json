@@ -3,9 +3,9 @@
   "dependencies": {
     "semantic-ui": "2.1.6",
     "moment": "2.10.6",
-    "font-awesome": "latest",
-    "ionicons": "latest",
-    "bootstrap": "latest",
-    "slick-carousel": "latest"
+    "font-awesome": "4.5.0",
+    "ionicons": "2.0.0",
+    "bootstrap": "3.3.6",
+    "slick-carousel": "1.5.9"
   }
 }
