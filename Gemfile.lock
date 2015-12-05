@@ -82,6 +82,7 @@ GEM
     china_city (0.0.4)
       jquery-rails
       rails (>= 3.1.0)
+    china_sms (0.0.7)
     choice (0.2.0)
     cocoon (1.2.6)
     code_analyzer (0.4.5)
@@ -380,6 +381,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-puma
   china_city
+  china_sms
   cocoon
   coffee-rails (~> 4.1.0)
   database_cleaner
