@@ -1,4 +1,8 @@
-= render 'shared/message', content: @labor_names
+- if @labor_names
+  .ui.message.olive
+    span
+      = "正在帮工友：#{@labor_names} 报名"
+    = link_to '取消报名', song_labors_path, class: 'ui button close icon tiny negative'
 
 .ui.grid
   .sixteen.wide.column
@@ -26,5 +30,4 @@
       tbody
         = render @jobs
 
-    .ui.borderless.pagination.menu.floated.right
-      / = paginate @jobs
+    = paginate @jobs

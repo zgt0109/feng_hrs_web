@@ -3,7 +3,7 @@ class Enterprise::AppointmentsController < ApplicationController
   before_action :set_appointment, only: :cancel
 
   def index
-    @appointments = current_enterprise.song.page params[:page]
+    @appointments = current_enterprise.song.includes(:job, :labor).page params[:page]
   end
 
   def appoint

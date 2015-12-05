@@ -1,5 +1,5 @@
 = content_tag_for(:tr, <%= singular_table_name %>) do | data |
-  td = render_scaffold_checkbox_one
+  td = render_scaffold_checkbox_one(data.id)
   td = data.id
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
   td = data.<%= attribute.name %>

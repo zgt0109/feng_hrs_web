@@ -46,4 +46,6 @@ class Enterprise < ActiveRecord::Base
   has_one  :debit
   has_many :zhao, class_name: 'Appointment', foreign_key: :zhao_id
   has_many :song, class_name: 'Appointment', foreign_key: :song_id
+
+  has_many :zhao_labors, through: :zhao, source: :labor
 end

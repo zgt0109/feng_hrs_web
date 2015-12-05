@@ -40,4 +40,5 @@ RSpec.describe Enterprise, type: :model do
 
   it { should have_many(:zhao) }
   it { should have_many(:song) }
+  it { should have_many(:zhao_labors) }
 end

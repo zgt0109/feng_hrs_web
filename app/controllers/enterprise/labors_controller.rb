@@ -4,12 +4,12 @@ class Enterprise::LaborsController < ApplicationController
   respond_to :html
 
   def index
-    @labors = current_enterprise.labors.all.page params[:page]
+    @labors = current_enterprise.labors.page params[:page]
     respond_with(@labors)
   end
 
   def appointed_labors
-    @labors = Labor.where(id: current_enterprise.zhao.map(&:labor)).page params[:page]
+    @labors = current_enterprise.zhao_labors.includes(:job).page params[:page]
     render :index
   end
 
