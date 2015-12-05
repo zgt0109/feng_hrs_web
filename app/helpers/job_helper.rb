@@ -35,7 +35,7 @@ module JobHelper
       end
     elsif day.present? then
       day.each do |d|
-        tmp << "#{d.gender_text}入职#{d.deadline}天后返#{d.amount}元"
+        tmp << simple_format("#{d.gender_text}入职#{d.deadline}天后返#{d.amount}元")
       end
     end
     return tmp
@@ -45,4 +45,30 @@ module JobHelper
   def render_job_current_zhao(param=nil)
     current_page?('/zhao/jobs') ? param || true : nil
   end
+
+  # 报名按钮
+  def render_job_appoint_button(job)
+    unless render_job_current_zhao
+      if @labor_ids
+        link_to '报名', appoint_song_appointments_path(labor_ids: @labor_ids, job_id: job.id),
+          class: 'ui teal button tiny right floated'
+      else
+        link_to "报名", song_labors_path(job_id: job.id),
+          class: 'ui teal button tiny right floated'
+      end
+    else
+      content_tag :div, class: 'ui teal buttons tiny right floated' do
+        concat (render_scaffold_job_path job)
+        concat (content_tag :div, class: 'ui floating dropdown icon button' do
+          concat (content_tag :i , nil, class: 'dropdown icon')
+          concat (content_tag :div, class: 'menu' do
+            concat (render_scaffold_edit_job_path job)
+            concat (render_saffold_destroy_job_path job)
+          end)
+        end)
+      end
+    end
+
+  end
+
 end
