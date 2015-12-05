@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     authenticate_admin! if params[:controller] =~ /^admin/
   }
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   before_action :setup_menu
 
   private
@@ -31,4 +33,10 @@ class ApplicationController < ActionController::Base
     def setup_menu
       @_menus = Menu.with_domain( request.path.slice(/zhao|song|hr|admin/) )
     end
+
+    
+    protected
+      def configure_permitted_parameters
+        devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:account, :password, :remember_me) }
+      end
 end

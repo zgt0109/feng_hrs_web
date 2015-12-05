@@ -22,6 +22,8 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  mobile                 :string
 #
 # Indexes
 #
@@ -35,10 +37,17 @@ class Enterprise < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
 
+  attr_accessor :account
+
   default_scope { order('created_at desc') }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+         :confirmable, :lockable,
+         authentication_keys: [:account]
+
+
+  validates :name, length: { minimum: 2, maximum: 20 }, presence: true
+
   has_many :labors
   has_many :companies
   has_many :contacts
@@ -48,4 +57,14 @@ class Enterprise < ActiveRecord::Base
   has_many :song, class_name: 'Appointment', foreign_key: :song_id
 
   has_many :zhao_labors, through: :zhao, source: :labor
+
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if account = conditions.delete(:account)
+      where(conditions).where(["lower(mobile) = :value OR lower(email) = :value", { value: account.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
 end

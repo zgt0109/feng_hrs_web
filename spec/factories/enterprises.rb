@@ -22,6 +22,8 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  mobile                 :string
 #
 # Indexes
 #
@@ -34,6 +36,7 @@
 FactoryGirl.define do
   factory :enterprise do
     sequence(:email) {|n| "test_#{n}@91tmb.com" }
+    name '测试账户'
     password 'password'
     confirmed_at Time.now
   end
