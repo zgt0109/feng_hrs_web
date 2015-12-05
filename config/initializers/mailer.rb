@@ -1,13 +1,13 @@
 Rails.application.configure do
   # Action Mailer
-  config.action_mailer.default_url_options = ENV['EMAIL_PROVIDER_HOST']
+  config.action_mailer.default_url_options = { host: ENV['EMAIL_PROVIDER_HOST'] }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.default charset: 'utf-8'
   config.action_mailer.default_options = {
-    from:     '"淘帮忙团队" <notify@91tbm.com>',
+    from:     '"淘帮忙团队" <no-reply@10000zhi.cn>',
     reply_to: '"淘帮忙问题反馈" <talk@91tbm.com>'
   }
 
