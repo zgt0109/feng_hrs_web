@@ -4,8 +4,8 @@
   td = data.name
   td = render_common_mobile data.mobile
   td = data.gender_text
-  td = data.created_at
-  td = data.updated_at
+  td = render_plugin_moment data.created_at
+  td = render_plugin_moment data.updated_at
   td
     .ui.teal.buttons.tiny
       = render_scaffold_contact_path data
