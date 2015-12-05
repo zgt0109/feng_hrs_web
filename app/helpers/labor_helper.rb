@@ -16,15 +16,37 @@ module LaborHelper
 
   # 工友来源显示
   def render_labor_channel(labor)
-    content_tag(:span, labor.channel_text, class: 'ui teal small label')
+    channel = labor.channel_text
+    if channel == '登记'
+      content_tag(:span, channel, class: 'ui teal small label')
+    else
+      content_tag(:span, channel, class: 'ui blue small label')
+    end
+
   end
 
   # 工友状态显示
   def render_labor_state(labor)
-    content_tag(:span, labor.aasm.human_state, class: 'ui teal small label')
+    if labor.yidengji?
+      html_class = 'teal'
+    elsif labor.yibaoming?
+      html_class = 'blue'
+    elsif labor.yimianshi?
+      html_class = 'olive'
+    elsif labor.yiruzhi?
+      html_class = 'green'
+    elsif labor.yilizhi?
+      html_class = 'red'
+    else
+      html_class = 'grey'
+    end
+    content_tag(:span,  labor.aasm.human_state,
+                class: "ui #{html_class} small label")
   end
+
 
   def render_zhao_labor_isIndex
     current_page?(action: :appointed_labors)
   end
+
 end
