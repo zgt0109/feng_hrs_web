@@ -22,6 +22,7 @@ Rails.application.config.assets.precompile += %w(
   admin.js admin.css
   china_city/jquery.china_city.js
   enterprise/jobs.js
+  enterprise/appointment.js
 )
 
 # old

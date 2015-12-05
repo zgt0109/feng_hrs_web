@@ -40,6 +40,8 @@ class Labor < ActiveRecord::Base
   include AASM
   belongs_to :enterprise
   has_one :intention, class_name: 'LaborIntention'
+  has_one :appointment
+  has_one :job, through: :appointment
   accepts_nested_attributes_for :intention
   validates_presence_of :name, :mobile, :idcard, :gender, :channel, :birthday,
                         :province, :city, :district

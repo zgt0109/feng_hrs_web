@@ -1,0 +1,11 @@
+tr
+  td = render_scaffold_checkbox_one(appointment.id)
+  td = appointment.id
+  td = appointment.job.name
+  td = appointment.labor.name
+  td
+    .ui.teal.small.label
+      = appointment.aasm.human_state
+  td = render_plugin_moment appointment.created_at
+  td
+    = link_to '取消报名', cancel_song_appointments_path(appointment_id: appointment), class: 'ui button orange tiny'

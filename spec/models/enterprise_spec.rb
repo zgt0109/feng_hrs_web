@@ -37,4 +37,8 @@ RSpec.describe Enterprise, type: :model do
   it "标准数据" do
     expect(build(:enterprise)).to be_valid
   end
+
+  it { should have_many(:zhao) }
+  it { should have_many(:song) }
+  it { should have_many(:zhao_labors) }
 end

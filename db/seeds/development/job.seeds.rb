@@ -9,14 +9,16 @@ after "development:enterprise" do
   (sequence_min..sequence_max).each do |job_seq|
     enterprise.jobs.create(
       name: "测试职位#{job_seq}",
+      company_id: Company.take,
+      contact_id: Contact.take,
       wage: 10000,
-      unit: "month",
+      unit: "permonth",
       worktime: 10,
       royalty: 1000,
       bonus: 2000,
       channel: "cash",
       wageday: 15,
-      wageday_unit: "permonth",
+      wageday_unit: "month",
       advance: 10
       )
   end

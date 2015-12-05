@@ -24,4 +24,7 @@ module LaborHelper
     content_tag(:span, labor.aasm.human_state, class: 'ui teal small label')
   end
 
+  def render_zhao_labor_isIndex
+    current_page?(action: :appointed_labors)
+  end
 end

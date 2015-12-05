@@ -70,3 +70,10 @@ zh-CN:
         name: 标题
         slug: 链接
         content: 内容
+      appointment:
+        state:
+          yibaoming: 已报名
+          yimianshi: 已面试
+          yiruzhi: 已入职
+          yilizhi: 已离职
+          weiruzhi: 未入职

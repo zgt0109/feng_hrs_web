@@ -4,8 +4,13 @@ class Enterprise::JobsController < ApplicationController
   respond_to :html
 
   def index
-    @jobs = current_enterprise.jobs.includes(:job_quantity, :company).
-            page params[:page]
+    if request.path.slice(/zhao|song/) == 'song'
+      @labor_ids = params[:labor_ids]
+      @labor_names = get_labor_names if params[:labor_ids]
+      @jobs = Job.page params[:page]
+    else
+      @jobs = current_enterprise.jobs.page params[:page]
+    end
     respond_with(@jobs)
   end
 
@@ -54,4 +59,7 @@ class Enterprise::JobsController < ApplicationController
       job_commission_days_attributes: [:id, :gender, :deadline, :amount, :_destroy])
     end
 
+    def get_labor_names
+      Labor.find(params[:labor_ids].split(',').uniq).map(&:name).join('、')
+    end
 end

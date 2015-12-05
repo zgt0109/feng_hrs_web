@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :contacts
     resources :companies
     resources :jobs
+    resources :labors, only: :index do
+      get :appointed_labors, on: :collection
+    end
   end
 
   # 送人方
@@ -27,6 +30,13 @@ Rails.application.routes.draw do
     root 'dashboard#song'
     concerns :enterpriseable
     resources :labors
+    resources :jobs
+    resources :appointments, only: [:index] do
+      collection do
+        get :appoint
+        get :cancel
+      end
+    end
   end
 
   # 企业HR

@@ -41,4 +41,8 @@ module JobHelper
     return tmp
   end
 
+  # 区分zhao和song
+  def render_job_current_zhao(param=nil)
+    current_page?('/zhao/jobs') ? param || true : nil
+  end
 end

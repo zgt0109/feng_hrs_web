@@ -19,5 +19,4 @@
       tbody
         = render @<%= plural_table_name %>
 
-    .ui.borderless.pagination.menu.floated.right
-      / = paginate @<%= plural_table_name %>
+    = paginate @<%= plural_table_name %>
