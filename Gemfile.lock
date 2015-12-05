@@ -212,6 +212,7 @@ GEM
     paranoia (2.1.4)
       activerecord (~> 4.0)
     pg (0.18.4)
+    posix-spawn (0.3.11)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -306,6 +307,8 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
+    rucaptcha (0.3.1)
+      posix-spawn (>= 0.3.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -413,6 +416,7 @@ DEPENDENCIES
   rails_best_practices
   responders
   rspec-rails
+  rucaptcha
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   seedbank

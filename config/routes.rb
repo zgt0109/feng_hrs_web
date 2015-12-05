@@ -57,4 +57,5 @@ Rails.application.routes.draw do
   end
 
   mount ChinaCity::Engine => '/china_city'
+  mount RuCaptcha::Engine => "/rucaptcha"
 end

@@ -23,6 +23,9 @@
                   = f.password_field :password, autocomplete: "off", placeholder: "您的密码", class: "form-control"
                 .form-group
                   = f.password_field :password_confirmation, autocomplete: "off", placeholder: "确认密码", class: "form-control"
+                .form-group
+                  = rucaptcha_input_tag(class: 'form-control', placeholder: 'Input Captcha')
+                  = rucaptcha_image_tag(alt: 'Captcha')
 
                 .form-group
                   input[type="checkbox"]
