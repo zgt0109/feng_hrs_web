@@ -24,7 +24,7 @@ $(function(){
 
   // 全选
   $(':checkbox[name=selectAll]').on('change', function() {
-    $(':checkbox[name=singular_check]').prop('checked', this.checked);
+    $(':checkbox[name=singular_check][disabled!=disabled]').prop('checked', this.checked);
   })
 
   // 提示信息
@@ -37,9 +37,9 @@ $(function(){
   })
 
   // 编辑器
-  var editor = new Simditor({
-    textarea: $('#editor')
-    //optional options
-  });
+  // var editor = new Simditor({
+  //   textarea: $('#editor')
+  //   //optional options
+  // });
 
 })

@@ -4,6 +4,7 @@ class Enterprise::LaborsController < ApplicationController
   respond_to :html
 
   def index
+    @job_id, @job_name = set_job_params
     @labors = current_enterprise.labors.page params[:page]
     respond_with(@labors)
   end
@@ -46,6 +47,10 @@ class Enterprise::LaborsController < ApplicationController
   private
     def set_labor
       @labor = current_enterprise.labors.find(params[:id])
+    end
+
+    def set_job_params
+      return params[:job_id], Job.find(params[:job_id]).try(:name) if params[:job_id]
     end
 
     def labor_params

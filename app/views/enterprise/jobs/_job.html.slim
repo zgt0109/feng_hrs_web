@@ -1,15 +1,9 @@
 .item
   .content
-    = render_scaffold_checkbox_one
+    = render_scaffold_checkbox_one(job.id) if render_job_current_zhao
     = link_to job.name, [:zhao, job], class: 'header'
-
-    .ui.teal.buttons.tiny.right.floated
-      = render_scaffold_job_path job
-      .ui.floating.dropdown.icon.button
-        i.dropdown.icon
-        .menu
-          = render_scaffold_edit_job_path job
-          = render_saffold_destroy_job_path job
+    
+    = render_job_appoint_button(job)
 
     .description
       .ui.grid.three.column
