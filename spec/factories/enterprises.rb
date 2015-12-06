@@ -36,9 +36,10 @@
 
 FactoryGirl.define do
   factory :enterprise do
-    sequence(:email) {|n| "test_#{n}@91tmb.com" }
+    # sequence(:email) {|n| "test_#{n}@91tmb.com" }
     name '测试账户'
     password 'password'
+    password_confirmation 'password'
     confirmed_at Time.now
   end
 

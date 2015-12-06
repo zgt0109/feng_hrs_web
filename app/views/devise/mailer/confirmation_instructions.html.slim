@@ -1,0 +1,17 @@
+p 亲爱的#{@email}：
+p
+  | 欢迎加入淘帮忙，请点击下面的链接激活账号：
+p
+  = link_to '激活链接', confirmation_url(@resource, confirmation_token: @token)
+p
+  | 如果以上链接无法点击，请将它复制到你的浏览器（如Safari, 谷歌, 火狐, IE）地址栏中进入访问。
+p
+  | 此连接24小时内有效，请您及时确认完成注册！
+br/
+
+p
+  | 淘帮忙
+  = link_to 'www.91tbm.com', 'http://www.91tbm.com'
+  | 这是一封自动产生的email，请勿回复。
+p 客服电话：4000562618
+p 客服邮箱：talk@91tbm.com

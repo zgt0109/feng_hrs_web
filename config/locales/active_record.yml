@@ -63,6 +63,10 @@ zh-CN:
       enterprise:
         id: 编号
         email: 邮箱
+        mobile: 手机号码
+        name: 用户名
+        password: 密码
+        password_confirmation: 第二次密码
       debit:
         bank_id: 银行名称
         name: 用户名
