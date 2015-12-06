@@ -1,6 +1,6 @@
-#devise-registrations {
+#enterprise-registrations {
   &.new, &.create {
-    .row {
+    .row.fix {
       width:100%;
       height:70%;
       background-image: image-url('applicant/signup-bg.jpg');
