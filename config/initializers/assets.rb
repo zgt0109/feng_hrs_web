@@ -25,6 +25,8 @@ Rails.application.config.assets.precompile += %w(
   enterprise/appointment.js
 
   sms.js
+
+  admin/sessions.css
 )
 
 # old
