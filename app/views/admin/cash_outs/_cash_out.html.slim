@@ -1,0 +1,28 @@
+= content_tag_for(:tr, cash_out) do | data |
+  td = render_scaffold_checkbox_one(data.id)
+  td = data.id
+  td = data.serial_inner
+  td = data.enterprise.name
+  td = data.enterprise.mobile
+  td = data.enterprise.email
+  td = data.amount
+  td = data.serial_outer
+  td = data.note
+  td = render_common_cash_out_state data
+  td =render_plugin_moment data.created_at
+  td =render_plugin_moment data.updated_at
+  td
+    .ui.teal.buttons.tiny
+      = render_scaffold_cash_out_path data
+      .ui.floating.dropdown.icon.button
+        i.dropdown.icon
+        .menu
+          = link_to_unless_with_block cash_out.confirmed?, edit_admin_cash_out_path(cash_out),
+            class: "item" do
+            i.edit.icon
+            = t('action.edit')
+
+          = link_to_unless_with_block cash_out.confirmed?, [:admin, cash_out], method: :delete,
+            class: 'item', data:{confirm: "确认删除吗?"} do
+            i.delete.icon
+            = t('action.delete')

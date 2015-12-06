@@ -43,11 +43,7 @@ class CashOut < ActiveRecord::Base
     state :rejected
 
     event :confirm do
-      transitions from: :pending, to: :confirmed do
-        after do
-          self.enterprise.increment!(:balance, self.amount)
-        end
-      end
+      transitions from: :pending, to: :confirmed
     end
 
     event :reject do
@@ -60,7 +56,7 @@ class CashOut < ActiveRecord::Base
   end
 
   default_scope { order(updated_at: 'desc') }
-  scope :get_cash_ins_by_state,
+  scope :get_cash_outs_by_state,
     -> (state) { state.blank? ? self.includes(:enterprise) : self.includes(:enterprise).send(state) }
 
   private
