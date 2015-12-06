@@ -12,7 +12,8 @@ before_filter :configure_sign_up_params, only: [:create]
 
 
   def send_sms
-    if params[:_rucaptcha] == session[:_rucaptcha]
+    rucaptcha_at = session[:_rucaptcha_at].to_i
+    if params[:_rucaptcha] == session[:_rucaptcha] &&  (Time.now.to_i - rucaptcha_at) < 120
       send_sms_message
     else
       render json: { error: true, msg: 'invalid captcha'}
