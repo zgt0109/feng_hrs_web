@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admins
   devise_for :enterprises, controllers: {
-    registrations: 'enterprise/registrations'
+    registrations: 'enterprise/registrations',
+    sessions: 'enterprise/sessions'
   }
 
   devise_scope :enterprise do

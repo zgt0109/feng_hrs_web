@@ -1,5 +1,5 @@
 class Enterprise::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
   layout 'applicant_old'
   # GET /resource/sign_up
@@ -66,9 +66,15 @@ class Enterprise::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.for(:sign_up) << :attribute
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(
+        :name, :email, :mobile, :password, :remember_me, :email_signup,
+        :mobile_signup, :password_confirmation
+      )
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

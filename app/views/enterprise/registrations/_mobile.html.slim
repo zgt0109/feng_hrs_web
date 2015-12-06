@@ -6,8 +6,11 @@
             i.glyphicon.glyphicon-remove-sign
             = flash[:alert]
 
+        = f.hidden_field :mobile_signup, value: 'true'
         .form-group
           = f.text_field :mobile, placeholder: "请输入手机号码", class: "form-control"
+        .form-group
+          = f.text_field :name, placeholder: "请输入用户名", class: "form-control"
         .form-group
           = f.password_field :password, autocomplete: "off", placeholder: "您的密码", class: "form-control"
         .form-group
