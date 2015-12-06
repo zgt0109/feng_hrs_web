@@ -1,7 +1,7 @@
 module JobHelper
-  def render_job_text_field(f, column)
+  def render_job_text_field(f, column, bool=false)
     f.text_field column, placeholder: t(".holder.#{column}"),
-    title: t(".popup.#{column}"), class: 'popmessage'
+    title: t(".popup.#{column}"), class: 'popmessage', disabled: bool
   end
 
   # 薪资
@@ -46,14 +46,14 @@ module JobHelper
     current_page?('/zhao/jobs') ? param || true : nil
   end
 
-  # 报名按钮
+  # 送人按钮
   def render_job_appoint_button(job)
     unless render_job_current_zhao
       if @labor_ids
-        link_to '报名', appoint_song_appointments_path(labor_ids: @labor_ids, job_id: job.id),
+        link_to '送人', appoint_song_appointments_path(labor_ids: @labor_ids, job_id: job.id),
           class: 'ui teal button tiny right floated'
       else
-        link_to "报名", song_labors_path(job_id: job.id),
+        link_to "送人", song_labors_path(job_id: job.id),
           class: 'ui teal button tiny right floated'
       end
     else

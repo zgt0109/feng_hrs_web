@@ -26,7 +26,7 @@ zh-CN:
         channel: 来源
         state: 状态
         state/yidengji: 已登记
-        state/yibaoming: 已报名
+        state/yibaoming: 已送人
         state/yimianshi: 已面试
         state/yiruzhi: 已入职
         state/yilizhi: 已离职
@@ -72,7 +72,7 @@ zh-CN:
         content: 内容
       appointment:
         state:
-          yibaoming: 已报名
+          yibaoming: 已送人
           yimianshi: 已面试
           yiruzhi: 已入职
           yilizhi: 已离职
