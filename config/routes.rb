@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   concern :enterpriseable do
     get 'profile' => 'profiles#index'
     resource :debit, only: [:new, :create, :show]
+    resources :cash_ins, only: [:index]
   end
 
   # 招聘方
