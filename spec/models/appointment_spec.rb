@@ -21,10 +21,21 @@
 #
 
 require 'rails_helper'
+require 'aasm/rspec'
 
 RSpec.describe Appointment, type: :model do
   it { should belong_to(:job) }
   it { should belong_to(:labor) }
   it { should belong_to(:zhao) }
   it { should belong_to(:song) }
+
+  it "AASM" do
+    appointment = build(:appointment)
+    expect(appointment).to transition_from(:appointed).to(:rejected).on_event(:reject)
+    expect(appointment).to transition_from(:appointed).to(:passed).on_event(:pass)
+    expect(appointment).to transition_from(:passed).to(:checkin).on_event(:checkin)
+    expect(appointment).to transition_from(:passed).to(:refused).on_event(:refuse)
+    expect(appointment).to transition_from(:checkin).to(:turnover).on_event(:turnover)
+    expect(appointment).not_to transition_from(:appointed).to(:turnover).on_event(:reject)
+  end
 end

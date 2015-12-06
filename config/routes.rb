@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :labors, only: :index do
       get :appointed_labors, on: :collection
     end
+    get '/transition/:id', to: 'appointments#state_transition', as: :transition
   end
 
   # 送人方

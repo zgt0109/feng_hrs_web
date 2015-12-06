@@ -1,5 +1,6 @@
 class Enterprise::LaborsController < ApplicationController
   before_action :set_labor, only: [:show, :edit, :update, :destroy]
+  before_action :set_single_labor, only: :state_transition
 
   respond_to :html
 
@@ -48,6 +49,10 @@ class Enterprise::LaborsController < ApplicationController
     def set_labor
       @labor = current_enterprise.labors.find(params[:id])
     end
+
+    # def set_single_labor
+    #   @labor_single = Labor.find(params[:id])
+    # end
 
     def set_job_params
       return params[:job_id], Job.find(params[:job_id]).try(:name) if params[:job_id]

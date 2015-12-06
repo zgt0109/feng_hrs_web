@@ -13,7 +13,6 @@ after "development:enterprise" do
     idcard: "42092319900109181#{labor_seq}",
     gender: "male",
     birthday: "1982-11-25",
-    state: "yidengji",
     province: "310000",
     city: "310100",
     district: "310115",

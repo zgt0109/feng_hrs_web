@@ -56,31 +56,40 @@ class Labor < ActiveRecord::Base
   enumerize :channel, in: [:web]
 
   aasm column: :state do
-    state :yidengji, :initial => true
-    state :yibaoming
-    state :yimianshi
-    state :yiruzhi
-    state :yilizhi
-    state :weiruzhi
+    state :registed, :initial => true
+    state :appointed
+    state :passed
+    state :rejected
+    state :checkin
+    state :refused
+    state :turnover
 
-    event :baoming do
-      transitions :from => :yidengji, :to => :yibaoming
+    event :appoint do
+      transitions :from => :registed, :to => :appointed
     end
 
-    event :mianshi do
-      transitions from: :yibaoming, to: :yimianshi
+    event :cancel do
+      transitions :from => :appointed, :to => :registed
     end
 
-    event :ruzhi do
-      transitions from: :yimianshi, to: :yiruzhi
+    event :reject do
+      transitions :from => :appointed, :to => :rejected
     end
 
-    event :lizhi do
-      transitions from: :yiruzhi, to: :yilizhi
+    event :pass do
+      transitions :from => :appointed, :to => :passed
     end
 
-    event :cancel_baoming do
-      transitions :from => :yibaoming, :to => :yidengji
+    event :checkin do
+      transitions :from => :passed, :to => :checkin
+    end
+
+    event :refuse do
+      transitions :from => :passed, :to => :refused
+    end
+
+    event :turnover do
+      transitions :from => :checkin, :to => :turnover
     end
   end
 

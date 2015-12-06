@@ -35,10 +35,31 @@ class Appointment < ActiveRecord::Base
   default_scope { order('updated_at desc') }
 
   aasm column: :state do
-    state :yibaoming, :initial => true
-    state :yimianshi
-    state :yiruzhi
-    state :yilizhi
-    state :weiruzhi
+    state :appointed, :initial => true
+    state :passed
+    state :rejected
+    state :checkin
+    state :refused
+    state :turnover
+
+    event :reject do
+      transitions :from => :appointed, :to => :rejected
+    end
+
+    event :pass do
+      transitions :from => :appointed, :to => :passed
+    end
+
+    event :checkin do
+      transitions :from => :passed, :to => :checkin
+    end
+
+    event :refuse do
+      transitions :from => :passed, :to => :refused
+    end
+
+    event :turnover do
+      transitions :from => :checkin, :to => :turnover
+    end
   end
 end
