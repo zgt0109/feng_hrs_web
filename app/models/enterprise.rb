@@ -24,6 +24,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  mobile                 :string
+#  balance                :decimal(10, 2)
 #
 # Indexes
 #
@@ -45,7 +46,6 @@ class Enterprise < ActiveRecord::Base
          :confirmable, :lockable,
          authentication_keys: [:account]
 
-
   validates :name, length: { minimum: 2, maximum: 20 }, presence: true
 
   has_many :labors
@@ -53,6 +53,7 @@ class Enterprise < ActiveRecord::Base
   has_many :contacts
   has_many :jobs
   has_one  :debit
+  has_many :cash_ins
   has_many :zhao, class_name: 'Appointment', foreign_key: :zhao_id
   has_many :song, class_name: 'Appointment', foreign_key: :song_id
 
