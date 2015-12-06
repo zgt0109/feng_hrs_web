@@ -43,7 +43,9 @@ end
   {name: '联系人管理', uri: '/admin/contacts', icon: 'diamond'},
   {name: '代招企业', uri: '/admin/companies', icon: 'puzzle'},
   {name: '招聘管理', uri: '/admin/jobs', icon: 'send'},
-  {name: '内容管理', uri: '/admin/pages', icon: 'send'}
+  {name: '内容管理', uri: '/admin/pages', icon: 'send'},
+  {name: '充值管理', uri: '/admin/cash_ins', icon: 'send'},
+  {name: '提现管理', uri: '/admin/cash_outs', icon: 'send'}
 ].each do |node|
   Menu.create(node.merge(domain: 'admin'))
 end
