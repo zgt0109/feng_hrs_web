@@ -22,6 +22,8 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  mobile                 :string
 #
 # Indexes
 #
@@ -34,7 +36,21 @@
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
+
+  attr_accessor :account
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
+
+
+   def self.find_first_by_auth_conditions(warden_conditions)
+     conditions = warden_conditions.dup
+     if account = conditions.delete(:account)
+       where(conditions).where(["lower(mobile) = :value OR lower(email) = :value", { value: account.downcase }]).first
+     else
+       where(conditions).first
+     end
+   end
+
 end
