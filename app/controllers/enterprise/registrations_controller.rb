@@ -35,9 +35,13 @@ before_filter :configure_sign_up_params, only: [:create]
 
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    params[:type] = 'email'
+    if params[:enterprise][:mobile_signup]
+      params[:type] = 'mobile'
+    end
+    super
+  end
 
   # GET /resource/edit
   # def edit
