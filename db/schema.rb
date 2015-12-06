@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205111459) do
+ActiveRecord::Schema.define(version: 20151206070055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,21 @@ ActiveRecord::Schema.define(version: 20151205111459) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cash_ins", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.decimal  "amount",        precision: 10, scale: 2
+    t.string   "serial_outer"
+    t.string   "serial_inner"
+    t.string   "channel"
+    t.string   "state"
+    t.string   "note"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "cash_ins", ["enterprise_id"], name: "index_cash_ins_on_enterprise_id", using: :btree
+
   create_table "companies", force: :cascade do |t|
     t.integer  "enterprise_id"
     t.string   "name"
@@ -127,12 +142,12 @@ ActiveRecord::Schema.define(version: 20151205111459) do
   add_index "debits", ["name"], name: "index_debits_on_name", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                           default: "", null: false
+    t.string   "encrypted_password",                              default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                                   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -141,13 +156,14 @@ ActiveRecord::Schema.define(version: 20151205111459) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,  null: false
+    t.integer  "failed_attempts",                                 default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.string   "name"
     t.string   "mobile"
+    t.decimal  "balance",                precision: 10, scale: 2
   end
 
   add_index "enterprises", ["confirmation_token"], name: "index_enterprises_on_confirmation_token", unique: true, using: :btree
@@ -339,6 +355,7 @@ ActiveRecord::Schema.define(version: 20151205111459) do
 
   add_foreign_key "appointments", "jobs"
   add_foreign_key "appointments", "labors"
+  add_foreign_key "cash_ins", "enterprises"
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
   add_foreign_key "debits", "banks"

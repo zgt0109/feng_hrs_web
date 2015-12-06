@@ -1,10 +1,10 @@
 module ScaffoldHelper
   # 选择一条数据
-  def render_scaffold_checkbox_one(id, bool=false)
-    content_tag(:div, class: 'ui checkbox') do
-      check_box_tag('singular_check', id, false, disabled: bool) + label_tag(nil)
-    end
-  end
+  # def render_scaffold_checkbox_one(id, bool=false)
+  #   content_tag(:div, class: 'ui checkbox') do
+  #     check_box_tag('singular_check', id, false, disabled: bool) + label_tag(nil)
+  #   end
+  # end
 
   # 选择所有数据
   def render_scaffold_checkbox_selectall
@@ -25,7 +25,7 @@ module ScaffoldHelper
   # saffold
   %w(
     labor company contact job enterprise
-    debit page
+    debit page cash_in
   ).each do |model|
     class_eval{
       # new

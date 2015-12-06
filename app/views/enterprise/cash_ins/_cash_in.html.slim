@@ -1,0 +1,12 @@
+= content_tag_for(:tr, cash_in) do | data |
+  /td = render_scaffold_checkbox_one(data.id)
+  td = data.id
+  td = cash_in.serial_inner
+  td = cash_in.enterprise.name
+  td = cash_in.enterprise.mobile
+  td = cash_in.enterprise.email
+  td = cash_in.amount
+  td = cash_in.serial_outer
+  td = cash_in.note
+  td =render_plugin_moment data.created_at
+  td =render_plugin_moment data.updated_at

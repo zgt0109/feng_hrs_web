@@ -24,6 +24,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  mobile                 :string
+#  balance                :decimal(10, 2)
 #
 # Indexes
 #
