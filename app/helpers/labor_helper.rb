@@ -26,27 +26,38 @@ module LaborHelper
   end
 
   # 工友状态显示
-  def render_labor_state(labor)
-    if labor.yidengji?
-      html_class = 'teal'
-    elsif labor.yibaoming?
-      html_class = 'blue'
-    elsif labor.yimianshi?
-      html_class = 'olive'
-    elsif labor.yiruzhi?
-      html_class = 'green'
-    elsif labor.yilizhi?
-      html_class = 'red'
+  def render_labor_state(param)
+    state = param.state
+    state_color = { 'registed' => 'teal', 'appointed' => 'blue','checkin' => 'olive',
+                     'passed' => 'green', 'refused' => 'red' }
+
+    if state_color.include?(state)
+      html_class = state_color[state]
     else
       html_class = 'grey'
     end
-    content_tag(:span,  labor.aasm.human_state,
+
+    content_tag(:span,  param.aasm.human_state,
                 class: "ui #{html_class} small label")
   end
 
 
   def render_zhao_labor_isIndex
     current_page?(action: :appointed_labors)
+  end
+
+  # 状态切换按钮
+  def render_labor_transition_button(data)
+    appointment = data.appointment
+    button_style = { :reject => ['red', '面试失败'], :pass => ['green', '面试通过'],
+                     :checkin => ['blue', '入职'], :refuse => ['violet', '未入职'],
+                     :turnover => ['yellow', '已离职'] }
+    content_tag 'div' do
+      appointment.aasm.events.map(&:name).each do |keyword|
+        concat link_to button_style[keyword][1], zhao_transition_path(appointment, transition_keyword: keyword),
+        class: "ui button mini #{button_style[keyword][0]}"
+      end
+    end
   end
 
 end

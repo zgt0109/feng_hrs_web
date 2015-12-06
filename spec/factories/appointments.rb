@@ -23,10 +23,9 @@
 FactoryGirl.define do
   factory :appointment do
     association :job
-    association :nil
-    association :nil
-    association :nil
-    state "pending"
+    association :labor
+    association :zhao, factory: :enterprise
+    association :song, factory: :enterprise
   end
 
 end

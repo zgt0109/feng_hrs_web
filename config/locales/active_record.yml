@@ -14,6 +14,15 @@ zh-CN:
         province: 省份
         city: 城市
         district: 区/县
+      common: &state
+        state: 状态
+        state/registed: 已登记
+        state/appointed: 已报名
+        state/passed: 面试通过
+        state/rejected: 面试失败
+        state/checkin: 已入职
+        state/refused: 未入职
+        state/turnover: 已离职
       labor:
         <<: *common
         id: 编号
@@ -24,13 +33,7 @@ zh-CN:
         birthday: 出生年月
         age: 性别/年龄
         channel: 来源
-        state: 状态
-        state/yidengji: 已登记
-        state/yibaoming: 已报名
-        state/yimianshi: 已面试
-        state/yiruzhi: 已入职
-        state/yilizhi: 已离职
-        state/weiruzhi: 未入职
+        <<: *state
       labor/intention:
         salary: 期望薪资
         position_ids: 期望职位
@@ -71,9 +74,4 @@ zh-CN:
         slug: 链接
         content: 内容
       appointment:
-        state:
-          yibaoming: 已报名
-          yimianshi: 已面试
-          yiruzhi: 已入职
-          yilizhi: 已离职
-          weiruzhi: 未入职
+        <<: *state

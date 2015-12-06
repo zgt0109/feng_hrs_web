@@ -1,6 +1,6 @@
 class Enterprise::AppointmentsController < ApplicationController
   before_action :set_params, only: :appoint
-  before_action :set_appointment, only: :cancel
+  before_action :set_appointment, only: [:cancel, :state_transition]
 
   def index
     @appointments = current_enterprise.song.includes(:job, :labor).page params[:page]
@@ -10,7 +10,7 @@ class Enterprise::AppointmentsController < ApplicationController
     Appointment.transaction do
       @labor_ids.each do |labor_id|
         Appointment.create(appointment_params(labor_id))
-        Labor.find(labor_id).baoming!
+        Labor.find(labor_id).appoint!
       end
     end
     redirect_to song_appointments_path, notice: '报名成功'
@@ -19,9 +19,22 @@ class Enterprise::AppointmentsController < ApplicationController
   def cancel
     Appointment.transaction do
       @appointment.destroy
-      @appointment.labor.cancel_baoming!
+      @appointment.labor.cancel!
     end
     redirect_to song_appointments_path, notice: '成功取消报名'
+  end
+
+  def state_transition
+    begin
+      Appointment.transaction do
+        event = params[:transition_keyword]+'!'
+        @appointment.send(event)
+        @appointment.labor.send(event)
+      end
+    rescue
+      flash[:error] = "状态切换失败"
+    end
+    redirect_to appointed_labors_zhao_labors_path
   end
 
   private
@@ -35,7 +48,10 @@ class Enterprise::AppointmentsController < ApplicationController
     end
 
     def set_appointment
-      @appointment = current_enterprise.song.find(params[:appointment_id])
+      if params[:appointment_id]
+        @appointment = current_enterprise.song.find(params[:appointment_id])
+      else
+        @appointment = Appointment.find(params[:id])
+      end
     end
-
 end
