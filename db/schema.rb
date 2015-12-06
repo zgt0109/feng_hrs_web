@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205080735) do
+ActiveRecord::Schema.define(version: 20151206110459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,24 @@ ActiveRecord::Schema.define(version: 20151205080735) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "cash_outs", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.integer  "bank_id"
+    t.integer  "debit_id"
+    t.decimal  "amount",        precision: 10, scale: 2
+    t.string   "serial_outer"
+    t.string   "serial_inner"
+    t.string   "state"
+    t.string   "note"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "cash_outs", ["bank_id"], name: "index_cash_outs_on_bank_id", using: :btree
+  add_index "cash_outs", ["debit_id"], name: "index_cash_outs_on_debit_id", using: :btree
+  add_index "cash_outs", ["enterprise_id"], name: "index_cash_outs_on_enterprise_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.integer  "enterprise_id"
@@ -331,6 +349,9 @@ ActiveRecord::Schema.define(version: 20151205080735) do
 
   add_foreign_key "appointments", "jobs"
   add_foreign_key "appointments", "labors"
+  add_foreign_key "cash_outs", "banks"
+  add_foreign_key "cash_outs", "debits"
+  add_foreign_key "cash_outs", "enterprises"
   add_foreign_key "companies", "enterprises"
   add_foreign_key "contacts", "enterprises"
   add_foreign_key "debits", "banks"

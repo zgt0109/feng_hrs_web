@@ -13,6 +13,7 @@
 class Bank < ActiveRecord::Base
   acts_as_paranoid
 	has_many :debits
+  has_many :cash_outs
 
 	scope :published, -> { where.not(published_at: nil) }
 	def published?

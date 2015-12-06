@@ -22,6 +22,7 @@
 class Debit < ActiveRecord::Base
   belongs_to :enterprise
   belongs_to :bank
+  has_many :cash_outs
 
   validates_presence_of :name, :account, :deposit
   validates :name, length: { in: 2..10 }, allow_blank: true
