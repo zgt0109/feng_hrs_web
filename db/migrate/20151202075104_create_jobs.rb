@@ -8,8 +8,8 @@ class CreateJobs < ActiveRecord::Migration
       t.integer :wage
       t.string :unit
       t.integer :worktime
-      t.integer :royalty
-      t.integer :bonus
+      t.string :royalty
+      t.string :bonus
       t.string :channel
       t.integer :wageday
       t.string :wageday_unit

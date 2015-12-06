@@ -63,7 +63,7 @@
           .ui.label.basic
             => check_box_tag :wish_unkown_count
             = jq.label :wish_unkown_count, '不限'
-          = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人'
+          = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人', disabled: jq.object.blank?
 
   h3.ui.dividing.header = Job.human_attribute_name(:channel)
   .fields
@@ -84,7 +84,7 @@
         .ui.label.basic
           => check_box_tag :isAdvance
           = Job.human_attribute_name(:advance)
-        = render_job_text_field(f, :advance)
+        = render_job_text_field(f, :advance, f.object.advance.blank?)
 
   h3.ui.dividing.header 佣金
   .field.inline

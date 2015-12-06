@@ -2,7 +2,7 @@
   .ui.message.olive
     span
       = "请帮< #{@job_name} >挑选几个合适的工友 "
-    = link_to '取消报名', song_jobs_path, class: 'ui button close icon tiny negative'
+    = link_to '取消送人', song_jobs_path, class: 'ui button close icon tiny negative'
 
 .ui.grid
   .sixteen.wide.column
@@ -10,7 +10,7 @@
       = render_scaffold_checkbox_selectall
       = render_scaffold_checkbox_delete
       = render_scaffold_new_labor_path
-      = link_to '报名', 'javascript:;', data: {jobid: @job_id}, class: 'ui button olive small appointment'
+      = link_to '送人', 'javascript:;', data: {jobid: @job_id}, class: 'ui button olive small appointment'
 
     table.ui.very.basic.selectable.table
       thead

@@ -13,7 +13,7 @@ class Enterprise::AppointmentsController < ApplicationController
         Labor.find(labor_id).baoming!
       end
     end
-    redirect_to song_appointments_path, notice: '报名成功'
+    redirect_to song_appointments_path, notice: '送人成功'
   end
 
   def cancel
@@ -21,7 +21,7 @@ class Enterprise::AppointmentsController < ApplicationController
       @appointment.destroy
       @appointment.labor.cancel_baoming!
     end
-    redirect_to song_appointments_path, notice: '成功取消报名'
+    redirect_to song_appointments_path, notice: '成功取消送人'
   end
 
   private

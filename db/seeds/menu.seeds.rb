@@ -4,7 +4,7 @@ puts "创建导航菜单......."
 [
   {name: '我的工友库', uri: '/song/labors', icon: 'users'},
   {name: '工友登记', uri: '/song/labors/new', icon: 'user'},
-  {name: '报名管理', uri: '/song/appointments', icon: 'cloud upload'},
+  {name: '送人管理', uri: '/song/appointments', icon: 'cloud upload'},
   {name: '招聘信息', uri: '/song/jobs', icon: 'write square'},
   {name: '财务管理', uri: '#', icon: 'money'},
   {name: '我的评价', uri: '#', icon: 'comments'}

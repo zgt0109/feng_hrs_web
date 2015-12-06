@@ -2,7 +2,7 @@
   .content
     = render_scaffold_checkbox_one(job.id) if render_job_current_zhao
     = link_to job.name, [:zhao, job], class: 'header'
-    
+
     = render_job_appoint_button(job)
 
     .description
@@ -18,9 +18,8 @@
         .column
           p = render_job_string('招聘人数', ': ', render_job_quantity(job))
           p
+      p = render_job_commission(job).html_safe
     .extra
-
-
       .ui.label.basic.teal
         / i.globe.icon.green
         span 奖金

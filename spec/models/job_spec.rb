@@ -10,8 +10,8 @@
 #  wage          :integer
 #  unit          :string
 #  worktime      :integer
-#  royalty       :integer
-#  bonus         :integer
+#  royalty       :string
+#  bonus         :string
 #  channel       :string
 #  wageday       :integer
 #  wageday_unit  :string
