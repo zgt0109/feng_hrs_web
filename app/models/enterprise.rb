@@ -44,11 +44,17 @@ class Enterprise < ActiveRecord::Base
 
   default_scope { order('created_at desc') }
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+         :recoverable, :rememberable, :trackable, # :validatable,
          :confirmable, :lockable,
          authentication_keys: [:account]
 
-  validates :name, length: { minimum: 2, maximum: 20 }, presence: true
+  validates :email, presence: { if: :email_signup }, uniqueness: { if: :email }
+  validates :mobile, presence: { if: :mobile_signup }, uniqueness: { if: :mobile }
+  validates_presence_of :name
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true, allow_blank: true
+  validates_presence_of     :password
+  validates_confirmation_of :password
+  validates_length_of       :password, within: 8..72, allow_blank: true
 
   has_many :labors
   has_many :companies
