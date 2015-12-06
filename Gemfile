@@ -62,6 +62,8 @@ gem 'awesome_nested_set'
 gem 'china_city'
 gem "cocoon"
 gem 'friendly_id'
+gem 'china_sms'
+gem 'rucaptcha'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

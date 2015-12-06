@@ -37,7 +37,9 @@ class Enterprise < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
 
-  attr_accessor :account
+  attr_accessor :account, :email_signup, :mobile_signup
+
+  MOBILE_REGEX = /\A1[3|4|5|7|8][0-9]{9}\Z/
 
   default_scope { order('created_at desc') }
   devise :database_authenticatable, :registerable,

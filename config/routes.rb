@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :enterprises
+  devise_for :enterprises, controllers: {
+    registrations: 'enterprise/registrations'
+  }
+
+  devise_scope :enterprise do
+    get 'enterprises/sign_up/:type' => 'enterprise/registrations#new', as: :sign_up
+    post 'signup/send_sms' => 'enterprise/registrations#send_sms'
+  end
   # 求职者
   scope module: 'applicant' do
     root 'dashboard#old'
@@ -57,4 +64,5 @@ Rails.application.routes.draw do
   end
 
   mount ChinaCity::Engine => '/china_city'
+  mount RuCaptcha::Engine => "/rucaptcha"
 end

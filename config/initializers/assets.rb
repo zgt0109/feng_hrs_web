@@ -23,6 +23,8 @@ Rails.application.config.assets.precompile += %w(
   china_city/jquery.china_city.js
   enterprise/jobs.js
   enterprise/appointment.js
+
+  sms.js
 )
 
 # old
