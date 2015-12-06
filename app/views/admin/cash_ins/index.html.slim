@@ -1,0 +1,32 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_cash_in_path
+br
+    = link_to t("action.all"), admin_cash_ins_path, class: "ui grey circular label"
+    = link_to t("action.pending"), admin_cash_ins_path(state: 'pending'), class: "ui blue circular label"
+    = link_to t("action.confirmed"), admin_cash_ins_path(state: 'confirmed'), class: "ui green circular label"
+    = link_to t("action.rejected"), admin_cash_ins_path(state: 'rejected'), class: "ui red circular label"
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          /th
+          th = CashIn.human_attribute_name(:id)
+          th = CashIn.human_attribute_name(:serial_inner)
+          th = CashIn.human_attribute_name(:enterprisename)
+          th = CashIn.human_attribute_name(:mobile)
+          th = CashIn.human_attribute_name(:email)
+          th = CashIn.human_attribute_name(:amount)
+          th = CashIn.human_attribute_name(:serial_outer)
+          th = CashIn.human_attribute_name(:note)
+          th = CashIn.human_attribute_name(:state)
+          th = t("action.created_at")
+          th = t("action.deleted_at")
+          th = t("action.options")
+
+      tbody
+        = render @cash_ins
+
+    .ui.borderless.pagination.menu.floated.right
+       = paginate @cash_ins

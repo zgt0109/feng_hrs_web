@@ -9,6 +9,7 @@ zh-CN:
       debit: 借记卡
       bank: 银行
       page: 内容管理
+      cash_in: 充值
     attributes:
       common: &common
         province: 省份
@@ -77,3 +78,16 @@ zh-CN:
           yiruzhi: 已入职
           yilizhi: 已离职
           weiruzhi: 未入职
+      cash_in:
+        id: 编号
+        serial_outer: 银行流水号
+        serial_inner: 平台流水号
+        amount: 金额
+        enterprisename: 用户名
+        mobile: 手机
+        email: 邮箱
+        note: 备注
+        state: 状态
+        state/pending: 待审核
+        state/confirmed: 已通过
+        state/rejected: 未通过
