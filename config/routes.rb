@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'profile' => 'profiles#index'
     resource :debit, only: [:new, :create, :show]
     resources :cash_ins, only: [:index]
+    resources :cash_outs, only: [:new, :create, :index]
   end
 
   # 招聘方
@@ -69,6 +70,12 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index, :show]
     resources :pages
     resources :cash_ins do
+      member do
+        get :confirm
+        get :reject
+      end
+    end
+    resources :cash_outs do
       member do
         get :confirm
         get :reject

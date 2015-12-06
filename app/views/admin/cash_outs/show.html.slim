@@ -1,0 +1,72 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:id)
+    .four.wide.column
+      = @cash_out.id
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:serial_inner)
+    .four.wide.column
+      = @cash_out.serial_inner
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:enterprisename)
+    .four.wide.column
+      = @cash_out.enterprise.name
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:mobile)
+    .four.wide.column
+      = @cash_out.enterprise.mobile
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:email)
+    .four.wide.column
+      = @cash_out.enterprise.email
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:serial_outer)
+    .four.wide.column
+      = @cash_out.serial_outer
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:amount)
+    .four.wide.column
+      = @cash_out.amount
+
+  .row
+    .three.wide.column
+      = CashOut.human_attribute_name(:note)
+    .four.wide.column
+      = @cash_out.note
+
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = l @cash_out.created_at, format: :long
+
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = l @cash_out.updated_at, format: :long
+
+  .row
+    .three.wide.column
+      div class="ui small label #{render_common_label_class(@cash_out)}"
+        = @cash_out.aasm.human_state
+
+  .row
+    .three.wide.column
+      = link_to_if @cash_out.pending?, t("action.confirm"), confirm_admin_cash_out_path(@cash_out),
+        class: "ui button positive" do
+      = link_to_if @cash_out.pending?, t("action.reject"),  reject_admin_cash_out_path(@cash_out),
+        class: "ui button negative" do
