@@ -29,7 +29,7 @@
 # Indexes
 #
 #  index_enterprises_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_enterprises_on_email                 (email) UNIQUE
+#  index_enterprises_on_email                 (email)
 #  index_enterprises_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_enterprises_on_unlock_token          (unlock_token) UNIQUE
 #
@@ -38,23 +38,22 @@ class Enterprise < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
 
-  attr_accessor :account, :email_signup, :mobile_signup
+  attr_accessor :account, :email_signup, :mobile_signup, :captcha
 
   MOBILE_REGEX = /\A1[3|4|5|7|8][0-9]{9}\Z/
 
   default_scope { order('created_at desc') }
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, # :validatable,
+         :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable,
          authentication_keys: [:account]
 
-  validates :email, presence: { if: :email_signup }, uniqueness: { if: :email }
+
   validates :mobile, presence: { if: :mobile_signup }, uniqueness: { if: :mobile }
   validates_presence_of :name
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true, allow_blank: true
-  validates_presence_of     :password
-  validates_confirmation_of :password
-  validates_length_of       :password, within: 8..72, allow_blank: true
+
+  validate :validate_sms_verification_code!, if: :mobile_signup
 
   has_many :labors
   has_many :companies
@@ -75,6 +74,34 @@ class Enterprise < ActiveRecord::Base
       where(conditions).where(["lower(mobile) = :value OR lower(email) = :value", { value: account.downcase }]).first
     else
       where(conditions).first
+    end
+  end
+
+
+  def email_required?
+    self.mobile.nil? ? true : false
+  end
+
+
+  def confirmation_required?
+    false if self.mobile_signup
+  end
+
+  def validate_sms_verification_code!
+    _captcha = Captcha.find_by(mobile: self.mobile)
+
+    if _captcha.nil?
+      errors.add(:captcha, '验证码错误')
+      return
+    end
+
+    if _captcha.code != self.captcha
+      errors.add(:captcha, '验证码错误')
+    else
+      if _captcha.send_at < 30.minutes.ago
+        # Rails.logger.info "SMS verification code expired"
+        errors.add(:captcha, '验证码已失效')
+      end
     end
   end
 end

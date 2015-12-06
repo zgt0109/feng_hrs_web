@@ -29,7 +29,7 @@
 # Indexes
 #
 #  index_enterprises_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_enterprises_on_email                 (email) UNIQUE
+#  index_enterprises_on_email                 (email)
 #  index_enterprises_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_enterprises_on_unlock_token          (unlock_token) UNIQUE
 #
