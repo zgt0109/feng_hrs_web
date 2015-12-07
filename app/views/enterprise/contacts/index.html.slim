@@ -1,0 +1,22 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_contact_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Contact.human_attribute_name(:id)
+          th = Contact.human_attribute_name('name')
+          th = Contact.human_attribute_name('mobile')
+          th = Contact.human_attribute_name('gender')
+          th = t("action.created_at")
+          th = t("action.updated_at")
+          th = t("action.options")
+
+      tbody
+        = render @contacts
+
+    = paginate @contacts

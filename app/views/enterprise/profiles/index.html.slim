@@ -1,0 +1,35 @@
+.ui.four.cards
+  .ui.card
+    .content
+      .right.floated.meta
+        = @debit.enterprise.cash_in.amount
+      img
+        = image_tag 'enterprise/user_jenny_small.jpg', class: 'ui avatar image'
+        = current_enterprise.name
+    - if current_enterprise.debit.nil?
+    - else
+
+      .content
+        = Debit.human_attribute_name(:bank_id)
+        .right.floated.meta
+          = @debit.try(:bank).try(:name)
+      .content
+        = Debit.human_attribute_name(:name)
+        .right.floated.meta
+          = @debit.try(:name)
+      .content
+        = Debit.human_attribute_name(:account)
+        .right.floated.meta
+          = @debit.try(:account)
+      .content
+        = Debit.human_attribute_name(:deposit)
+        .right.floated.meta
+          = @debit.try(:deposit)
+    .extra.content
+      .ui.three.buttons
+        - if current_enterprise.debit.blank?
+          = link_to new_song_debit_path, class: 'ui basic teal button' do
+            | 绑卡
+        .ui.basic.green.button 充值
+        = link_to new_zhao_cash_out_path, class: 'ui basic red button' do
+          | 提现

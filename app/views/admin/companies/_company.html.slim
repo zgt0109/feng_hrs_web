@@ -1,0 +1,13 @@
+= content_tag_for(:tr, company) do | data |
+  td = render_scaffold_checkbox_one(data.id)
+  td = data.id
+  td = data.name
+  td = render_common_china_city_address data
+  td = data.introduction
+  td =render_plugin_moment data.created_at
+  td =render_plugin_moment data.updated_at
+  td
+    .ui.teal.buttons.tiny
+      = render_scaffold_company_path data
+      .ui.floating.dropdown.icon.button
+        i.dropdown.icon

@@ -1,0 +1,26 @@
+- if debit.errors.any?
+  = render partial: 'shared/errors', locals: { model: debit }
+
+= form_for render_scaffold_form_path(debit), remote: remote,
+           html: { class: 'ui form' },url: song_debit_path do |f|
+  h3 银行卡信息
+  .field.four.wide
+    = f.label :bank_id
+    = f.select :bank_id, Bank.all.collect{ |f| [f.name, f.id] },
+                         {include_blank: false}, {class: 'ui dropdown'}
+
+  .field.four.wide
+    = f.label :name
+    = f.text_field :name
+
+  .field.four.wide
+    = f.label :account
+    = f.text_field :account
+
+  .field.four.wide
+    = f.label :deposit
+    = f.text_field :deposit
+
+  .field
+    = f.submit class: "ui positive button"
+    = link_to t('action.back'), song_profile_path, class: 'ui negative button'

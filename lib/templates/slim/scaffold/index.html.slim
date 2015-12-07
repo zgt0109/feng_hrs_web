@@ -13,11 +13,10 @@
           th = <%= class_name %>.human_attribute_name('<%= attribute.name %>')
 <% end -%>
           th = t("action.created_at")
-          th = t("action.deleted_at")
+          th = t("action.updated_at")
           th = t("action.options")
 
       tbody
         = render @<%= plural_table_name %>
 
-    .ui.borderless.pagination.menu.floated.right
-      / = paginate @<%= plural_table_name %>
+    = paginate @<%= plural_table_name %>

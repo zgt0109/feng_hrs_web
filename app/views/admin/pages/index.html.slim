@@ -1,0 +1,22 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_page_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Page.human_attribute_name(:id)
+          th = Page.human_attribute_name('name')
+          th = Page.human_attribute_name('slug')
+          th = t("action.created_at")
+          th = t("action.updated_at")
+          th = t("action.options")
+
+      tbody
+        = render @pages
+
+    .ui.borderless.pagination.menu.floated.right
+      / = paginate @pages

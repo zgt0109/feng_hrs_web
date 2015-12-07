@@ -1,0 +1,42 @@
+/*
+ *= require semantic-ui/dist/semantic
+ *= require simditor/styles/simditor.css
+ */
+
+ #tools .item.header{
+   background-image: image-url('logo.png');
+   background-repeat: no-repeat;
+   background-position: 20px 3px;
+   width: 200px;
+ }
+ #tools .item.header > span{
+   display: none;
+ }
+
+ .ui.thin.left.sidebar{
+   width: 200px;
+ }
+ .ui.visible.thin.left.sidebar ~ .pusher {
+   -webkit-transform: translate3d(200px, 0, 0);
+   transform: translate3d(200px, 0, 0);
+   padding: 10px;
+ }
+ .pushable > .pusher
+ {
+   padding: 10px;
+ }
+
+ // popup
+ .ui.popup.transition {
+   color: #ffffff;
+   background-color: #4B4B4B;
+
+   &:before {
+     background-color: #4B4B4B;
+   }
+ }
+
+// 编辑框
+ #editor{
+   display: none;
+ }

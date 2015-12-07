@@ -1,2 +1,26 @@
 zh-CN:
   enumerize:
+    defaults:
+      gender:
+        male: '男'
+        female: '女'
+        unknown: '不限'
+      channel:
+        web: '登记'
+        cash: '现金'
+        card: '银行卡'
+      salary:
+        level1: '2000以下'
+        level2: '2000 ~ 3000'
+        level3: '3000 ~ 4000'
+        level4: '4000 ~ 5000'
+        level5: '5000 ~ 6000'
+        level6: '6000 ~ 7000'
+        level7: '7000 ~ 8000'
+        level8: '8000以上'
+      unit:
+        permonth: '元/月'
+        perhour: '元/时'
+      wageday_unit:
+        month: '按月'
+        day: '按天'

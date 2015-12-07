@@ -1,0 +1,36 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = Company.human_attribute_name(:id)
+    .four.wide.column
+      = @company.id
+  .row
+    .three.wide.column
+      = Company.human_attribute_name('name')
+    .four.wide.column
+      = @company.name
+  .row
+    .three.wide.column
+      = Company.human_attribute_name('address')
+    .four.wide.column
+      = render_common_china_city_address @company
+      = @company.address
+  .row
+    .three.wide.column
+      = Company.human_attribute_name('introduction')
+    .four.wide.column
+      = @company.introduction
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = @company.created_at
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = @company.updated_at
+
+  .row
+    = render_scaffold_edit_company_path_link(@company)
+    = render_scaffold_companies_path

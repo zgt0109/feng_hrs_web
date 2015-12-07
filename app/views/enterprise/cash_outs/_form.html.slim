@@ -1,0 +1,23 @@
+- if cash_out.errors.any?
+  = render partial: 'shared/errors', locals: { model: cash_out }
+
+= form_for render_scaffold_form_path(cash_out), remote: remote, html: { class: 'ui form' } do |f|
+  .field.four.wide
+    = f.label :enterprisename
+    = f.text_field :enterprisename
+
+  .field.four.wide
+    = f.label :amount
+    = f.text_field :amount
+
+  .field.four.wide
+    = f.label :serial_outer
+    = f.text_field :serial_outer
+
+  .field.four.wide
+    = f.label :note
+    = f.text_area :note
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_cash_outs_path

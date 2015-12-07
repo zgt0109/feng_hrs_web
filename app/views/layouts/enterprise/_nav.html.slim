@@ -20,18 +20,18 @@
     a.item
       i.help.circle.icon
       | 帮助
-    a.ui.dropdown.pointing.item
+    .ui.dropdown.pointing.item
       = image_tag('enterprise/user_jenny_small.jpg', class: 'ui avatar image')
-      span 顾小白
+      span =current_enterprise.name
       .menu
-        .item
+        = link_to [get_biz_domain, 'profile'], class: 'item' do
           i.settings.icon
           | 账户信息
         .item
           i.lock.icon
           | 账户安全
         .ui.divider
-        .item
+        = link_to destroy_enterprise_session_path, class: 'item', method: :delete do
           i.sign.out.icon
           | 退出
     a.item

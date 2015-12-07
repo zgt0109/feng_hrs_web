@@ -22,19 +22,24 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  mobile                 :string
+#  balance                :decimal(10, 2)
 #
 # Indexes
 #
 #  index_enterprises_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_enterprises_on_email                 (email) UNIQUE
+#  index_enterprises_on_email                 (email)
 #  index_enterprises_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_enterprises_on_unlock_token          (unlock_token) UNIQUE
 #
 
 FactoryGirl.define do
   factory :enterprise do
-    sequence(:email) {|n| "test_#{n}@91tmb.com" }
+    # sequence(:email) {|n| "test_#{n}@91tmb.com" }
+    name '测试账户'
     password 'password'
+    password_confirmation 'password'
     confirmed_at Time.now
   end
 

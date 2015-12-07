@@ -1,0 +1,25 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          /th
+          th = CashIn.human_attribute_name(:id)
+          th = CashIn.human_attribute_name(:serial_inner)
+          th = CashIn.human_attribute_name(:enterprisename)
+          th = CashIn.human_attribute_name(:mobile)
+          th = CashIn.human_attribute_name(:email)
+          th = CashIn.human_attribute_name(:amount)
+          th = CashIn.human_attribute_name(:serial_outer)
+          th = CashIn.human_attribute_name(:note)
+          th = t("action.created_at")
+          th = t("action.updated_at")
+
+      tbody
+        = render @cash_ins
+
+    .ui.borderless.pagination.menu.floated.right
+       = paginate @cash_ins

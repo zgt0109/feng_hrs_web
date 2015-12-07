@@ -1,0 +1,9 @@
+.row
+  .container.help-center
+    = render 'applicant/pages/side'
+
+    .col-780-r
+      .help-content
+        .title
+          h3 = @page.name
+        = sanitize @page.content

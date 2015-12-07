@@ -1,0 +1,22 @@
+- if company.errors.any?
+  = render partial: 'shared/errors', locals: { model: company }
+
+= form_for render_scaffold_form_path(company), remote: remote, html: { class: 'ui form' } do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = render 'shared/china_city', form: f
+
+  .field
+    = f.label :address
+    = f.text_field :address
+
+  .field
+    = f.label :introduction
+    = f.text_area :introduction
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_companies_path

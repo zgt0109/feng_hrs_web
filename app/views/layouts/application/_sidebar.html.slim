@@ -1,0 +1,6 @@
+.ui.vertical.thin.menu.sidebar
+
+  - @_menus.each do |node|
+    = link_to node.uri, class:"item" do
+      i class="icon #{node.icon}"
+      span = node.name

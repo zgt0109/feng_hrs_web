@@ -1,0 +1,35 @@
+.ui.divided.items
+  .item
+    .content
+      a.header = @job.name
+
+  .item
+    .image
+      img src="/images/wireframe/image.png" /
+    .content
+      .description
+        p = render_job_string('职位编号: ', @job.id)
+        p = render_job_string('招聘企业: ', @job.company.name)
+        p = render_job_string('企业地址: ', render_common_china_city_address(@job.company), @job.company.address)
+        p = render_job_string('员工薪资: ', render_job_string(%W(#{number_to_currency(@job.wage, format: '%n', precision: 0)} #{@job.unit_text})))
+        p = render_job_string('工作时常: ', '每月工作', @job.worktime, '小时')
+        p = render_job_string('提成: ', number_to_currency(@job.royalty, format: '¥%n', precision: 0))
+        p = render_job_string('奖金: ', number_to_currency(@job.bonus, format: '¥%n', precision: 0))
+        p = render_job_string('工资发放: ', '以', @job.channel_text, '方式', @job.wageday_unit_text, '，', @job.wageday, '号发放')
+        p = render_job_string('预支工资: ', @job.advance, '天后可预支工资')
+        p = render_job_string('联系人: ', @job.contact.name, "(#{render_common_mobile @job.contact.mobile})")
+        p = render_job_string('最近更新: ', l(@job.updated_at, format: :long))
+        p = render_job_string('创建时间: ', l(@job.created_at, format: :long))
+
+      .extra
+        .ui.label.basic.teal 提成
+        .ui.label.basic.teal 奖金
+        .ui.label.basic.teal 可预支工资
+
+      .ui.divider.horizontal 佣金
+      = render_job_commission(@job).html_safe
+
+
+  .item
+    = render_scaffold_edit_job_path_link(@job)
+    = render_scaffold_jobs_path

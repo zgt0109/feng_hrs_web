@@ -1,8 +1,8 @@
 module ScaffoldHelper
   # 选择一条数据
-  def render_scaffold_checkbox_one
+  def render_scaffold_checkbox_one(id, bool=false)
     content_tag(:div, class: 'ui checkbox') do
-      check_box_tag('singular_check') + label_tag(nil)
+      check_box_tag('singular_check', id, false, disabled: bool) + label_tag(nil)
     end
   end
 
@@ -23,7 +23,10 @@ module ScaffoldHelper
   end
 
   # saffold
-  %w().each do |model|
+  %w(
+    labor company contact job enterprise
+    debit page cash_out cash_in
+  ).each do |model|
     class_eval{
       # new
       define_method "render_scaffold_new_#{model}_path" do

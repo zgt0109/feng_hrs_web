@@ -22,11 +22,14 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  mobile                 :string
+#  balance                :decimal(10, 2)
 #
 # Indexes
 #
 #  index_enterprises_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_enterprises_on_email                 (email) UNIQUE
+#  index_enterprises_on_email                 (email)
 #  index_enterprises_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_enterprises_on_unlock_token          (unlock_token) UNIQUE
 #
@@ -35,6 +38,16 @@ require 'rails_helper'
 
 RSpec.describe Enterprise, type: :model do
   it "标准数据" do
-    expect(build(:enterprise)).to be_valid
+    expect(build(:enterprise, email: 'xxx@mail.com')).to be_valid
+  end
+
+  it { should have_many(:zhao) }
+  it { should have_many(:song) }
+  it { should have_many(:zhao_labors) }
+  it { should validate_uniqueness_of(:name) }
+
+  it "邮箱和手机的验证" do
+    a = build(:enterprise, email_signup: true)
+    expect(a.errors[:email]).to eq(nil)
   end
 end

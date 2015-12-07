@@ -12,14 +12,23 @@ class ApplicationController < ActionController::Base
 
   before_action Proc.new{
     authenticate_enterprise! if params[:controller] =~ /^enterprise/
+    authenticate_admin! if params[:controller] =~ /^admin/
   }
+
+  before_action :setup_menu
 
   private
     def init_layout
-      if params[:controller] =~ /^devise/
-        'application'
+      case params[:controller]
+      when /^applicant|^devise/
+        'applicant_old'
       else
         params[:controller].split('/').first
       end
+    end
+
+
+    def setup_menu
+      @_menus = Menu.with_domain( request.path.slice(/zhao|song|hr|admin/) )
     end
 end

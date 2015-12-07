@@ -1,0 +1,25 @@
+= content_tag_for(:tr, labor) do | data |
+  - if !render_zhao_labor_isIndex
+    td = render_scaffold_checkbox_one(data.id, !data.registed?)
+    td = data.id
+  td = data.name
+  td = render_labor_gender_with_age(data)
+  td = render_common_mobile(labor.mobile)
+  - if !render_zhao_labor_isIndex
+    td = render_labor_channel data
+    td = render_labor_state data
+    td = render_plugin_moment data.created_at
+    td = render_plugin_moment data.updated_at
+  - if !render_zhao_labor_isIndex
+    td
+      .ui.teal.buttons.tiny
+        = render_scaffold_labor_path data
+        .ui.floating.dropdown.icon.button
+          i.dropdown.icon
+          .menu
+            = render_scaffold_edit_labor_path data
+            = render_saffold_destroy_labor_path data
+  - else
+    td = data.job.name
+    td = render_labor_state data
+    td = render_labor_transition_button(data)

@@ -1,0 +1,41 @@
+- if @job_name
+  .ui.message.olive
+    span
+      = "请帮< #{@job_name} >挑选几个合适的工友 "
+    = link_to '取消送人', song_jobs_path, class: 'ui button close icon tiny negative'
+
+.ui.grid
+  .sixteen.wide.column
+    - if !render_zhao_labor_isIndex
+      = render_scaffold_checkbox_selectall
+      = render_scaffold_checkbox_delete
+      = render_scaffold_new_labor_path
+      = link_to '送人', 'javascript:;', data: {jobid: @job_id}, class: 'ui button olive small appointment'
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          - if !render_zhao_labor_isIndex
+            th
+            th = Labor.human_attribute_name(:id)
+          th = Labor.human_attribute_name(:name)
+          th = Labor.human_attribute_name(:age)
+          th = Labor.human_attribute_name(:mobile)
+          - if !render_zhao_labor_isIndex
+            th = Labor.human_attribute_name(:channel)
+            th = Labor.human_attribute_name(:state)
+            th = t("action.created_at")
+            th = t("action.updated_at")
+            th = t("action.options")
+          - if render_zhao_labor_isIndex
+            th 所报职位
+            th 当前状态
+            th
+
+      tbody
+        = render @labors
+
+    = paginate @labors
+
+- content_for :javascript do
+  = javascript_include_tag "enterprise/appointment"

@@ -1,0 +1,26 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_cash_out_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = CashOut.human_attribute_name(:id)
+          th = CashOut.human_attribute_name(:serial_inner)
+          th = CashOut.human_attribute_name(:enterprisename)
+          th = CashOut.human_attribute_name(:mobile)
+          th = CashOut.human_attribute_name(:email)
+          th = CashOut.human_attribute_name(:amount)
+          th = CashOut.human_attribute_name(:serial_outer)
+          th = CashOut.human_attribute_name(:note)
+          th = CashOut.human_attribute_name(:state)
+          th = t("action.created_at")
+          th = t("action.updated_at")
+
+      tbody
+        = render @cash_outs
+
+    = paginate @cash_outs

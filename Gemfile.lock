@@ -82,7 +82,9 @@ GEM
     china_city (0.0.4)
       jquery-rails
       rails (>= 3.1.0)
+    china_sms (0.0.7)
     choice (0.2.0)
+    cocoon (1.2.6)
     code_analyzer (0.4.5)
       sexp_processor
     coderay (1.1.0)
@@ -128,6 +130,8 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -208,6 +212,7 @@ GEM
     paranoia (2.1.4)
       activerecord (~> 4.0)
     pg (0.18.4)
+    posix-spawn (0.3.11)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -302,6 +307,8 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
+    rucaptcha (0.3.1)
+      posix-spawn (>= 0.3.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -377,6 +384,8 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-puma
   china_city
+  china_sms
+  cocoon
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -385,6 +394,7 @@ DEPENDENCIES
   enumerize
   factory_girl_rails
   foreman
+  friendly_id
   guard-bundler
   guard-livereload
   guard-migrate
@@ -406,6 +416,7 @@ DEPENDENCIES
   rails_best_practices
   responders
   rspec-rails
+  rucaptcha
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   seedbank

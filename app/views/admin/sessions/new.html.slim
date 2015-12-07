@@ -1,0 +1,22 @@
+.ui.middle.aligned.center.aligned.grid
+  .column
+    h2.ui.teal.image.header
+      = image_tag('logo.png')
+      .content 运营管理系统
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: 'ui large form'}) do |f|
+      .ui.segment
+        .field
+          .ui.left.icon.input.fluid
+            i.user.icon
+            = f.text_field :email, placeholder: '请输入管理帐号'
+        .field
+          .ui.left.icon.input.fluid
+            i.lock.icon
+            = f.password_field :password, placeholder: '请输入密码'
+
+        = f.button '登陆', type: 'submit', class: "ui fluid large teal submit button"
+
+    .ui.message
+      | 鼎领科技 &copy; 2015-2016
+      = link_to '淘帮忙', 'http://www.91tbm.com'

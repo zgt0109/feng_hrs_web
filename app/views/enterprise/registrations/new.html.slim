@@ -1,0 +1,12 @@
+.row.fix
+  .col-md-4.col-md-offset-6.sign-form
+    .panel.panel-default.bs-example.bs-example-tabs.panel-login
+      ul.nav.nav-tabs role="tablist"
+        li class="#{'active' if params['type']=='email'}"
+          a  href="/enterprises/sign_up/email"
+            p 邮箱注册
+        li class="#{'active' if params['type'] == 'mobile'}"
+          a  href="/enterprises/sign_up/mobile"
+            p 手机注册
+      .tab-content
+        = render "enterprise/registrations/#{params[:type]}"

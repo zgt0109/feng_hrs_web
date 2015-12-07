@@ -1,0 +1,20 @@
+- if contact.errors.any?
+  = render partial: 'shared/errors', locals: { model: contact }
+
+= form_for render_scaffold_form_path(contact), remote: remote, html: { class: 'ui form' } do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :mobile
+    = f.text_field :mobile
+
+  .field
+    = f.label :gender
+    = f.select :gender, Contact.gender.options { |g| [g.first, g.second] }, {},
+      class: 'ui dropdown'
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_contacts_path

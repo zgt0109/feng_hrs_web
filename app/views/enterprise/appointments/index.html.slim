@@ -1,0 +1,21 @@
+= render 'shared/message', content: notice
+
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th 编号
+          th 职位
+          th 工友
+          th 当前状态
+          th 送人时间
+          th = t("action.options")
+
+      tbody
+        = render @appointments
+
+    = paginate @appointments
