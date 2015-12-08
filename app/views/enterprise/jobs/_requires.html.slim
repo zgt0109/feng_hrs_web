@@ -1,0 +1,22 @@
+.fields
+  = f.fields_for :job_quantity_attributes, @job.job_quantity do |jq|
+    .field
+      .ui.labeled.input
+        = jq.label :wish_male_count, '男', class: "ui label basic"
+        = jq.text_field :wish_male_count, placeholder: '男员工人数'
+
+    .field
+      .ui.labeled.input
+        = jq.label :wish_female_count, '女', class: "ui label basic"
+        = jq.text_field :wish_female_count, placeholder: '女员工人数'
+
+    .field
+      .ui.labeled.input
+        .ui.label.basic
+          => check_box_tag :wish_unkown_count
+          = jq.label :wish_unkown_count, '不限'
+        = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人', disabled: jq.object.blank?
+
+.field
+  textarea placeholder="可填写具体要求，如：
+    女：年龄 20~30周岁"
