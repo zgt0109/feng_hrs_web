@@ -16,3 +16,10 @@
   .field
     = f.submit class: "ui positive button"
     = render_scaffold_pages_path
+
+- content_for :javascript do
+  javascript:
+    var editor = new Simditor({
+      textarea: $('#editor')
+      //optional options
+    });
