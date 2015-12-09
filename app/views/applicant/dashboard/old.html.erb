@@ -26,9 +26,11 @@
           <div>
             <span>招聘<%= render_common_gender_count job %>人</span>
           </div>
-          <div class="location">
+          <div class="location-address">
             <i class="fa fa-map-marker"></i>
             <span><%= job.company.address %></span>
+          </div>
+          <div class="location-createtime">
             <i class="fa fa-clock-o"></i>
             <span><%= job.created_at.strftime("%Y-%m-%d") %></span>
           </div>
