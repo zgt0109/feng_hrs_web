@@ -19,6 +19,8 @@
 #  deleted_at    :datetime
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  details       :text
+#  advantages    :string
 #
 # Indexes
 #
@@ -35,7 +37,7 @@ class Job < ActiveRecord::Base
   has_one :job_quantity
   has_many :job_commission_people
   has_many :job_commission_days
-  acts_as_taggable_on :worktime
+  acts_as_taggable_on :worktime, :advantages
 
   accepts_nested_attributes_for :job_quantity, :job_commission_people,
                                 :job_commission_days, allow_destroy: true
@@ -48,4 +50,6 @@ class Job < ActiveRecord::Base
                         :channel, :wageday, :wageday_unit
 
   default_scope { order("updated_at desc") }
+  scope :most_used_worktimes, -> { self.tag_counts_on(:worktime).order('count desc').limit(10) }
+  scope :most_used_advantages, -> { self.tag_counts_on(:advantages).order('count desc').limit(10) }
 end

@@ -50,3 +50,33 @@ $ ->
       $('#commission_flg').val('day')
       $('#job_commission_people').hide()
       $('#job_commission_day').show()
+
+  # 自定义招聘亮点
+  $('.addAdvantage').click ->
+    value = $('#mul_advantage').val()
+    if value.length == 0
+      alert "请输入亮点"
+    else
+      $('#mul_advantage').val('')
+      $adv = $('#job_advantage_list')
+      $('.advantage-labels').append('<a class="ui label basic orange" id='+value+'>'+value+'<i class="delete icon"></i></a>')
+      $adv.val($adv.val()+','+value)
+
+  # 招聘亮点
+  $(document).on 'click', '.advantage-labels .ui.label', ->
+    map = {}
+    arr = []
+    $('.advantage-labels .label.basic.orange').each (tar1, tar2) ->
+      map[$(tar2).attr('id')] = $(tar2).text().trim()
+
+    $this = $(this)
+    _id = $this.attr('id')
+    $this.toggleClass('orange').toggleClass('grey')
+    delete map[_id] if $this.hasClass('grey')
+    map[_id] = $this.text().trim() if $this.hasClass('orange')
+    arr.push val for key, val of map
+    $('#job_advantage_list').val(arr)
+
+ # 删除元素
+ $(document).on 'click', '.icon.delete', (e) ->
+   $(this).parent().remove()

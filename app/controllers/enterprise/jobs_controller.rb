@@ -51,6 +51,7 @@ class Enterprise::JobsController < ApplicationController
 
     def job_params
       params.require(:job).permit(:name, :wage, :unit, :worktime, :royalty, :worktime_list,
+      :advantage_list, :details,
       :bonus, :channel, :wageday, :wageday_unit, :advance, :company_id, :contact_id,
       job_quantity_attributes: [:wish_male_count, :wish_female_count, :wish_unkown_count],
       job_commission_people_attributes: [:id, :unit, :gender, :amount, :deadline, :check, :remit, :_destroy],
