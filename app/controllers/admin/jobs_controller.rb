@@ -2,7 +2,7 @@ class Admin::JobsController < ApplicationController
   respond_to :html
 
   def index
-    @jobs = Job.all
+    @jobs = Job.page params[:page]
     respond_with(@jobs)
   end
 
