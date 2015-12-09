@@ -64,6 +64,7 @@ gem "cocoon"
 gem 'friendly_id'
 gem 'china_sms'
 gem 'rucaptcha'
+gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

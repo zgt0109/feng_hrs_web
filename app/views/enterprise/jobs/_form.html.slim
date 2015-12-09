@@ -35,7 +35,14 @@
     .field
       .ui.labeled.input
         = f.label :worktime, class: "ui label basic"
-        = render_job_text_field(f, :worktime)
+        .ui.fluid.multiple.search.selection.dropdown
+          = f.hidden_field :worktime_list
+          i.dropdown.icon
+          .default.text Select Country
+          .menu
+            - Job.tag_counts_on(:worktime).each do |tag|
+              .item data-value=tag.name
+                = tag.name
 
     .field
       .ui.labeled.input

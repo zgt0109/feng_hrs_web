@@ -35,6 +35,8 @@ class Job < ActiveRecord::Base
   has_one :job_quantity
   has_many :job_commission_people
   has_many :job_commission_days
+  acts_as_taggable_on :worktime
+
   accepts_nested_attributes_for :job_quantity, :job_commission_people,
                                 :job_commission_days, allow_destroy: true
 
@@ -42,7 +44,7 @@ class Job < ActiveRecord::Base
   enumerize :channel, in: [:cash, :card], default: :cash
   enumerize :wageday_unit, in: [:month, :day], default: :month
 
-  validates_presence_of :name, :wage, :unit, :worktime,
+  validates_presence_of :name, :wage, :unit, :worktime_list,
                         :channel, :wageday, :wageday_unit
 
   default_scope { order("updated_at desc") }

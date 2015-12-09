@@ -1,4 +1,6 @@
 module JobHelper
+  include ActsAsTaggableOn::TagsHelper
+
   def render_job_text_field(f, column, bool=false)
     f.text_field column, placeholder: t(".holder.#{column}"),
     title: t(".popup.#{column}"), class: 'popmessage', disabled: bool
@@ -44,6 +46,14 @@ module JobHelper
   # 区分zhao和song
   def render_job_current_zhao(param=nil)
     current_page?('/zhao/jobs') ? param || true : nil
+  end
+
+  # Tags
+  def render_job_tag(data, *css, column)
+    tag_cloud(data.tag_counts_on(column), css) do |tag, css_class|
+      concat link_to tag.name, { :action => nil, :id => tag.name }, class: "ui #{css_class} label"
+    end
+    return nil
   end
 
   # 送人按钮

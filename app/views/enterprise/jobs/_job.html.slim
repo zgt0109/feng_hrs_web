@@ -12,8 +12,8 @@
           p = render_job_string(Job.human_attribute_name('wage'), ': ',
               render_job_string(%W(#{number_to_currency(job.wage, format: '%n', precision: 0)} #{job.unit_text})))
         .column
-          p = render_job_string(Job.human_attribute_name('worktime'), ': ',
-              t('.worktime', worktime: job.worktime))
+          p
+            = render_job_tag job, ('orange'), :worktime
           p
         .column
           p = render_job_string('招聘人数', ': ', render_job_quantity(job))
