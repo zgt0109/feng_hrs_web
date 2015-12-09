@@ -34,7 +34,7 @@ class CashOut < ActiveRecord::Base
   validates_presence_of :enterprisename, on: [:create, :update], unless: "enterprisename.nil?"
   validates_presence_of :enterprise, message: '不存在', unless: "enterprisename.blank?"
   validates_presence_of :amount, :serial_inner, :serial_outer, :state
-  validates :amount, numericality: true, allow_blank: true
+  validates :amount, :serial_outer, numericality: true, allow_blank: true
   validates_uniqueness_of :serial_inner, :serial_outer, allow_blank: true
 
   aasm column: :state do
