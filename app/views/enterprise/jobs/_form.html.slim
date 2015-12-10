@@ -35,7 +35,14 @@
     .field
       .ui.labeled.input
         = f.label :worktime, class: "ui label basic"
-        = render_job_text_field(f, :worktime)
+        .ui.fluid.multiple.search.selection.dropdown
+          = f.hidden_field :worktime_list
+          i.dropdown.icon
+          .default.text Select Country
+          .menu
+            - Job.most_used_worktimes.each do |tag|
+              .item data-value=tag.name
+                = tag.name
 
     .field
       .ui.labeled.input
@@ -47,23 +54,14 @@
         = f.label :bonus, class: "ui label basic"
         = render_job_text_field(f, :bonus)
 
-  h3.ui.dividing.header 性别要求
-  .fields
-    = f.fields_for :job_quantity_attributes, @job.job_quantity do |jq|
-      .field
-        .ui.labeled.input
-          = jq.label :wish_male_count, '男', class: "ui label basic"
-          = jq.text_field :wish_male_count, placeholder: '男员工人数'
-      .field
-        .ui.labeled.input
-          = jq.label :wish_female_count, '女', class: "ui label basic"
-          = jq.text_field :wish_female_count, placeholder: '女员工人数'
-      .field
-        .ui.labeled.input
-          .ui.label.basic
-            => check_box_tag :wish_unkown_count
-            = jq.label :wish_unkown_count, '不限'
-          = jq.text_field :wish_unkown_count, placeholder: '不论男女共招多少人', disabled: jq.object.blank?
+  h3.ui.dividing.header 职位亮点
+  = render 'advantages', f: f
+
+  h3.ui.dividing.header 岗位要求
+  = render 'requires', f: f
+
+  .field
+    = f.text_area :details, placeholder: %Q(可填写具体要求，如：\n女：年龄 20~30周岁)
 
   h3.ui.dividing.header = Job.human_attribute_name(:channel)
   .fields

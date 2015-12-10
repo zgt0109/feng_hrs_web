@@ -2,7 +2,7 @@ class Admin::CompaniesController < ApplicationController
   respond_to :html
 
   def index
-    @companies = Company.all
+    @companies = Company.page params[:page]
     respond_with(@companies)
   end
 

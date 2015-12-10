@@ -10,4 +10,12 @@ $(function () {
     $('#myTab li').removeClass('active');
     $(this).addClass('active');
   })
+
+  // 注册页面同意按钮
+  $('.agreement').change(function() {
+    bool = $(this).prop('checked');
+
+    color = bool ? 'orange' : 'grey';
+    $('.btn-warning.btn-lg').prop('disabled', !bool).css('background-color', color);
+  })
 })

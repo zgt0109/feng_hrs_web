@@ -1,0 +1,11 @@
+.field.advantage-labels
+  - Job.most_used_advantages.each do |adva|
+    .ui.label.basic id=adva.id class=(f.object.advantage_list.include?(adva.name) ? 'orange' : 'grey')
+      = adva.name
+
+.field.inline
+  = text_field_tag :mul_advantage
+  = link_to '添加', 'javascript:;', class: 'ui button basic blue addAdvantage'
+
+.field
+  = f.text_field :advantage_list
