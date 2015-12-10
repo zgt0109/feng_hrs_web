@@ -2,7 +2,7 @@
   /td = render_scaffold_checkbox_one
   td = data.id
   td = cash_in.serial_inner
-  td = cash_in.enterprise.name
+  td = link_to data.enterprise.name, render_common_enterprise_name(data), class: 'ui green label'
   td = cash_in.enterprise.mobile
   td = cash_in.enterprise.email
   td = cash_in.amount

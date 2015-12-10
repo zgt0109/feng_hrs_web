@@ -4,7 +4,7 @@
   td = data.name
   td = render_common_mobile data.mobile
   td = data.gender_text
-  td = data.enterprise.name
+  td = link_to data.enterprise.name, render_common_enterprise_name(data), class: 'ui green label'
   td =render_plugin_moment data.created_at
   td =render_plugin_moment data.updated_at
   td

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'common/show'
+  end
+
+  namespace :admin do
+  get 'common/show'
+  end
+
   devise_for :admins, controllers: {
     sessions: 'admin/sessions'
   }
@@ -69,6 +77,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:index, :show]
     resources :jobs, only: [:index, :show]
     resources :pages
+    resources :common, only: [:show]
     resources :cash_ins do
       member do
         get :confirm
