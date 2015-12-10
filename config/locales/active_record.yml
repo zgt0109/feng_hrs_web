@@ -66,7 +66,9 @@ zh-CN:
         id: 编号
         email: 邮箱
         mobile: 手机号码
-        name: 用户名
+        name: 企业名称
+        labor_quantity: 工友数量
+        position_quantity: 职位数量
         password: 密码
         password_confirmation: 第二次密码
       debit:
@@ -88,7 +90,7 @@ zh-CN:
         serial_outer: 银行流水号
         serial_inner: 平台流水号
         amount: 金额
-        enterprisename: 用户名
+        enterprisename: 企业名称
         mobile: 手机
         email: 邮箱
         note: 备注

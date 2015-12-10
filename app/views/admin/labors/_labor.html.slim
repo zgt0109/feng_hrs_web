@@ -1,11 +1,12 @@
 = content_tag_for(:tr, labor) do | data |
   td = render_scaffold_checkbox_one(data.id)
   td = data.id
-  td = labor.name
-  td = render_labor_gender_with_age(labor)
-  td = render_common_mobile(labor.mobile)
-  td = render_labor_channel labor
-  td = render_labor_state labor
+  td = data.name
+  td = render_labor_gender_with_age(data)
+  td = render_common_mobile(data.mobile)
+  td = data.enterprise.name
+  td = render_labor_channel data
+  td = render_labor_state data
   td =render_plugin_moment data.created_at
   td =render_plugin_moment data.updated_at
   td
