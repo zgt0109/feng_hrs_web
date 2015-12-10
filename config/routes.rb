@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-  get 'common/show'
-  end
-
-  namespace :admin do
-  get 'common/show'
-  end
-
   devise_for :admins, controllers: {
     sessions: 'admin/sessions'
   }
@@ -31,8 +23,8 @@ Rails.application.routes.draw do
   concern :enterpriseable do
     get 'profile' => 'profiles#index'
     resource :debit, only: [:new, :create, :show]
-    resources :cash_ins, only: [:index]
-    resources :cash_outs, only: [:new, :create, :index]
+    resources :cash_ins
+    resources :cash_outs, only: [:index, :show, :edit]
   end
 
   # 招聘方
@@ -77,7 +69,6 @@ Rails.application.routes.draw do
     resources :companies, only: [:index, :show]
     resources :jobs, only: [:index, :show]
     resources :pages
-    resources :common, only: [:show]
     resources :cash_ins do
       member do
         get :confirm

@@ -42,4 +42,7 @@ class Admin::CashOutsController < ApplicationController
     @cash_out = CashOut.find(params[:id])
   end
 
+  def cash_out_params
+    params.require(:cash_out).permit(:enterprisename, :amount, :note, :serial_outer)
+  end
 end
