@@ -64,17 +64,11 @@ $ ->
 
   # 招聘亮点
   $(document).on 'click', '.advantage-labels .ui.label', ->
-    map = {}
     arr = []
-    $('.advantage-labels .label.basic.orange').each (tar1, tar2) ->
-      map[$(tar2).attr('id')] = $(tar2).text().trim()
+    $(this).toggleClass('orange').toggleClass('grey')
 
-    $this = $(this)
-    _id = $this.attr('id')
-    $this.toggleClass('orange').toggleClass('grey')
-    delete map[_id] if $this.hasClass('grey')
-    map[_id] = $this.text().trim() if $this.hasClass('orange')
-    arr.push val for key, val of map
+    $('.advantage-labels .label.basic.orange').each (tar1, tar2) ->
+      arr.push $(tar2).text().trim()
     $('#job_advantage_list').val(arr)
 
  # 删除元素
