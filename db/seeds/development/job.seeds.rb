@@ -7,7 +7,7 @@ puts "创建测试招聘信息......"
 after "development:enterprise" do
   enterprise = Enterprise.find_by_email('zhao@91tbm.com')
   (sequence_min..sequence_max).each do |job_seq|
-    puts enterprise.jobs.create!(
+    enterprise.jobs.create(
       name: "测试职位#{job_seq}",
       company: Company.take,
       contact: Contact.take,

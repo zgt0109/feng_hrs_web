@@ -38,7 +38,7 @@
         .ui.fluid.multiple.search.selection.dropdown
           = f.hidden_field :worktime_list
           i.dropdown.icon
-          .default.text Select Country
+          .default.text 工作时长
           .menu
             - Job.most_used_worktimes.each do |tag|
               .item data-value=tag.name

@@ -74,3 +74,6 @@ $ ->
  # 删除元素
  $(document).on 'click', '.icon.delete', (e) ->
    $(this).parent().remove()
+
+ # 下拉选择
+ $('.ui.dropdown').dropdown();
