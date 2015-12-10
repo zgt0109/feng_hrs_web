@@ -2,7 +2,6 @@
   .sixteen.wide.column
     = render_scaffold_checkbox_selectall
     = render_scaffold_checkbox_delete
-    = render_scaffold_new_cash_out_path
 br
     = link_to t("action.all"), admin_cash_outs_path, class: "ui grey circular label"
     = link_to t("action.pending"), admin_cash_outs_path(state: 'pending'), class: "ui blue circular label"
