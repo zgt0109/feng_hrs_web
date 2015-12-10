@@ -25,6 +25,7 @@
       = t("action.created_at")
     .four.wide.column
       = l @company.created_at, format: :long
+
   .row
     .three.wide.column
       = t("action.updated_at")
@@ -32,4 +33,5 @@
       = l @company.updated_at, format: :long
 
   .row
-    = render_scaffold_companies_path
+    .three.wide.column
+      = render_scaffold_companies_path
