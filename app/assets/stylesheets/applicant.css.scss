@@ -1,15 +1,47 @@
-// info
-.ui.secondary.inverted.menu{
+// shortcut
+.ui.secondary.inverted.menu.shortcut{
   background-color: #393939;
-}
 
-.ui.inverted.menu .item.header{
-  vertical-align: bottom;
-  color: #fbe496;
-  span{
-    font-size: 20px;
-    padding-left: 10px;
+  .item.header{
+    color: #fbe496;
+    vertical-align: bottom;
+
+    span{
+      font-size: 20px;
+      padding-left: 10px;
+    }
   }
 }
 
 // nav
+.ui.attached.menu.nav{
+  border: none;
+  a.item{
+    height: 100px;
+    border-radius: 0;
+    padding: 0px 25px;
+  }
+  a.item:hover{
+    background-color: #ffa800;
+  }
+  a.item.header{
+    background-image: image-url('logo.png');
+    background-repeat: no-repeat;
+    background-position: 0px 20px;
+    width: 200px;
+    background-size: 200px;
+    span{
+      display: none;
+    }
+  }
+
+  .right.menu{
+    a.item{
+      color: #ffa800;
+      padding: 0 10px;
+    }
+    a.item:hover{
+      background-color: inherit;
+    }
+  }
+}
