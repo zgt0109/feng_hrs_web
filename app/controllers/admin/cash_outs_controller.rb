@@ -12,19 +12,7 @@ class Admin::CashOutsController < ApplicationController
     respond_with(@cash_out)
   end
 
-  def new
-    @cash_out = CashOut.new
-    respond_with(@cash_out)
-  end
-
   def edit
-  end
-
-  def create
-    @cash_out = CashOut.new(cash_out_params)
-    @cash_out.serial_inner = Time.now.strftime("%y%m%d") << rand(10000).to_s
-    @cash_out.save
-    respond_with(@cash_out, location: admin_cash_outs_path)
   end
 
   def update

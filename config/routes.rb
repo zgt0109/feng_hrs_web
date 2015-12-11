@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   concern :enterpriseable do
     get 'profile' => 'profiles#index'
     resource :debit, only: [:new, :create, :show]
-    resources :cash_ins, only: [:index]
-    resources :cash_outs, only: [:new, :create, :index]
+    resources :cash_ins
+    resources :cash_outs, only: [:index, :show, :edit]
   end
 
   # 招聘方

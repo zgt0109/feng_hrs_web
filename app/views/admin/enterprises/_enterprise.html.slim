@@ -1,7 +1,11 @@
 = content_tag_for(:tr, enterprise) do | data |
   td = render_scaffold_checkbox_one(data.id)
   td = data.id
-  td = enterprise.email
+  td = data.email
+  td = data.mobile
+  td = data.name
+  td = data.labors.count
+  td = data.jobs.count
   td = render_plugin_moment data.created_at
   td = render_plugin_moment data.updated_at
   td

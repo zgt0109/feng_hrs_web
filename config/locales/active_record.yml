@@ -29,6 +29,7 @@ zh-CN:
         <<: *common
         id: 编号
         name: 姓名
+        enterprisename: 企业用户名称
         mobile: 手机
         idcard: 身份证
         gender: 性别
@@ -42,17 +43,21 @@ zh-CN:
       contact:
         id: 编号
         name: 姓名
+        enterprisename: 企业用户名称
         mobile: 电话号码
         gender: 性别
       company:
         <<: *common
         id: 编号
         name: 企业名称
+        enterprisename: 企业用户名称
         location: 企业地址
         address: 详细地址
         introduction: 企业介绍
       job:
+        id: 编号
         name: 职位名称
+        enterprisename: 企业用户名称
         wage: 员工薪资
         worktime: 工作时长
         royalty: 提成
@@ -66,7 +71,9 @@ zh-CN:
         id: 编号
         email: 邮箱
         mobile: 手机号码
-        name: 用户名
+        name: 企业用户名称
+        labor_quantity: 工友数量
+        position_quantity: 职位数量
         password: 密码
         password_confirmation: 第二次密码
       debit:
@@ -88,7 +95,7 @@ zh-CN:
         serial_outer: 银行流水号
         serial_inner: 平台流水号
         amount: 金额
-        enterprisename: 用户名
+        enterprisename: 企业用户名称
         mobile: 手机
         email: 邮箱
         note: 备注
@@ -101,7 +108,7 @@ zh-CN:
         serial_outer: 银行流水号
         serial_inner: 平台流水号
         amount: 金额
-        enterprisename: 企业名称
+        enterprisename: 企业用户名称
         mobile: 手机
         email: 邮箱
         note: 备注

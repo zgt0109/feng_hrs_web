@@ -24,6 +24,7 @@
       = t("action.created_at")
     .four.wide.column
       = l @contact.created_at, format: :long
+
   .row
     .three.wide.column
       = t("action.updated_at")
@@ -31,4 +32,5 @@
       = l @contact.updated_at, format: :long
 
   .row
-    = render_scaffold_contacts_path
+    .three.wide.column
+      = render_scaffold_contacts_path

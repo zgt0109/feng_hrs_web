@@ -4,16 +4,31 @@
       = Enterprise.human_attribute_name(:id)
     .four.wide.column
       = @enterprise.id
+
   .row
     .three.wide.column
       = Enterprise.human_attribute_name(:email)
     .four.wide.column
       = @enterprise.email
+
+  .row
+    .three.wide.column
+      = Enterprise.human_attribute_name(:mobile)
+    .four.wide.column
+      = @enterprise.mobile
+
+  .row
+    .three.wide.column
+      = Enterprise.human_attribute_name(:name)
+    .four.wide.column
+      = @enterprise.name
+
   .row
     .three.wide.column
       = t("action.created_at")
     .four.wide.column
       = l @enterprise.created_at, format: :long
+
   .row
     .three.wide.column
       = t("action.updated_at")
@@ -21,4 +36,5 @@
       = l @enterprise.updated_at, format: :long
 
   .row
-    = render_scaffold_enterprises_path
+    .three.wide.column
+      = render_scaffold_enterprises_path

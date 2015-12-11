@@ -2,7 +2,7 @@
   td = render_scaffold_checkbox_one(data.id)
   td = data.id
   td = data.serial_inner
-  td = data.enterprise.name
+  td = link_to data.enterprise.name, render_common_enterprise_name(data), class: 'ui green label'
   td = data.enterprise.mobile
   td = data.enterprise.email
   td = data.amount
