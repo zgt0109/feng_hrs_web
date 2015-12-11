@@ -53,8 +53,42 @@
 
 
 // slick
+.slick-slider {
+    margin-bottom: 0;
+}
 
 .slick-dots
 {
     bottom: 20px;
+}
+
+// 数字展示
+.ui.statistics{
+  padding-top: 34px;
+  padding-bottom: 28px;
+}
+.ui.statistics > .statistic:first-child{
+  box-shadow: none;
+  padding-left: 0px;
+}
+
+.ui.statistics > .statistic{
+  box-shadow: -1px -0px 0px 0px #D4D4D5;
+  padding-left: 40px;
+  .label, .value{
+    text-align: left;
+  }
+  .label{
+    color: #999999;
+  }
+  .value{
+    color: #808aa2;
+  }
+  .value.main{
+    color: #ffa800;
+  }
+  .unit{
+    padding-left: 22px;
+    font-size: 15px;
+  }
 }
