@@ -24,3 +24,8 @@ zh-CN:
       wageday_unit:
         month: '按月'
         day: '按天'
+      domain:
+        admin: '运营方'
+        zhao: '招人方'
+        song: '送人方'
+        hr: '企业HR'

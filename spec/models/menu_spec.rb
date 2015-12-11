@@ -16,7 +16,7 @@ require 'rails_helper'
 
 RSpec.describe Menu, type: :model do
   it "标准数据" do
-    expect(build(:contact)).to be_valid
+    expect(build(:menu)).to be_valid
   end
 
 

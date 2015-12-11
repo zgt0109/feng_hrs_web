@@ -1,0 +1,23 @@
+- if menu.errors.any?
+  = render partial: 'shared/errors', locals: { model: menu }
+
+= form_for render_scaffold_form_path(menu), remote: remote, html: { class: 'ui form' } do |f|
+  .field.four.wide
+    = f.label :name
+    = f.text_field :name
+
+  .field.four.wide
+    = f.label :domain
+    = f.select :domain, Menu.domain.options, {include_blank: false}, {class: 'ui dropdown'}
+
+  .field.four.wide
+    = f.label :uri
+    = f.text_field :uri
+
+  .field.four.wide
+    = f.label :icon
+    = f.text_field :icon
+
+  .field
+    = f.submit class: "ui positive button"
+    = render_scaffold_menus_path

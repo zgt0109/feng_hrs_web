@@ -20,4 +20,5 @@ class Menu < ActiveRecord::Base
   validates_presence_of :name, :domain, :uri, :icon
   validates_length_of :name, in: 3..8
   enumerize :domain, in: [:zhao, :song, :admin, :hr], scope: true
+  default_scope { order("updated_at desc") }
 end

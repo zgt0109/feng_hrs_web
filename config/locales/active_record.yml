@@ -11,6 +11,7 @@ zh-CN:
       page: 内容管理
       cash_in: 充值
       cash_out: 提现
+      menu: 菜单
     attributes:
       common: &common
         province: 省份
@@ -116,3 +117,9 @@ zh-CN:
         state/pending: 待审核
         state/confirmed: 已通过
         state/rejected: 未通过
+      menu:
+        id: 编号
+        name: 菜单名称
+        domain: 所属方
+        uri: 路径
+        icon: 图标

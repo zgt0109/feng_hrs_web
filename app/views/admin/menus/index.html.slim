@@ -1,0 +1,23 @@
+.ui.grid
+  .sixteen.wide.column
+    = render_scaffold_checkbox_selectall
+    = render_scaffold_checkbox_delete
+    = render_scaffold_new_menu_path
+
+    table.ui.very.basic.selectable.table
+      thead
+        tr
+          th
+          th = Menu.human_attribute_name(:id)
+          th = Menu.human_attribute_name(:name)
+          th = Menu.human_attribute_name(:domain)
+          th = Menu.human_attribute_name(:uri)
+          th = Menu.human_attribute_name(:icon)
+          th = t("action.created_at")
+          th = t("action.updated_at")
+          th = t("action.options")
+
+      tbody
+        = render @menus
+
+    = paginate @menus
