@@ -26,7 +26,7 @@
     border-radius: 0;
     padding: 0px 25px;
   }
-  a.item:hover{
+  a.item:hover, a.item.active{
     background-color: #ffa800;
   }
   a.item.header{
