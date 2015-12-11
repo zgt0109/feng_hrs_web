@@ -17,7 +17,7 @@ FactoryGirl.define do
     name "导航菜单"
     domain "admin"
     uri "/admin/menus"
-    icon 'fa fa-test'
+    icon 'content'
   end
 
 end

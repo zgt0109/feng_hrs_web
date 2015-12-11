@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:index, :show]
     resources :jobs, only: [:index, :show]
     resources :pages
+    resources :menus
     resources :cash_ins do
       member do
         get :confirm

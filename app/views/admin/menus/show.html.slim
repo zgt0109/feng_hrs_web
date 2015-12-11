@@ -1,0 +1,45 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = Menu.human_attribute_name(:id)
+    .four.wide.column
+      = @menu.id
+
+  .row
+    .three.wide.column
+      = Menu.human_attribute_name(:name)
+    .four.wide.column
+      = @menu.name
+
+  .row
+    .three.wide.column
+      = Menu.human_attribute_name(:domain)
+    .four.wide.column
+      = @menu.domain
+
+  .row
+    .three.wide.column
+      = Menu.human_attribute_name(:uri)
+    .four.wide.column
+      = @menu.uri
+
+  .row
+    .three.wide.column
+      = Menu.human_attribute_name(:icon)
+    .four.wide.column
+      = @menu.icon
+
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = l @menu.created_at, format: :long
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = l @menu.updated_at, format: :long
+
+  .row
+    = render_scaffold_edit_menu_path_link(@menu)
+    = render_scaffold_menus_path

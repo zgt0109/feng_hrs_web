@@ -25,7 +25,7 @@ module ScaffoldHelper
   # saffold
   %w(
     labor company contact job enterprise
-    debit page cash_out cash_in
+    debit page cash_out cash_in menu
   ).each do |model|
     class_eval{
       # new
