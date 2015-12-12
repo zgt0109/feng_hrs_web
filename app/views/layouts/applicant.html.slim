@@ -13,6 +13,7 @@ html
   body class="#{render_main_class}"
     = render 'layouts/applicant/top'
     = yield
+    = render 'layouts/applicant/footer'
     = javascript_include_tag 'application'
     = javascript_include_tag 'applicant'
     = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")

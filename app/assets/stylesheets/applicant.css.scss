@@ -59,7 +59,7 @@
 
 .slick-dots
 {
-    bottom: 20px;
+  bottom: 20px;
 }
 
 // 数字展示
@@ -90,5 +90,48 @@
   .unit{
     padding-left: 22px;
     font-size: 15px;
+  }
+}
+
+// footer
+footer {
+  background-color: #3c3c3c;
+  color: #b8b8b8;
+
+  ul li {
+    &:first-child {
+      margin-bottom: 0.8em;
+      font-size: 1.1em;
+    }
+
+    &:not(:first-child) {
+      font-size: 0.8em;
+      margin-top: 0.2em;
+    }
+
+    .colored {
+      color: #efa50d;
+    }
+
+    white-space: nowrap;
+    list-style-type: none;
+  }
+
+  .ui.divider {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .copyright {
+    font-size: 0.9em;
+    vertical-align: bottom;
+
+    .column.eight.wide {
+      padding-top: 0.5em;
+    }
+  }
+
+  .ui.grid > .column:not(.row) {
+    padding-bottom: 0;
   }
 }
