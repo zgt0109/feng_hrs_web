@@ -93,14 +93,66 @@
   }
 }
 
+// 统计信息
+.statistics-info {
+  .ui.segment {
+    width: 33.33%;
+  }
+
+  .first span {
+    &:first-child {
+      display: block;
+    }
+  }
+
+  .second span + span {
+    margin-left: 0.8em;
+  }
+
+  .third span + span {
+    margin-left: 0.4em;
+  }
+
+  .colored {
+    color: #feb040;
+  }
+
+  span {
+    height: 1.0em;
+    font-size: 1.0em;
+    color: #a0a0a0;
+
+    + span {
+      margin-top: 0.4em;
+    }
+  }
+
+  .ui.divider {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+
+    &.dashed {
+      border-top: 1px #e5e5e5 dashed;
+    }
+  }
+}
+
 // footer
 footer {
   background-color: #3c3c3c;
   color: #b8b8b8;
 
+  a {
+    color: #b8b8b8;
+    &:hover {
+      color: orange;
+    }
+  }
+
   .weixin-text {
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-align: center;
+    margin-top: 0.8em;
   }
 
   ul {
@@ -109,11 +161,11 @@ footer {
     li {
       &:first-child {
         margin-bottom: 0.8em;
-        font-size: 1.1em;
+        font-size: 1.3em;
       }
 
       &:not(:first-child) {
-        font-size: 0.8em;
+        font-size: 1em;
         margin-top: 0.2em;
       }
 
