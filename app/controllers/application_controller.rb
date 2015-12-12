@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   private
     def init_layout
       case params[:controller]
-      when /^applicant|^devise/
+      when /^devise/
         'applicant_old'
       else
         params[:controller].split('/').first

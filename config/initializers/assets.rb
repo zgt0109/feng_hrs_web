@@ -13,6 +13,9 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(
   semantic-ui/dist/semantic.js
   semantic-ui/dist/semantic.css
+
+  applicant/dashboard.css
+  applicant/dashboard.js
 )
 
 # layout

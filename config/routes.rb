@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   # 求职者
   scope module: 'applicant' do
-    root 'dashboard#old'
+    root 'dashboard#index'
     resources :pages, only: [:index, :show]
   end
 

@@ -36,10 +36,5 @@ $(function(){
     event.preventDefault();
   })
 
-  // 编辑器
-  // var editor = new Simditor({
-  //   textarea: $('#editor')
-  //   //optional options
-  // });
 
 })
