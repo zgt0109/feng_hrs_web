@@ -1,7 +1,3 @@
-/*
- *= require slick-carousel/slick/slick.css
- *= require slick-carousel/slick/slick-theme.css
- */
 
 // shortcut
 .ui.secondary.inverted.menu.shortcut{
@@ -59,92 +55,6 @@
   }
 }
 
-
-// slick
-.slick-slider {
-    margin-bottom: 0;
-}
-
-.slick-dots
-{
-  bottom: 20px;
-}
-
-// 数字展示
-.ui.statistics{
-  padding-top: 34px;
-  padding-bottom: 28px;
-}
-
-.ui.statistics > .statistic{
-  &:first-child{
-    box-shadow: none;
-    padding-left: 0px;
-  }
-
-  box-shadow: -1px -0px 0px 0px #D4D4D5;
-  padding-left: 40px;
-  .label, .value{
-    text-align: left;
-  }
-  .label{
-    color: #999999;
-  }
-  .value{
-    color: #808aa2;
-  }
-  .value.main{
-    color: #ffa800;
-  }
-  .unit{
-    padding-left: 22px;
-    font-size: 15px;
-  }
-}
-
-// 统计信息
-.statistics-info {
-  .ui.segment {
-    width: 33.33%;
-  }
-
-  .first span {
-    &:first-child {
-      display: block;
-    }
-  }
-
-  .second span + span {
-    margin-left: 0.8em;
-  }
-
-  .third span + span {
-    margin-left: 0.4em;
-  }
-
-  .colored {
-    color: #feb040;
-  }
-
-  span {
-    height: 1.0em;
-    font-size: 1.0em;
-    color: #a0a0a0;
-
-    + span {
-      margin-top: 0.4em;
-    }
-  }
-
-  .ui.divider {
-    margin-top: 1em;
-    margin-bottom: 1.5em;
-
-    &.dashed {
-      border-top: 1px #e5e5e5 dashed;
-    }
-  }
-}
 
 // footer
 footer {

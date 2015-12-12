@@ -1,2 +1,8 @@
-h1 Applicant::Dashboard#index
-p Find me in app/views/applicant/dashboard/index.html.slim
+= render 'applicant/dashboard/slick'
+= render 'applicant/dashboard/datasheet'
+= render 'applicant/dashboard/jobs'
+
+.ui.horizontal.segments.container.statistics-info
+  = render 'applicant/dashboard/tongji_first'
+  = render 'applicant/dashboard/tongji_second'
+  = render 'applicant/dashboard/tongji_third'
