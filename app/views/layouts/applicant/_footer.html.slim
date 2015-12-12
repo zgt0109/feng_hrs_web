@@ -1,20 +1,20 @@
 footer
-  .ui.centered.grid
-    .column.two.wide
+  .ui.stackable.inverted.grid.container
+    .three.wide.column
       ul
         li 关于我们
         li 淘帮忙简介
         li 业务资费
         li 法律申明
         li 服务协议
-    .column.two.wide
+    .three.wide.column
       ul
         li 加盟合作
         li 商务合作
         li 网站联盟
         li 友情链接
         li 业务资质
-    .column.two.wide
+    .three.wide.column
       ul
         li 联系我们
         li 联系我们
@@ -22,9 +22,8 @@ footer
         li
           span.colored 加入淘帮忙
         li
-    .column.three.wide
 
-    .column.three.wide
+    .three.wide.column.right.floated
       ul
         li 关注我们
         li
@@ -32,17 +31,21 @@ footer
           span.colored 400-123-1234
         li 工作时间：9:00-18:00
         li
-    .column.two.wide
-      = image_tag('applicant/footer_weixin.jpg', height: "100px", width: '100px')
-    .column.four.wide
+          i.circular.inverted.grey.weibo.icon
+          i.circular.inverted.grey.weibo.icon
+          i.circular.inverted.grey.weibo.icon
 
-    .column.thirteen.wide.ui.divider
+    .two.wide.column
+      = image_tag('applicant/footer_weixin.jpg', class: 'ui centered medium image')
+      p.weixin-text 套帮忙微信服务号
 
-    .row.copyright
-      .column.two.wide.footer-logo
-        = image_tag('applicant/footer_logo.jpg')
-      .column.eight.wide
-        | &copy 2015淘帮忙版权所有&nbsp;&nbsp;京ICP备14023790号-2 京公网安备11010802017116号
-      .column.three.wide
-        = image_tag('applicant/chengxin.jpg')
-        = image_tag('applicant/kexin.jpg')
+    .sixteen.wide.column.divider-line
+      .ui.inverted.section.divider
+
+    .row
+      .column.ten.wide
+        = image_tag('applicant/footer_logo.jpg', class: 'ui middle aligned tiny image')
+        span.copyright-text &copy 2015淘帮忙版权所有&nbsp;&nbsp;京ICP备14023790号-2 京公网安备11010802017116号
+      .column.four.wide.right.floated.ui.tiny.images
+        = image_tag('applicant/chengxin.jpg', class: 'ui image')
+        = image_tag('applicant/kexin.jpg', class: 'ui image')
