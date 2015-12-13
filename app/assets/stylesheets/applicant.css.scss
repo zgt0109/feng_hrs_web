@@ -55,6 +55,172 @@
 }
 
 
+// slick
+.slick-slider {
+    margin-bottom: 0;
+}
+
+.slick-dots
+{
+  bottom: 20px;
+}
+
+// 数字展示
+.ui.statistics{
+  padding-top: 34px;
+  padding-bottom: 28px;
+}
+.ui.statistics > .statistic:first-child{
+  box-shadow: none;
+  padding-left: 0px;
+}
+
+.ui.statistics > .statistic{
+  box-shadow: -1px -0px 0px 0px #D4D4D5;
+  padding-left: 40px;
+  .label, .value{
+    text-align: left;
+  }
+  .label{
+    color: #999999;
+  }
+  .value{
+    color: #808aa2;
+  }
+  .value.main{
+    color: #ffa800;
+  }
+  .unit{
+    padding-left: 22px;
+    font-size: 15px;
+  }
+}
+
+// 热门岗位
+.jobs {
+  margin: 4em 0;
+
+  .ui .card {
+    background-color: #fafafa;
+    border: 0;
+    box-shadow: 0 0;
+    border-radius: 0;
+  }
+
+  .ui.header .sub.header {
+    margin: 1em 0 2em 0;
+    span {
+      padding: 0.2em;
+      & + span {
+        margin-left: 1em;
+      }
+      &.active {
+        border-bottom: 2px solid #fd922c;
+      }
+    }
+
+
+
+  }
+
+  .details {
+    div {
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      color: #adadad;
+    }
+    .salary {
+      font-size: 1.2em;
+
+      span.money {
+        color: #fcc49a;
+        margin: 0 0.3em;
+      }
+    }
+  }
+}
+
+// 合作企业
+.cooperation {
+  background-image: image-url('applicant/bg-1.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0.1em 0 3em 0;
+
+  .bordered {
+    border: 1px black solid;
+    padding: 0.5em 2em;
+  }
+
+  .ui.items .item {
+    display: block;
+    align: center;
+    text-align: center;
+    margin: 4em 0;
+
+    .ui.grid .column {
+      text-align: center;
+    }
+  }
+}
+
+.cooperation-footer {
+  text-align: center;
+  padding: 1.6em 0;
+  background-color: #feaf00;
+  span {
+    margin-right: 3em;
+  }
+}
+
+// 统计信息
+.ui.segments.statistics-info {
+  margin-bottom: 5em;
+
+  .ui.segment {
+    width: 33.33%;
+  }
+
+  i.circular.icon {
+    background-color: #feaf00;
+  }
+
+  .first span {
+    &:first-child {
+      display: block;
+    }
+  }
+
+  .second span + span {
+    margin-left: 0.8em;
+  }
+
+  .third span + span {
+    margin-left: 0.4em;
+  }
+
+  .colored {
+    color: #feb040;
+  }
+
+  span {
+    height: 1.0em;
+    font-size: 1.0em;
+    color: #a0a0a0;
+
+    + span {
+      margin-top: 0.4em;
+    }
+  }
+
+  .ui.divider {
+    &.dashed {
+      border-top: 1px #e5e5e5 dashed;
+      margin-bottom: 2em;
+    }
+  }
+}
+
 // footer
 footer {
   background-color: #3c3c3c;
@@ -71,6 +237,12 @@ footer {
     font-size: 0.9em;
     text-align: center;
     margin-top: 0.8em;
+  }
+
+  .follow {
+    li:not(:first-child) {
+      margin-top: 10px;
+    }
   }
 
   ul {
