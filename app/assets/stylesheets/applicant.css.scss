@@ -97,7 +97,51 @@
   }
 }
 
-// 企业图片墙
+// 热门岗位
+.jobs {
+  margin: 4em 0;
+
+  .ui .card {
+    background-color: #fafafa;
+    border: 0;
+    box-shadow: 0 0;
+    border-radius: 0;
+  }
+
+  .ui.header .sub.header {
+    margin: 1em 0 2em 0;
+    span {
+      padding: 0.2em;
+      & + span {
+        margin-left: 1em;
+      }
+      &.active {
+        border-bottom: 2px solid #fd922c;
+      }
+    }
+
+
+
+  }
+
+  .details {
+    div {
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      color: #adadad;
+    }
+    .salary {
+      font-size: 1.2em;
+
+      span.money {
+        color: #fcc49a;
+        margin: 0 0.3em;
+      }
+    }
+  }
+}
+
+// 合作企业
 .cooperation {
   background-image: image-url('applicant/bg-1.jpg');
   background-repeat: no-repeat;
