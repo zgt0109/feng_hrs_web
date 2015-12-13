@@ -6,12 +6,12 @@ module ApplicantHelper
 
   # 已入驻企业显示
   def render_common_company
-
+    Enterprise.all.size + 100
   end
 
   # 已入驻中介显示
   def render_common_zhongjie
-
+    Enterprise.all.size + 128
   end
 
   # 首页招聘信息中性别显示

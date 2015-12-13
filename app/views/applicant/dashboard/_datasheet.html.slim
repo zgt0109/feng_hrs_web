@@ -3,18 +3,18 @@
       .statistic
         .label 累计发布岗位
         .value.main
-          | 96,685
+          = render_common_job_count
           span.unit 家
 
       .statistic
         .label 已入驻企业
         .value
-          | 96,685
+          = render_common_company
           span.unit 家
 
       .statistic
         .label 已入驻中介
         .value
-          | 96,685
+          = render_common_zhongjie
           span.unit 家
 .ui.divider
