@@ -17,10 +17,11 @@
       = link_to '帮助中心', '/pages', class: 'item'
 
 .ui.attached.stackable.menu.secondary.nav
+
   .ui.container
-    a.item.header
+    = link_to root_path, class: 'item header' do
       span 淘帮忙
-    a.item.active 首页
+    = link_to '首页', root_path, class: 'item active'
     a.item 所有职位
     = link_to '我要招聘', zhao_root_path, class: 'item'
     = link_to '我要送人', song_root_path, class: 'item'
