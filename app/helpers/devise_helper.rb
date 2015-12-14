@@ -3,8 +3,9 @@ module DeviseHelper
     return "" if resource.errors.empty?
 
     messages = resource.errors.full_messages.map { |msg|
-      content_tag :div, class: 'item' do
-        content_tag(:i, msg, class: 'glyphicon glyphicon-remove-sign')
+      content_tag :div, class: 'item', style: "color: #db2828" do
+        concat content_tag(:i, '', class: 'remove circle icon red')
+        concat msg
       end
     }.join
     sentence = I18n.t("errors.messages.not_saved",

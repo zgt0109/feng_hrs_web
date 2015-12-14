@@ -1,5 +1,4 @@
 $(function(){
-
   // 切换验证码
   $('.yanzhengma .change').click(function(event){
     $('.rucaptcha-image').attr('src', '/rucaptcha');
@@ -7,9 +6,6 @@ $(function(){
   });
 
   // 获取验证码
-
-
-
   $('.btn-sms-signup').click(function(){
     data= {
       mobile: $('#enterprise_mobile').val(),

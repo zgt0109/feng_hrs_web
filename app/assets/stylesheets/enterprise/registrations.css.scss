@@ -1,13 +1,26 @@
+// 清除浮动
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
 $color_orange: #ffa800;
 
 body.enterprise-registrations{
   .ui.segment{
     background-image: image-url('applicant/signup-bg.jpg');
     background-repeat: no-repeat;
-    height: 626px;
-    margin: 0;
-    margin: 0;
-    .ui.button{
+    background-size: 100% 100%;
+    min-height: 626px;
+    margin-top: 0;
+    .ui.button:not(.btn-sms-signup){
       color: #ffffff;
       height: 50px;
       background-color: #9a9a9a;
@@ -39,6 +52,12 @@ body.enterprise-registrations{
     span {
       margin-right: 10px;
     }
+  }
+
+  .rucaptcha-image{
+    height: 55px;
+    margin: -10px 0;
+    width: 180px;
   }
 
 }
