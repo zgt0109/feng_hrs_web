@@ -1,0 +1,41 @@
+$color_orange: #ffa800;
+body.enterprise-sessions{
+  .ui.segment{
+    background-image: image-url('applicant/signin-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 626px;
+    margin-top: 0;
+    .ui.button{
+      color: #ffffff;
+      height: 50px;
+      background-color: #9a9a9a;
+      font-size: 24px;
+      border-radius: 0;
+      padding-top: 12px;
+      background-color: #ffa800;
+    }
+    .ui.card{
+      float: right;
+      margin-top: 160px;
+      margin-right: 101px;
+      width: 330px;
+    }
+    .ui.form{
+      padding: 30px 20px 38px 20px;
+    }
+    .forget-password {
+      text-align: right;
+      a {
+        color: #fbad5e;
+      }
+    }
+    .field article {
+      text-align: center;
+    }
+    .login-error-message {
+      color: #db2a2a;
+      margin-bottom: 0.8em;
+    }
+  }
+}
