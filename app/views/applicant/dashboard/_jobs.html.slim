@@ -15,13 +15,18 @@
             = image_tag('applicant/dollar.jpg')
             span.money = job.wage
             span 元/月
-          .require 操作工
+          .require
+            | 招聘
+            = render_common_gender_count job
+            | 人
+            = render_common_gender job
           .location
             i.location.arrow.icon
-            span 上海
+            span = job.company.name
+          .location
             i.wait.icon
-            span =job.created_at.strftime("%Y-%m-%d")
+            span = job.created_at.strftime("%Y-%m-%d")
           .advantages
-            .ui.yellow.label.basic.mini 做六休一
-            .ui.yellow.label.basic.mini 五险一金
-            .ui.yellow.label.basic.mini 年终奖
+            - job.advantages.each do |job|
+              .ui.yellow.label.basic.mini
+                = job.name
