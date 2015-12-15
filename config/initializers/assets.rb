@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(
   applicant/dashboard.js
   enterprise/registrations.css
   enterprise/registrations.js
+  enterprise/sessions.css
 )
 
 # layout
