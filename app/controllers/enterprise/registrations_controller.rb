@@ -4,9 +4,9 @@ before_filter :configure_sign_up_params, only: [:create]
   layout 'applicant'
   # GET /resource/sign_up
   def new
-  
+
     unless %w(email mobile).include? params[:type]
-     params[:type] = 'email'
+     params[:type] = 'mobile'
    end
    super
   end
@@ -38,9 +38,9 @@ before_filter :configure_sign_up_params, only: [:create]
 
   # POST /resource
   def create
-    params[:type] = 'email'
-    if params[:enterprise][:mobile_signup]
-      params[:type] = 'mobile'
+    params[:type] = 'mobile'
+    if params[:enterprise][:email_signup]
+      params[:type] = 'email'
     end
     super
   end

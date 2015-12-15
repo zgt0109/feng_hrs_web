@@ -1,7 +1,7 @@
-.ui.segment
+.ui.segment.clearfix
   .ui.container
     .ui.card
       .ui.buttons.fluid.large
-        .ui.button.active 手机注册
-        .ui.button 邮箱注册
-      = render "enterprise/registrations/email"
+        = link_to '手机注册', sign_up_path('mobile'), class: "ui button #{'active' if params[:type]=='mobile'}"
+        = link_to '邮箱注册', sign_up_path('email'), class: "ui button #{'active' if params[:type]=='email'}"
+      = render "enterprise/registrations/#{params[:type]}"

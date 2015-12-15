@@ -1,9 +1,9 @@
 = form_for(resource, as: resource_name,
     url: registration_path(resource_name), html: {class: 'ui form'}) do |f|
   = devise_error_messages!
-  = f.hidden_field :email_signup, value: 'true'
+  = f.hidden_field :mobile_signup, value: 'true'
   .field
-    = f.text_field :email, placeholder: "请输入邮箱地址"
+    = f.text_field :mobile, placeholder: "请输入手机号码"
   .field
     = f.text_field :name, placeholder: "请输入用户名"
   .field
@@ -11,6 +11,19 @@
   .field
     = f.password_field :password_confirmation,
         autocomplete: "off", placeholder: "确认密码"
+  .fields
+    .six.wide.field
+      = rucaptcha_input_tag(class: 'form-control _rucaptcha', placeholder: '请输入验证码')
+    .six.wide.field
+      = rucaptcha_image_tag(alt: 'Captcha')
+    .four.wide.field.yanzhengma
+      = link_to '换一张', 'javascript:;', class: 'change'
+  .fields
+    .six.wide.field
+      = f.text_field :captcha, placeholder: "短信验证码"
+    .field
+      = link_to '免费获取验证码', 'javascript:;', class: 'ui basic button btn-sms-signup'
+
   .field
     .ui.checkbox
       input type="checkbox" checked='true' class='agreement'
@@ -20,3 +33,6 @@
   .field.bottom
     span 已有帐号
     a 直接登录
+
+- content_for :javascript do
+    = javascript_include_tag 'sms.js'

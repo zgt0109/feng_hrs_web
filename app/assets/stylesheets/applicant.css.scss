@@ -17,6 +17,7 @@
     height: 100px;
     border-radius: 0;
     padding: 0px 25px;
+    margin: 0;
   }
 
   a.item:hover, a.item.active{
@@ -97,10 +98,10 @@
       &.active {
         border-bottom: 2px solid #fd922c;
       }
+      &:hover {
+        cursor: pointer;
+      }
     }
-
-
-
   }
 
   .details {
@@ -145,6 +146,7 @@
 }
 
 .cooperation-footer {
+  clear: both;
   text-align: center;
   padding: 1.6em 0;
   background-color: #feaf00;
@@ -155,7 +157,7 @@
 
 // 统计信息
 .ui.segments.statistics-info {
-  margin-bottom: 5em;
+  margin: 5em 0;
 
   .ui.segment {
     width: 33.33%;
