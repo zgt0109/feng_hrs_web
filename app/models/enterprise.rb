@@ -85,6 +85,7 @@ class Enterprise < ActiveRecord::Base
 
   def confirmation_required?
     false if self.mobile_signup
+    true if self.email_signup
   end
 
   def validate_sms_verification_code!
