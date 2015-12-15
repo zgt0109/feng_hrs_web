@@ -1,2 +1,0 @@
-.ui.segment
-  = render "enterprise/registrations/email"
