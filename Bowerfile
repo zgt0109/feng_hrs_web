@@ -1,6 +1,8 @@
 asset 'semantic-ui', '2.1.6'
 asset 'moment', '2.10.6'
 asset 'simditor', '2.3.5'
+asset 'plupload', '2.1.8'
+asset 'qiniu', 'git@github.com:qiniu/js-sdk.git'
 
 # old
 asset 'font-awesome', '4.5.0'

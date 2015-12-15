@@ -4,6 +4,8 @@
     "semantic-ui": "2.1.6",
     "moment": "2.10.6",
     "simditor": "2.3.5",
+    "plupload": "2.1.8",
+    "qiniu": "git@github.com:qiniu/js-sdk.git",
     "font-awesome": "4.5.0",
     "ionicons": "2.0.0",
     "bootstrap": "3.3.6",
