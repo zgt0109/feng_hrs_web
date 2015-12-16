@@ -197,7 +197,7 @@ GEM
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.0.0)
     method_source (0.8.2)
-    mime-types (2.99)
+    mime-types (2.4.3)
     mini_portile2 (2.0.0.rc2)
     minitest (5.8.3)
     multi_json (1.11.2)
@@ -205,6 +205,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
+    netrc (0.11.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
     notiffany (0.0.8)
@@ -222,6 +223,11 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (2.15.3)
+    qiniu (6.5.1)
+      json (~> 1.8)
+      mime-types (~> 2.4.3)
+      rest-client (~> 1.7.3)
+      ruby-hmac (~> 0.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -281,6 +287,9 @@ GEM
     require_all (1.3.3)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rest-client (1.7.3)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -303,6 +312,7 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     ruby-graphviz (1.2.2)
+    ruby-hmac (0.4.0)
     ruby-progressbar (1.7.5)
     ruby2ruby (2.2.0)
       ruby_parser (~> 3.1)
@@ -407,10 +417,12 @@ DEPENDENCIES
   kaminari
   letter_opener
   meta_request
+  mime-types (~> 2.4)
   paranoia
   pg (~> 0.15)
   pry-rails
   puma
+  qiniu (~> 6.5)
   quiet_assets
   rack-livereload
   rails (= 4.2.5)
