@@ -1,8 +1,4 @@
-
-.col-200-l
-  .help-slider
-    h3.title 帮助中心
-    dl
-      - @titles.each do |item|
-        dd
-          = link_to item.name, "/pages/#{item.slug}"
+.ui.menu.vertical
+  = link_to '帮助中心', "#", class: 'item header'
+  - @titles.each do |item|
+    = link_to item.name, "/pages/#{item.slug}", class: 'item'

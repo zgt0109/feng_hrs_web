@@ -1,9 +1,7 @@
-.row
-  .container.help-center
+.ui.grid.container
+  .four.wide.column
     = render 'applicant/pages/side'
 
-    .col-780-r
-      .help-content
-        .title
-          h3 = @page.name
-        = sanitize @page.content
+  .twelve.wide.column
+    .ui.segment
+      = sanitize @page.content
