@@ -1,4 +1,4 @@
 .ui.menu.vertical
-  = link_to '帮助中心', "#", class: 'item header'
+  = link_to '帮助中心', "/pages", class: 'item header'
   - @titles.each do |item|
     = link_to item.name, "/pages/#{item.slug}", class: 'item'
