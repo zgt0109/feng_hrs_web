@@ -1,0 +1,25 @@
+.ui.attached.message
+  .header
+    | 账户资产
+br
+= link_to '充值', new_song_cash_in_path, class: 'ui basic green button'
+= link_to '提现', new_song_cash_out_path, class: 'ui basic red button'
+
+.ui.grid
+  .three.column.row
+    .column
+      br
+      table.ui.basic.table
+        thead
+          tr
+            th 账户资金
+            th = @cash_ins.try(:amount)
+        tbody
+          tr
+            td 可用余额
+            td 0.00 元
+          tr
+            td 冻结资金
+            td 0.00 元
+    .column
+    .column

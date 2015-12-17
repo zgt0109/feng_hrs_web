@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   # 企业用户业务
   concern :enterpriseable do
     get 'profile' => 'profiles#index'
+    get 'finance' => 'finances#index'
     resource :debit, only: [:new, :create, :show]
     resources :cash_ins, only: [:new, :create, :index]
     resources :cash_outs, only: [:new, :create, :index]

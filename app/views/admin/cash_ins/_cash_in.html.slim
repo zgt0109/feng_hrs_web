@@ -1,5 +1,5 @@
 = content_tag_for(:tr, cash_in) do | data |
-  td = render_scaffold_checkbox_one
+  td = render_scaffold_checkbox_one(data.id)
   td = data.id
   td = cash_in.serial_inner
   td = link_to data.enterprise.name, render_common_enterprise_name(data), class: 'ui green label'

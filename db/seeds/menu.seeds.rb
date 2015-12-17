@@ -6,7 +6,7 @@ puts "创建导航菜单......."
   {name: '工友登记', uri: '/song/labors/new', icon: 'user'},
   {name: '送人管理', uri: '/song/appointments', icon: 'cloud upload'},
   {name: '招聘信息', uri: '/song/jobs', icon: 'write square'},
-  {name: '财务管理', uri: '#', icon: 'money'},
+  {name: '财务管理', uri: '/song/finance', icon: 'money'},
   {name: '我的评价', uri: '#', icon: 'comments'}
 
 ].each do |node|
@@ -19,7 +19,7 @@ end
   {name: '招聘职位', uri: '/zhao/jobs', icon: 'send'},
   {name: '我的工友', uri: '/zhao/labors/appointed_labors', icon: 'users'},
   {name: '工友管理', uri: '#', icon: 'users'},
-  {name: '财务管理', uri: '#', icon: 'money'},
+  {name: '财务管理', uri: '/zhao/finance', icon: 'money'},
   {name: '我的评价', uri: '#', icon: 'comments'}
 ].each do |node|
   Menu.create(node.merge(domain: 'zhao'))
