@@ -2,11 +2,12 @@
   .sixteen.wide.column
     = render_scaffold_checkbox_selectall
     = render_scaffold_checkbox_delete
+    = render_scaffold_new_cash_in_path
 
     table.ui.very.basic.selectable.table
       thead
         tr
-          /th
+          th
           th = CashIn.human_attribute_name(:id)
           th = CashIn.human_attribute_name(:serial_inner)
           th = CashIn.human_attribute_name(:enterprisename)
