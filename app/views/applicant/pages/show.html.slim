@@ -3,5 +3,13 @@
     = render 'applicant/pages/side'
 
   .twelve.wide.column
+    .ui.breadcrumb
+      i.icon.home
+      a href="/" style="color:#333333" 首页
+      i.right.chevron.icon.divider
+      a href="/pages" style="color:#333333" 帮助中心
+      i.right.chevron.icon.divider
+      .active.section
+      = @page.name
     .ui.segment
       = sanitize @page.content

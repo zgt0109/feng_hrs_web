@@ -3,4 +3,11 @@
     = render 'applicant/pages/side'
 
   .twelve.wide.column
-    .ui.segment 测试
+    .ui.breadcrumb
+      i.icon.home
+      a href="/" style="color:#333333" 首页
+      i.right.chevron.icon.divider
+      a href="/pages" style="color:#333333" 帮助中心
+    .ui.segment
+      - @titles.each do |item|
+        = link_to item.name, "/pages/#{item.slug}", class: 'ui tiny basic button'

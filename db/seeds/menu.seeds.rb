@@ -38,6 +38,7 @@ end
 end
 
 [
+  {name: '菜单管理', uri: '/admin/menus', icon: 'content'},
   {name: '企业用户', uri: '/admin/enterprises', icon: 'rocket'},
   {name: '工友管理', uri: '/admin/labors', icon: 'users'},
   {name: '联系人管理', uri: '/admin/contacts', icon: 'diamond'},
