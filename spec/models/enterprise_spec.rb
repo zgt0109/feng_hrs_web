@@ -25,6 +25,7 @@
 #  name                   :string
 #  mobile                 :string
 #  balance                :decimal(10, 2)
+#  state                  :string
 #
 # Indexes
 #
@@ -44,6 +45,7 @@ RSpec.describe Enterprise, type: :model do
   it { should have_many(:zhao) }
   it { should have_many(:song) }
   it { should have_many(:zhao_labors) }
+  it { should have_one(:verification_zhao) }
   it { should validate_uniqueness_of(:name) }
 
   it "邮箱和手机的验证" do

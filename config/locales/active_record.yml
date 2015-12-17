@@ -12,6 +12,7 @@ zh-CN:
       cash_in: 充值
       cash_out: 提现
       menu: 菜单
+      verification_zhao: 验证
     attributes:
       common: &common
         province: 省份

@@ -25,6 +25,7 @@
 #  name                   :string
 #  mobile                 :string
 #  balance                :decimal(10, 2)
+#  state                  :string
 #
 # Indexes
 #

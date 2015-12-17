@@ -1,0 +1,70 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name(:id)
+    .four.wide.column
+      = @verification_zhao.id
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('image_url')
+    .four.wide.column
+      = @verification_zhao.image_url
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('name')
+    .four.wide.column
+      = @verification_zhao.name
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('short_name')
+    .four.wide.column
+      = @verification_zhao.short_name
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('nature')
+    .four.wide.column
+      = @verification_zhao.nature
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('industry')
+    .four.wide.column
+      = @verification_zhao.industry
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('scale')
+    .four.wide.column
+      = @verification_zhao.scale
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('mobile')
+    .four.wide.column
+      = @verification_zhao.mobile
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('website')
+    .four.wide.column
+      = @verification_zhao.website
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('location')
+    .four.wide.column
+      = @verification_zhao.location
+  .row
+    .three.wide.column
+      = VerificationZhao.human_attribute_name('introduction')
+    .four.wide.column
+      = @verification_zhao.introduction
+  .row
+    .three.wide.column
+      = t("action.created_at")
+    .four.wide.column
+      = @verification_zhao.created_at
+  .row
+    .three.wide.column
+      = t("action.updated_at")
+    .four.wide.column
+      = @verification_zhao.updated_at
+
+  .row
+    = render_scaffold_edit_verification_zhao_path_link(@verification_zhao)
+    = render_scaffold_verification_zhaos_path

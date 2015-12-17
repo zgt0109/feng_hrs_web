@@ -29,3 +29,14 @@ zh-CN:
         zhao: '招人方'
         song: '送人方'
         hr: '企业HR'
+      nature:
+        state: 国有企业
+        collective: 集体所有制企业
+        joint: 联营企业
+        foreign: 三资企业
+        private: 私营企业
+        others: 其他企业
+      scale:
+        l50: 少于50人
+        l100: 少于100人
+        m100: 100人以上

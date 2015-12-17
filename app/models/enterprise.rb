@@ -25,6 +25,7 @@
 #  name                   :string
 #  mobile                 :string
 #  balance                :decimal(10, 2)
+#  state                  :string
 #
 # Indexes
 #
@@ -35,6 +36,7 @@
 #
 
 class Enterprise < ActiveRecord::Base
+  include AASM
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
 
@@ -64,9 +66,36 @@ class Enterprise < ActiveRecord::Base
   has_many :cash_outs
   has_many :zhao, class_name: 'Appointment', foreign_key: :zhao_id
   has_many :song, class_name: 'Appointment', foreign_key: :song_id
+  has_one  :verification_zhao
 
   has_many :zhao_labors, through: :zhao, source: :labor
 
+  aasm column: :state do
+    state :neither, initial: true
+    state :verifying
+    state :verified
+    state :refused
+
+    event :apply do
+      transitions from: :neither, to: :verifying
+    end
+
+    event :pass do
+      transitions from: :verifying, to: :verified
+    end
+
+    event :refuse do
+      transitions from: :verifying, to: :refused
+    end
+
+    event :reapply do
+      transitions from: [:verifying, :refused, :verified], to: :verifying
+    end
+
+    event :cancel do
+      transitions from: [:verifying, :verified, :refused], to: :neither
+    end
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

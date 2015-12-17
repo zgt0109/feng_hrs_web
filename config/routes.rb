@@ -56,6 +56,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # 验证
+  namespace :verify, module: 'enterprise' do
+    resources :verification_zhaos, only: [:new, :create, :edit, :update]
+  end
+
   # 企业HR
   namespace :hr, module: 'enterprise' do
     root 'dashboard#hr'

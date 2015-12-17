@@ -8,6 +8,10 @@
         .ui.dropdown.pointing.item
           span = current_enterprise.name
           .menu
+            - verification_zhao = current_enterprise.verification_zhao
+            = link_to verification_zhao ? edit_verify_verification_zhao_path(verification_zhao) : new_verify_verification_zhao_path, class: 'item' do
+              i.thumbs.outline.up.icon
+              = verification_zhao ? '我的资料' : '申请验证'
             = link_to destroy_enterprise_session_path, class: 'item', method: :delete do
               i.sign.out.icon
               | 退出

@@ -19,6 +19,7 @@ Rails.application.config.assets.precompile += %w(
   enterprise/registrations.css
   enterprise/registrations.js
   enterprise/sessions.css
+  enterprise/image_upload.js
 )
 
 # layout
