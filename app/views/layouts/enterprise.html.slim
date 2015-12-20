@@ -30,3 +30,24 @@ javascript:
   map.enableScrollWheelZoom(true);//启用地图滚轮放大缩小，默认启用
   map.enableDoubleClickZoom(true);//启用鼠标双击放大，默认启用(可不写)
   map.enableKeyboard(true);//启用键盘上下左右键移动地图
+
+  //左上角，百度地图比例尺
+  //var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+	//var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+	//map.addControl(top_left_control);
+	//map.addControl(top_left_navigation);
+	//map.addControl(top_right_navigation);
+
+  //城市之间的切换
+  var size = new BMap.Size(10, 20);
+  map.addControl(new BMap.CityListControl({
+      anchor: BMAP_ANCHOR_TOP_LEFT,
+      offset: size
+  }));
+
+  function theLocation(){
+		var city = document.getElementById("cityName").value;
+		if(city != ""){
+			map.centerAndZoom(city,11);      // 用城市名设置地图中心点
+		}
+	}
