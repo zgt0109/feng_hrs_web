@@ -1,9 +1,12 @@
 class Enterprise::VerificationZhaosController < ApplicationController
-  before_action :set_verification_zhao, only: [:edit, :update]
+  before_action :set_verification_zhao, only: [:edit, :update, :pass, :refuse]
 
   respond_to :html
 
   def new
+    if current_enterprise.verification_zhao
+      return redirect_to edit_zhao_verification_zhao_path(current_enterprise.verification_zhao)
+    end
     @verification_zhao = VerificationZhao.new
     respond_with(@verification_zhao)
   end
@@ -13,19 +16,25 @@ class Enterprise::VerificationZhaosController < ApplicationController
 
   def create
     @verification_zhao = current_enterprise.build_verification_zhao(verification_zhao_params)
-    VerificationZhao.transaction do
-      @verification_zhao.save
-      current_enterprise.apply!
-    end
+    @verification_zhao.save
     respond_with(@verification_zhao, location: root_path)
   end
 
   def update
-    VerificationZhao.transaction do
-      @verification_zhao.update(verification_zhao_params)
-      current_enterprise.reapply!
-    end
+    @verification_zhao.update(verification_zhao_params)
     respond_with(@verification_zhao, location: root_path)
+  end
+
+  def pass
+    @verification_zhao.verify_status.pass!
+    flash[:success] = '通过审核'
+    redirect_to :back
+  end
+
+  def refuse
+    @verification_zhao.verify_status.refuse!
+    flash[:success] = '拒绝通过'
+    redirect_to :back
   end
 
   private

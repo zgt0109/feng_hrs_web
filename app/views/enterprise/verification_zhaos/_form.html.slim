@@ -1,7 +1,7 @@
 - if verification_zhao.errors.any?
   = render partial: 'shared/errors', locals: { model: verification_zhao }
 
-= form_for [:verify, verification_zhao], remote: remote, html: { class: 'ui form' } do |f|
+= form_for [:zhao, verification_zhao], remote: remote, html: { class: 'ui form' } do |f|
   .field
     .ui.special.cards
       .card

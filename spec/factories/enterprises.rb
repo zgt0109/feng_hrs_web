@@ -25,7 +25,7 @@
 #  name                   :string
 #  mobile                 :string
 #  balance                :decimal(10, 2)
-#  state                  :string
+#  role                   :string
 #
 # Indexes
 #
@@ -38,6 +38,7 @@
 FactoryGirl.define do
   factory :enterprise do
     # sequence(:email) {|n| "test_#{n}@91tmb.com" }
+    email 'xxx@mail.com'
     name '测试账户'
     password 'password'
     password_confirmation 'password'

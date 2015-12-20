@@ -26,8 +26,10 @@
 #
 
 class VerificationZhao < ActiveRecord::Base
+  include SharedMethods
   extend Enumerize
   belongs_to :enterprise
+  has_one :verify_status, as: :verification
 
   validates_presence_of :name, :nature, :industry, :scale, :mobile, :image_url,
                         :province, :city, :district, :address, :introduction
@@ -38,4 +40,7 @@ class VerificationZhao < ActiveRecord::Base
   def license_url
     'http://' + ENV['QINIU_BUCKET_DOMAIN'] + '/' + (self.image_url || 'user_default.jpg') + '-license'
   end
+
+  after_create :create_verify_status
+  after_update :edit_verify_status
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217060241) do
+ActiveRecord::Schema.define(version: 20151218084411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20151217060241) do
     t.string   "name"
     t.string   "mobile"
     t.decimal  "balance",                precision: 10, scale: 2
-    t.string   "state"
+    t.string   "role"
   end
 
   add_index "enterprises", ["confirmation_token"], name: "index_enterprises_on_confirmation_token", unique: true, using: :btree
@@ -396,6 +396,18 @@ ActiveRecord::Schema.define(version: 20151217060241) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "verification_agents", force: :cascade do |t|
+    t.integer  "enterprise_id"
+    t.string   "front"
+    t.string   "back"
+    t.string   "name"
+    t.string   "idcard"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "verification_agents", ["enterprise_id"], name: "index_verification_agents_on_enterprise_id", using: :btree
+
   create_table "verification_zhaos", force: :cascade do |t|
     t.integer  "enterprise_id"
     t.string   "image_url"
@@ -417,6 +429,14 @@ ActiveRecord::Schema.define(version: 20151217060241) do
 
   add_index "verification_zhaos", ["enterprise_id"], name: "index_verification_zhaos_on_enterprise_id", using: :btree
 
+  create_table "verify_statuses", force: :cascade do |t|
+    t.integer  "verification_id"
+    t.string   "verification_type"
+    t.string   "status"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   add_foreign_key "appointments", "jobs"
   add_foreign_key "appointments", "labors"
   add_foreign_key "cash_ins", "enterprises"
@@ -435,5 +455,6 @@ ActiveRecord::Schema.define(version: 20151217060241) do
   add_foreign_key "jobs", "enterprises"
   add_foreign_key "labor_intentions", "labors"
   add_foreign_key "labors", "enterprises"
+  add_foreign_key "verification_agents", "enterprises"
   add_foreign_key "verification_zhaos", "enterprises"
 end

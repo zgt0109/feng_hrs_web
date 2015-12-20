@@ -29,4 +29,5 @@ require 'rails_helper'
 
 RSpec.describe VerificationZhao, type: :model do
   it { should belong_to(:enterprise) }
+  it { should have_one(:verify_status) }
 end
