@@ -39,12 +39,7 @@ Rails.application.routes.draw do
     resources :labors, only: :index do
       get :appointed_labors, on: :collection
     end
-    resources :verification_zhaos, except: [:index, :destroy, :show] do
-      member do
-        get :pass
-        get :refuse
-      end
-    end
+    resources :verification_zhaos, except: [:index, :destroy, :show]
     get '/transition/:id', to: 'appointments#state_transition', as: :transition
   end
 
@@ -60,12 +55,7 @@ Rails.application.routes.draw do
         get :cancel
       end
     end
-    resources :verification_agents, except: [:index, :destroy, :show] do
-      member do
-        get :pass
-        get :refuse
-      end
-    end
+    resources :verification_agents, except: [:index, :destroy, :show]
   end
 
   # 企业HR
@@ -89,6 +79,12 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index, :show]
     resources :pages
     resources :menus
+    resources :verifications, only: [:show] do
+      member do
+        get :pass
+        get :refuse
+      end
+    end
     resources :cash_ins do
       member do
         get :confirm

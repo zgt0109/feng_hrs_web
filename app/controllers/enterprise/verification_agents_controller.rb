@@ -1,5 +1,5 @@
 class Enterprise::VerificationAgentsController < ApplicationController
-  before_action :set_verification_agent, only: [:edit, :updat, :pass, :refuse]
+  before_action :set_verification_agent, only: [:edit, :update, :pass, :refuse]
 
   respond_to :html
 
@@ -23,18 +23,6 @@ class Enterprise::VerificationAgentsController < ApplicationController
   def update
     @verification_agent.update(verification_agent_params)
     respond_with(@verification_agent, location: root_path)
-  end
-
-  def pass
-    @verification_agent.verify_status.pass!
-    flash[:success] = '通过审核'
-    redirect_to :back
-  end
-
-  def refuse
-    @verification_agent.verify_status.refuse!
-    flash[:success] = '拒绝通过'
-    redirect_to :back
   end
 
   private

@@ -4,11 +4,11 @@
 #
 #  id            :integer          not null, primary key
 #  enterprise_id :integer
+#  industry_id   :integer
 #  image_url     :string
 #  name          :string
 #  short_name    :string
 #  nature        :string
-#  industry      :string
 #  scale         :string
 #  mobile        :string
 #  website       :string
@@ -23,15 +23,17 @@
 # Indexes
 #
 #  index_verification_zhaos_on_enterprise_id  (enterprise_id)
+#  index_verification_zhaos_on_industry_id    (industry_id)
 #
 
 class VerificationZhao < ActiveRecord::Base
   include SharedMethods
   extend Enumerize
   belongs_to :enterprise
+  belongs_to :industry
   has_one :verify_status, as: :verification
 
-  validates_presence_of :name, :nature, :industry, :scale, :mobile, :image_url,
+  validates_presence_of :name, :nature, :industry_id, :scale, :mobile, :image_url,
                         :province, :city, :district, :address, :introduction
 
   enumerize :nature, in: ['state', 'collective', 'joint', 'foreign', 'private', 'others']

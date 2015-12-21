@@ -22,19 +22,19 @@
     .three.wide.column
       span 公司性质
     .four.wide.column
-      = @zhao_verification.nature
+      = @zhao_verification.nature_text
 
   .row
     .three.wide.column
       span 所属行业
     .four.wide.column
-      = @zhao_verification.industry
+      = @zhao_verification.industry.name
 
   .row
     .three.wide.column
       span 公司规模
     .four.wide.column
-      = @zhao_verification.scale
+      = @zhao_verification.scale_text
 
   .row
     .three.wide.column
@@ -65,9 +65,10 @@
     .three.wide.column
       span 当前状态
     .four.wide.column
-      = @zhao_verification.verify_status.try(:status)
+      = @verify_status.aasm.human_state
 
   .row
-    = link_to '通过', pass_zhao_verification_zhao_path, class: 'ui button positive'
-    = link_to '拒绝', refuse_zhao_verification_zhao_path, class: 'ui button red'
+    - if @verify_status.verifying?
+      = link_to '通过', pass_admin_verification_path(@verify_status), class: 'ui button positive'
+      = link_to '拒绝', refuse_admin_verification_path(@verify_status), class: 'ui button red'
     = link_to '返回', admin_enterprises_path, class: 'ui button blue'

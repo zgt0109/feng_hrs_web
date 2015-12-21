@@ -10,12 +10,19 @@ module VerifyHelper
 
   # 验证信息
   def render_admin_verify_status(data)
+    zhao = data.zhao_status.try(:status)
+    agent = data.agent_status.try(:status)
     content_tag :span do
-      if zhao=data.zhao_status.try(:status) && agent=data.agent_status.try(:status)
-        concat content_tag :a, zhao, href: zhao_verification_admin_enterprise_path(data), class: 'ui yellow label'
-        concat content_tag :a, agent, href: agent_verification_admin_enterprise_path(data), class: 'ui yellow label'
-      else
-        content_tag :a, '没有申请', class: 'ui label grey'
+      if zhao then
+        concat content_tag :a, data.zhao_status.aasm.human_state,
+        href: zhao_verification_admin_enterprise_path(data), class: 'ui yellow label'
+      end
+      if agent then
+        concat content_tag :a, data.agent_status.aasm.human_state,
+        href: agent_verification_admin_enterprise_path(data), class: 'ui yellow label'
+      end
+      unless zhao || agent
+        content_tag :a, '没有申请', href: 'javascript:;', class: 'ui label grey'
       end
     end
   end

@@ -13,11 +13,13 @@ class Admin::EnterprisesController < ApplicationController
 
   def show_zhao_verification
     @zhao_verification = @enterprise.verification_zhao
+    @verify_status = @zhao_verification.verify_status
     render 'show_zhao_verification'
   end
 
   def show_agent_verification
     @agent_verification = @enterprise.verification_agent
+    @verify_status = @agent_verification.verify_status
     render 'show_agent_verification'
   end
 

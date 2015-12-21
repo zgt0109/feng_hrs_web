@@ -44,7 +44,7 @@ class Enterprise::VerificationZhaosController < ApplicationController
 
     def verification_zhao_params
       params.require(:verification_zhao).permit(:image_url, :name, :short_name,
-                     :nature, :industry, :scale, :mobile, :website, :province,
+                     :nature, :industry_id, :scale, :mobile, :website, :province,
                      :city, :district, :address, :introduction)
     end
 end

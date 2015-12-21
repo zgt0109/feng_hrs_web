@@ -12,7 +12,6 @@ zh-CN:
       cash_in: 充值
       cash_out: 提现
       menu: 菜单
-      verification_zhao: 验证
     attributes:
       common: &common
         province: 省份
@@ -124,3 +123,8 @@ zh-CN:
         domain: 所属方
         uri: 路径
         icon: 图标
+      verify_status:
+        status:
+          verifying: 待验证
+          verified: 已通过
+          refused: 未通过

@@ -27,9 +27,10 @@
     .three.wide.column
       span 当前状态
     .four.wide.column
-      = @agent_verification.verify_status.status
+      = @agent_verification.verify_status.aasm.human_state
 
   .row
-    = link_to '通过', pass_song_verification_agent_path, class: 'ui button positive'
-    = link_to '拒绝', refuse_song_verification_agent_path, class: 'ui button red'
+    - if @verify_status.verifying?
+      = link_to '通过', pass_admin_verification_path(@agent_verification.verify_status), class: 'ui button positive'
+      = link_to '拒绝', refuse_admin_verification_path(@agent_verification.verify_status), class: 'ui button red'
     = link_to '返回', admin_enterprises_path, class: 'ui button blue'

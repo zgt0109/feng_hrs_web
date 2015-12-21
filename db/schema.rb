@@ -410,11 +410,11 @@ ActiveRecord::Schema.define(version: 20151218084411) do
 
   create_table "verification_zhaos", force: :cascade do |t|
     t.integer  "enterprise_id"
+    t.integer  "industry_id"
     t.string   "image_url"
     t.string   "name"
     t.string   "short_name"
     t.string   "nature"
-    t.string   "industry"
     t.string   "scale"
     t.string   "mobile"
     t.string   "website"
@@ -428,6 +428,7 @@ ActiveRecord::Schema.define(version: 20151218084411) do
   end
 
   add_index "verification_zhaos", ["enterprise_id"], name: "index_verification_zhaos_on_enterprise_id", using: :btree
+  add_index "verification_zhaos", ["industry_id"], name: "index_verification_zhaos_on_industry_id", using: :btree
 
   create_table "verify_statuses", force: :cascade do |t|
     t.integer  "verification_id"
@@ -457,4 +458,5 @@ ActiveRecord::Schema.define(version: 20151218084411) do
   add_foreign_key "labors", "enterprises"
   add_foreign_key "verification_agents", "enterprises"
   add_foreign_key "verification_zhaos", "enterprises"
+  add_foreign_key "verification_zhaos", "industries"
 end
