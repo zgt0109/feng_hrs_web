@@ -25,6 +25,7 @@
 #  name                   :string
 #  mobile                 :string
 #  balance                :decimal(10, 2)
+#  role                   :string
 #
 # Indexes
 #
@@ -35,6 +36,7 @@
 #
 
 class Enterprise < ActiveRecord::Base
+  include AASM
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
 
@@ -64,9 +66,12 @@ class Enterprise < ActiveRecord::Base
   has_many :cash_outs
   has_many :zhao, class_name: 'Appointment', foreign_key: :zhao_id
   has_many :song, class_name: 'Appointment', foreign_key: :song_id
+  has_one  :verification_zhao
+  has_one  :verification_agent
+  has_one  :zhao_status, through: :verification_zhao, source: :verify_status
+  has_one  :agent_status, through: :verification_agent, source: :verify_status
 
   has_many :zhao_labors, through: :zhao, source: :labor
-
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

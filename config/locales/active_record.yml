@@ -123,3 +123,8 @@ zh-CN:
         domain: 所属方
         uri: 路径
         icon: 图标
+      verify_status:
+        status:
+          verifying: 待验证
+          verified: 已通过
+          refused: 未通过

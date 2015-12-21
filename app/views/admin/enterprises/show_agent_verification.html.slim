@@ -1,0 +1,36 @@
+.ui.grid
+  .row
+    .three.wide.column
+      = image_tag (@agent_verification.image_url(:front))
+    .three.wide.column
+      = image_tag (@agent_verification.image_url(:back))
+
+  .row
+    .three.wide.column
+      span 编号
+    .four.wide.column
+      = @agent_verification.id
+
+  .row
+    .three.wide.column
+      span 姓名
+    .four.wide.column
+      = @agent_verification.name
+
+  .row
+    .three.wide.column
+      span 身份证号
+    .four.wide.column
+      = @agent_verification.idcard
+
+  .row
+    .three.wide.column
+      span 当前状态
+    .four.wide.column
+      = @agent_verification.verify_status.aasm.human_state
+
+  .row
+    - if @verify_status.verifying?
+      = link_to '通过', pass_admin_verification_path(@agent_verification.verify_status), class: 'ui button positive'
+      = link_to '拒绝', refuse_admin_verification_path(@agent_verification.verify_status), class: 'ui button red'
+    = link_to '返回', admin_enterprises_path, class: 'ui button blue'

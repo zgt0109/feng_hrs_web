@@ -1,0 +1,43 @@
+- if verification_agent.errors.any?
+  = render partial: 'shared/errors', locals: { model: verification_agent }
+
+= form_for [:song, verification_agent], remote: remote, html: { class: 'ui form' } do |f|
+  .field
+    .ui.special.cards
+      .card
+        .blurring.dimmable.image
+          .ui.dimmer
+            .content
+              .center
+                .ui.button#front_upload 更换正面照
+          = image_tag(f.object.image_url('front'))
+          = f.hidden_field :front
+      .card
+        .blurring.dimmable.image
+          .ui.dimmer
+            .content
+              .center
+                .ui.button#back_upload 更换背面照
+          = image_tag(f.object.image_url('back'))
+          = f.hidden_field :back
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :idcard
+    = f.text_field :idcard
+
+  .field
+    = f.submit class: "ui positive button"
+    = link_to '返回', zhao_root_path, class: 'ui button red'
+
+- content_for :javascript do
+  = javascript_include_tag 'enterprise/image_upload'
+
+  coffee:
+    $('.cards .image').dimmer({on: 'hover'});
+
+    new QiniuUploader
+      button: 'front_upload'
+    new QiniuUploader
+      button: 'back_upload'

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :labors, only: :index do
       get :appointed_labors, on: :collection
     end
+    resources :verification_zhaos, except: [:index, :destroy, :show]
     get '/transition/:id', to: 'appointments#state_transition', as: :transition
   end
 
@@ -55,6 +56,7 @@ Rails.application.routes.draw do
         get :cancel
       end
     end
+    resources :verification_agents, except: [:index, :destroy, :show]
   end
 
   # 企业HR
@@ -66,13 +68,24 @@ Rails.application.routes.draw do
   # 运营管理
   namespace :admin do
     root 'dashboard#index'
-    resources :enterprises, only: [:index, :show]
+    resources :enterprises, only: [:index, :show] do
+      member do
+        get :zhao_verification, action: :show_zhao_verification
+        get :agent_verification, action: :show_agent_verification
+      end
+    end
     resources :labors, only: [:index, :show]
     resources :contacts, only: [:index, :show]
     resources :companies, only: [:index, :show]
     resources :jobs, only: [:index, :show]
     resources :pages
     resources :menus
+    resources :verifications, only: [:show] do
+      member do
+        get :pass
+        get :refuse
+      end
+    end
     resources :cash_ins do
       member do
         get :confirm

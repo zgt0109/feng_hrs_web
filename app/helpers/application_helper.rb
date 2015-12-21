@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def get_biz_domain
-    request.path.slice(/zhao|song|hr|admin/)
+    request.path.slice(/zhao|song|hr|admin/) || 'zhao'
   end
 
   def is_active_controller(controller_name)
