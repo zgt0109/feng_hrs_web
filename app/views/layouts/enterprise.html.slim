@@ -16,5 +16,38 @@ html
     = render 'shared/modal'
     = javascript_include_tag 'application'
     = javascript_include_tag 'enterprise'
+    = javascript_include_tag 'http://api.map.baidu.com/api?v=2.0&ak=489cEGem8g8LA9m29DEQGldr'
     = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js")
     = yield :javascript
+
+javascript:
+  // 百度地图API功能
+  var map = new BMap.Map("allmap");    // 创建Map实例
+  map.centerAndZoom(new BMap.Point(121.48, 31.22), 12);  // 初始化地图,设置中心点坐标和地图级别
+  map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+  map.setCurrentCity("上海");          // 设置地图显示的城市 此项是必须设置的
+  map.enableDragging(true);//启用地图拖拽事件，默认启用(可不写)
+  map.enableScrollWheelZoom(true);//启用地图滚轮放大缩小，默认启用
+  map.enableDoubleClickZoom(true);//启用鼠标双击放大，默认启用(可不写)
+  map.enableKeyboard(true);//启用键盘上下左右键移动地图
+
+  //左上角，百度地图比例尺
+  //var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+	//var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+	//map.addControl(top_left_control);
+	//map.addControl(top_left_navigation);
+	//map.addControl(top_right_navigation);
+
+  //城市之间的切换
+  var size = new BMap.Size(10, 20);
+  map.addControl(new BMap.CityListControl({
+      anchor: BMAP_ANCHOR_TOP_LEFT,
+      offset: size
+  }));
+
+  function theLocation(){
+		var city = document.getElementById("cityName").value;
+		if(city != ""){
+			map.centerAndZoom(city,11);      // 用城市名设置地图中心点
+		}
+	}
