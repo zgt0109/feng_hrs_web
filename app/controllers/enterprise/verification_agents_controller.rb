@@ -7,7 +7,7 @@ class Enterprise::VerificationAgentsController < ApplicationController
     if agent=current_enterprise.verification_agent then
       return redirect_to edit_song_verification_agent_path(agent)
     end
-    @verification_agent = VerificationAgent.new
+    @verification_agent = current_enterprise.build_verification_agent
     respond_with(@verification_agent)
   end
 

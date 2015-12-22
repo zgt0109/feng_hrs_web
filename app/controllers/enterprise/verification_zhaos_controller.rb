@@ -7,7 +7,7 @@ class Enterprise::VerificationZhaosController < ApplicationController
     if current_enterprise.verification_zhao
       return redirect_to edit_zhao_verification_zhao_path(current_enterprise.verification_zhao)
     end
-    @verification_zhao = VerificationZhao.new
+    @verification_zhao = current_enterprise.build_verification_zhao
     respond_with(@verification_zhao)
   end
 

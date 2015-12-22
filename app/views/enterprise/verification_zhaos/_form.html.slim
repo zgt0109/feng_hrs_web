@@ -10,7 +10,7 @@
             .content
               .center
                 .ui.button#btn_upload 更换营业执照
-          = image_tag(f.object.license_url, class: 'ui medium image')
+          = image_tag(current_enterprise.verification_zhao.license_url, class: 'ui medium image')
           = f.hidden_field :image_url
 
   .field

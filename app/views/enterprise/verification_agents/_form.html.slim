@@ -10,7 +10,8 @@
             .content
               .center
                 .ui.button#front_upload 更换正面照
-          = image_tag(f.object.image_url('front'))
+          = image_tag current_enterprise.verification_agent.image_url('front')
+
           = f.hidden_field :front
       .card
         .blurring.dimmable.image
@@ -18,7 +19,7 @@
             .content
               .center
                 .ui.button#back_upload 更换背面照
-          = image_tag(f.object.image_url('back'))
+          = image_tag current_enterprise.verification_agent.image_url('back')
           = f.hidden_field :back
   .field
     = f.label :name
