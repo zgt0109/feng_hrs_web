@@ -1,17 +1,17 @@
 module ApplicantHelper
   # 累计发布岗位显示
   def render_common_job_count
-    Job.all.size + 500
+    Job.all.size + 20204
   end
 
   # 已入驻企业显示
   def render_common_company
-    Enterprise.all.size + 100
+    Enterprise.all.size + 10046
   end
 
   # 已入驻中介显示
   def render_common_zhongjie
-    Enterprise.all.size + 128
+    Enterprise.all.size + 8945
   end
 
   # 首页招聘信息中性别显示
