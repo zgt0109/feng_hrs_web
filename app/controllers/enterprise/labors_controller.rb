@@ -2,7 +2,7 @@ class Enterprise::LaborsController < ApplicationController
   before_action :set_labor, only: [:show, :edit, :update, :destroy]
   before_action :set_single_labor, only: :state_transition
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @job_id, @job_name = set_job_params
