@@ -149,3 +149,118 @@ ID | 根据ID修改工友
 参数 | 说明
 --------- | -----------
 ID | 根据ID删除工友
+
+
+
+# 联系人-Contact
+
+## 查看-index、show
+
+> 响应数据:
+
+```ruby
+@contacts
+```
+### 跳转到index页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/contacts`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+contacts | 所有的联系人
+
+
+
+> 根据ID响应的联系人JSON数据:
+
+```json
+{
+  "id":5,
+  "enterprise_id":1,
+  "name":"联系人5号",
+  "mobile":"13092618905",
+  "gender":"male",
+  "deleted_at":null,
+  "created_at":"2016-01-25T09:06:27.638Z",
+  "updated_at":"2016-01-25T09:06:27.638Z"
+}
+```
+### 跳转到show页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/contacts/<ID>`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID查看联系人
+
+## 新增-new、create
+
+### 跳转到new页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/contacts/new`
+
+### URL 参数
+
+参数 | 说明 | 新增是否必填
+--------- | ----------- | -----------
+name | 联系人名称 | 是
+mobile | 联系人电话 | 是
+gender | 联系人性别 | 是
+
+> create的POST JSON数据:
+
+```json
+{
+  "name":"联系人5号",
+  "mobile":"13092618905",
+  "gender":"male"
+}
+```
+### create时的HTTP 请求
+
+`POST http://localhost:3000/zhao/contacts`
+
+## 修改-edit、update
+> 响应数据:
+
+```ruby
+@contact
+```
+
+### 跳转到edit页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/contacts/<ID>/edit`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID修改联系人
+
+### update时的HTTP 请求
+
+`PUT http://localhost:3000/zhao/contacts/<ID>`
+
+`PATCH http://localhost:3000/zhao/contacts/<ID>`
+
+## 删除-destroy
+
+> 响应数据:
+
+```ruby
+@contact
+```
+
+### HTTP 请求
+
+`DELETE http://localhost:3000/zhao/contacts/<ID>`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID删除联系人

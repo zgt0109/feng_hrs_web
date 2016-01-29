@@ -1,7 +1,7 @@
 class Enterprise::ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :js
+  respond_to :html, :js, :json
 
   def index
     @contacts = current_enterprise.contacts.page params[:page]

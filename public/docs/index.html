@@ -247,6 +247,171 @@ Welcome to API!
 </tr>
 </tbody></table>
 
+<h1 id="contact">联系人-Contact</h1>
+
+<h2 id="index-show">查看-index、show</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@contacts</span>
+</code></pre>
+
+<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contacts</td>
+<td>所有的联系人</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>根据ID响应的联系人JSON数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"联系人5号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13092618905"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.638Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.638Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID查看联系人</td>
+</tr>
+</tbody></table>
+
+<h2 id="new-create">新增-new、create</h2>
+
+<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/new</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>新增是否必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>联系人名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>联系人电话</td>
+<td>是</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>联系人性别</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>create的POST JSON数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"联系人5号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13092618905"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="create-http">create时的HTTP 请求</h3>
+
+<p><code class="prettyprint">POST http://localhost:3000/zhao/contacts</code></p>
+
+<h2 id="edit-update">修改-edit、update</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@contact</span>
+</code></pre>
+
+<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/&lt;ID&gt;/edit</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID修改联系人</td>
+</tr>
+</tbody></table>
+
+<h3 id="update-http">update时的HTTP 请求</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+
+<h2 id="destroy">删除-destroy</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@contact</span>
+</code></pre>
+
+<h3 id="http">HTTP 请求</h3>
+
+<p><code class="prettyprint">DELETE http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID删除联系人</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
