@@ -248,6 +248,123 @@ ID | 根据ID修改联系人
 ID | 根据ID删除联系人
 
 
+
+# 代招企业-Company
+
+## 查看-index、show
+
+> 响应数据:
+
+```ruby
+@companies
+```
+### 跳转到index页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/companies`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+companies | 所有的代招企业
+
+
+
+> 根据ID响应的工友JSON数据:
+
+```json
+{
+  "id":5,
+  "enterprise_id":1,
+  "name":"淘帮忙_5",
+  "province":"310000",
+  "city":"310100",
+  "district":"310115",
+  "address":"上海外高桥保税区富特北路18号联安大厦5楼",
+  "introduction":"淘帮忙项目起源地,希望我们能离梦想更进一步",
+  "deleted_at":null,
+  "created_at":"2016-01-25T09:06:27.529Z",
+  "updated_at":"2016-01-25T09:06:27.529Z"
+}
+```
+### 跳转到show页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/companies/<ID>`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID查看代招企业
+
+## 新增-new、create
+> 响应数据:
+
+```ruby
+@company
+```
+
+### 跳转到new页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/companies/new`
+
+### URL 参数
+
+参数 | 说明 | 必填
+--------- | ----------- | -----------
+name | 代招企业名称 | 是
+province | 省 | 是
+city | 市 | 是
+district | 县 | 是
+address | 代招企业地址 | 是
+introduction | 代招企业公司简介 | 是
+
+### create时的HTTP 请求
+
+`POST http://localhost:3000/zhao/companies`
+
+## 修改-edit、update
+> 响应数据:
+
+```ruby
+@company
+```
+
+### 跳转到edit页面的HTTP 请求
+
+`GET http://localhost:3000/zhao/companies/<ID>/edit`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID修改代招企业
+
+### update时的HTTP 请求
+
+`PUT http://localhost:3000/zhao/companies/<ID>`
+
+`PATCH http://localhost:3000/zhao/companies/<ID>`
+
+## 删除-destroy
+
+> 响应数据:
+
+```ruby
+@company
+```
+
+### HTTP 请求
+
+`DELETE http://localhost:3000/zhao/companies/<ID>`
+
+### URL 参数
+
+参数 | 说明
+--------- | -----------
+ID | 根据ID删除代招企业
+
+
 # 招聘信息-Job
 
 ## 查看-index、show

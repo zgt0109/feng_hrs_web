@@ -1,7 +1,7 @@
 class Enterprise::CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :js
+  respond_to :html, :js, :json
 
   def index
     @companies = current_enterprise.companies.page params[:page]
