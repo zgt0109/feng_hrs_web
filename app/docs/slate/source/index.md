@@ -18,6 +18,52 @@ search: true
 Welcome to API!
 </aside>
 
+
+# 登录-Login
+
+## 新增-new、create
+
+> 登录数据:
+
+```json
+{
+  "account":"zhao@91tbm.com",
+  "password":"password"
+}
+```
+
+> Token数据:
+
+```json
+{
+  "id":1,
+  "email":"zhao@91tbm.com",
+  "created_at":"2015-12-21T06:42:11.899Z",
+  "updated_at":"2016-01-29T09:40:41.178Z",
+  "name":"招聘方",
+  "mobile":"18621248234",
+  "balance":null,
+  "role":null,
+  "authentication_token":"MzuiQLmNu2LCMDL7gaEa"
+}
+```
+
+### 跳转到Login页面的HTTP 请求
+
+`GET http://localhost:3000/enterprises/sign_in`
+
+### URL 参数
+
+参数 | 说明 | 必填
+--------- | ----------- | -----------
+enterprise[account] | 用户名 | 是
+enterprise[password] | 密码 | 是
+
+### 点击登录按钮 HTTP 请求
+
+`POST http://localhost:3000/enterprises/sign_in`
+
+
 # 工友-Labor
 
 ## 查看-index、show
@@ -57,7 +103,12 @@ labors | 所有的工友
   "state":"registed",
   "deleted_at":null,
   "created_at":"2016-01-27T07:33:29.683Z",
-  "updated_at":"2016-01-27T07:33:29.683Z"
+  "updated_at":"2016-01-27T07:33:29.683Z",
+  "province":"520000",
+  "city":"520300",
+  "district":"520321",
+  "salary": "level5",
+  "name": "厨师/厨师长"
 }
 ```
 ### 跳转到show页面的HTTP 请求
@@ -91,6 +142,16 @@ idcard | 身份证号码 | 是
 province | 现居住省 | 是
 city | 现居住市 | 是
 district | 现居住县 | 是
+
+### 期望 URL 参数
+
+参数 | 说明 | 必填
+--------- | ----------- | -----------
+province | 期望居住省 | 是
+city | 期望居住市 | 是
+district | 期望居住县 | 是
+salary | 期望薪资 | 是
+name | 期望职位 | 是
 
 ### create时的HTTP 请求
 
