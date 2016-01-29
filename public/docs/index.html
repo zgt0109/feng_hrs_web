@@ -121,6 +121,12 @@ Welcome to API!
 
 <h2 id="new-create">新增-new、create</h2>
 
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@labor</span>
+</code></pre>
+
 <h3 id="new-http">跳转到new页面的HTTP 请求</h3>
 
 <p><code class="prettyprint">GET http://localhost:3000/song/labors/new</code></p>
@@ -131,7 +137,7 @@ Welcome to API!
 <tr>
 <th>参数</th>
 <th>说明</th>
-<th>新增是否必填</th>
+<th>必填</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -165,25 +171,6 @@ Welcome to API!
 <td>是</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>create的POST JSON数据:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"邹国涛"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13554028363"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"idcard"</span><span class="p">:</span><span class="s2">"420923199001091817"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"birthday"</span><span class="p">:</span><span class="s2">"1990-01-09"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"web"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"province"</span><span class="p">:</span><span class="s2">"520000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"520300"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"520321"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"registed"</span><span class="p">,</span><span class="w">
-</span><span class="err">}</span><span class="w">
-</span></code></pre>
 
 <h3 id="create-http">create时的HTTP 请求</h3>
 
@@ -310,6 +297,12 @@ Welcome to API!
 
 <h2 id="new-create">新增-new、create</h2>
 
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@contact</span>
+</code></pre>
+
 <h3 id="new-http">跳转到new页面的HTTP 请求</h3>
 
 <p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/new</code></p>
@@ -320,7 +313,7 @@ Welcome to API!
 <tr>
 <th>参数</th>
 <th>说明</th>
-<th>新增是否必填</th>
+<th>必填</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -339,16 +332,6 @@ Welcome to API!
 <td>是</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>create的POST JSON数据:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"联系人5号"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13092618905"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <h3 id="create-http">create时的HTTP 请求</h3>
 
@@ -409,6 +392,368 @@ Welcome to API!
 <tr>
 <td>ID</td>
 <td>根据ID删除联系人</td>
+</tr>
+</tbody></table>
+
+<h1 id="job">招聘信息-Job</h1>
+
+<h2 id="index-show">查看-index、show</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@jobs</span>
+</code></pre>
+
+<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jobs</td>
+<td>所有的招聘职位</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>根据ID响应的招聘职位JSON数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contact_id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"测试职位5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wage"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="s2">"permonth"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"worktime"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"做五休二"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">5</span><span class="p">},</span><span class="w">
+  </span><span class="nt">"royalty"</span><span class="p">:</span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bonus"</span><span class="p">:</span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"cash"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wageday"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wageday_unit"</span><span class="p">:</span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"advance"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:28.313Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:28.313Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"details"</span><span class="p">:</span><span class="s2">"精通Ruby编程\r\n对前端技术了解颇深"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wish_male_count"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"advantages"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"五险一金"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">6</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"高额提成"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">6</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>招聘职位返费信息的JSON数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"amount"</span><span class="p">:</span><span class="mi">1500</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="s2">"permonth"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"check"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"remit"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"测试职位5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wage"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:10:28.313Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:16:30.313Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID查看招聘职位信息</td>
+</tr>
+</tbody></table>
+
+<h2 id="new-create">新增-new、create</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@job</span>
+</code></pre>
+
+<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/new</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>招聘职位名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>企业名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>contact_id</td>
+<td>联系人名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wage</td>
+<td>员工薪资</td>
+<td>是</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>工资的计费方式，如：元/月，元/时</td>
+<td>是</td>
+</tr>
+<tr>
+<td>worktime</td>
+<td>工作时长</td>
+<td>是</td>
+</tr>
+<tr>
+<td>royalty</td>
+<td>提成</td>
+<td>是</td>
+</tr>
+<tr>
+<td>bonus</td>
+<td>奖金</td>
+<td>是</td>
+</tr>
+<tr>
+<td>advantages</td>
+<td>职位亮点</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wish_male_count</td>
+<td>男员工人数</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wish_female_count</td>
+<td>女员工人数</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wish_unkown_count</td>
+<td>不论男女，共招多少人</td>
+<td>否</td>
+</tr>
+<tr>
+<td>details</td>
+<td>岗位具体要求</td>
+<td>是</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>工资的发放方式，如：银行卡，现金</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wageday</td>
+<td>工资发放日</td>
+<td>是</td>
+</tr>
+<tr>
+<td>wageday_unit</td>
+<td>工资如何发放，如：按月，按天</td>
+<td>是</td>
+</tr>
+<tr>
+<td>advance</td>
+<td>预支工资，比如：每月15号发工资，10号临时有事，需要预支工资</td>
+<td>否</td>
+</tr>
+</tbody></table>
+
+<h4 id="month">按月返利-Month</h4>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gender</td>
+<td>员工性别</td>
+<td>是</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>金额，按月返</td>
+<td>是</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>共返利几个月</td>
+<td>是</td>
+</tr>
+<tr>
+<td>check</td>
+<td>每个月几号对名单</td>
+<td>是</td>
+</tr>
+<tr>
+<td>remit</td>
+<td>几天之内到账</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h4 id="hour">按小时返利—Hour</h4>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gender</td>
+<td>员工性别</td>
+<td>是</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>金额，按时返</td>
+<td>是</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>共返利几个月</td>
+<td>是</td>
+</tr>
+<tr>
+<td>check</td>
+<td>每个月几号对名单</td>
+<td>是</td>
+</tr>
+<tr>
+<td>remit</td>
+<td>几天之内到账</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h4 id="day">按天返利—Day</h4>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gender</td>
+<td>员工性别</td>
+<td>是</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>入职多少天</td>
+<td>是</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>返多少钱</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h3 id="create-http">create时的HTTP 请求</h3>
+
+<p><code class="prettyprint">POST http://localhost:3000/zhao/jobs</code></p>
+
+<h2 id="edit-update">修改-edit、update</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@job</span>
+</code></pre>
+
+<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/&lt;ID&gt;/edit</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID修改招聘职位</td>
+</tr>
+</tbody></table>
+
+<h3 id="update-http">update时的HTTP 请求</h3>
+
+<p><code class="prettyprint">PUT http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+
+<h2 id="destroy">删除-destroy</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@job</span>
+</code></pre>
+
+<h3 id="http">HTTP 请求</h3>
+
+<p><code class="prettyprint">DELETE http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>根据ID删除招聘职位</td>
 </tr>
 </tbody></table>
 

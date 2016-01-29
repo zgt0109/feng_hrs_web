@@ -1,7 +1,7 @@
 class Enterprise::JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     if request.path.slice(/zhao|song/) == 'song'
