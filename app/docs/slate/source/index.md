@@ -547,3 +547,31 @@ ID | 根据ID修改招聘职位
 参数 | 说明
 --------- | -----------
 ID | 根据ID删除招聘职位
+
+
+
+# 绑定银行借记卡-Debit
+
+## 新增-new、create
+> 响应数据:
+
+```ruby
+@debit
+```
+
+### 跳转到new页面的HTTP 请求
+
+`GET http://localhost:3000/song/debit/new`
+
+### URL 参数
+
+参数 | 说明 | 必填
+--------- | ----------- | -----------
+bank_id | 银行名称 | 是
+name | 用户名 | 是
+account | 银行账户 | 是
+deposit | 开户行 | 是
+
+### create时的HTTP 请求
+
+`POST http://localhost:3000/song/debit`

@@ -936,6 +936,55 @@ Welcome to API!
 </tr>
 </tbody></table>
 
+<h1 id="debit">绑定银行借记卡-Debit</h1>
+
+<h2 id="new-create">新增-new、create</h2>
+
+<blockquote>
+<p>响应数据:</p>
+</blockquote>
+<pre class="highlight ruby"><code><span class="vi">@debit</span>
+</code></pre>
+
+<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+
+<p><code class="prettyprint">GET http://localhost:3000/song/debit/new</code></p>
+
+<h3 id="url">URL 参数</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>必填</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bank_id</td>
+<td>银行名称</td>
+<td>是</td>
+</tr>
+<tr>
+<td>name</td>
+<td>用户名</td>
+<td>是</td>
+</tr>
+<tr>
+<td>account</td>
+<td>银行账户</td>
+<td>是</td>
+</tr>
+<tr>
+<td>deposit</td>
+<td>开户行</td>
+<td>是</td>
+</tr>
+</tbody></table>
+
+<h3 id="create-http">create时的HTTP 请求</h3>
+
+<p><code class="prettyprint">POST http://localhost:3000/song/debit</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">

@@ -1,5 +1,5 @@
 class Enterprise::DebitsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
 
   def new
     @debit = Debit.new
