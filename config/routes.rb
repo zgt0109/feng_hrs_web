@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/docs/index', to: 'docs#index'
   get 'qiniu/token'
 
   devise_for :admins, controllers: {
