@@ -21,17 +21,6 @@ Welcome to API!
 
 # 登录-Login
 
-## 新增-new、create
-
-> 登录数据:
-
-```json
-{
-  "account":"zhao@91tbm.com",
-  "password":"password"
-}
-```
-
 > Token数据:
 
 ```json
@@ -48,9 +37,18 @@ Welcome to API!
 }
 ```
 
-### 跳转到Login页面的HTTP 请求
+> 登录数据:
 
-`GET http://localhost:3000/enterprises/sign_in`
+```json
+{
+  "account":"zhao@91tbm.com",
+  "password":"password"
+}
+```
+
+### HTTP 请求
+
+`POST http://localhost:3000/enterprises/sign_in`
 
 ### URL 参数
 
@@ -59,9 +57,8 @@ Welcome to API!
 enterprise[account] | 用户名 | 是
 enterprise[password] | 密码 | 是
 
-### 点击登录按钮 HTTP 请求
+### Login之后，用户根据自己是招聘方、还是送人方，选择相应的菜单选项。
 
-`POST http://localhost:3000/enterprises/sign_in`
 
 
 # 工友-Labor
@@ -73,9 +70,9 @@ enterprise[password] | 密码 | 是
 ```ruby
 @labors
 ```
-### 跳转到index页面的HTTP 请求
+### index页面的HTTP 请求
 
-`GET http://localhost:3000/song/labors`
+`GET http://localhost:3000/song/labors.json`
 
 ### URL 参数
 
@@ -108,12 +105,12 @@ labors | 所有的工友
   "city":"520300",
   "district":"520321",
   "salary": "level5",
-  "name": "厨师/厨师长"
+  "name": "叉车工"
 }
 ```
-### 跳转到show页面的HTTP 请求
+### show页面的HTTP 请求
 
-`GET http://localhost:3000/song/labors/<ID>`
+`GET http://localhost:3000/song/labors/<ID>.json`
 
 ### URL 参数
 
@@ -121,16 +118,16 @@ labors | 所有的工友
 --------- | -----------
 ID | 根据ID查看工友
 
-## 新增-new、create
+## 新增-create
 > 响应数据:
 
 ```ruby
 @labor
 ```
 
-### 跳转到new页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/song/labors/new`
+`POST http://localhost:3000/song/labors.json`
 
 ### URL 参数
 
@@ -153,20 +150,20 @@ district | 期望居住县 | 是
 salary | 期望薪资 | 是
 name | 期望职位 | 是
 
-### create时的HTTP 请求
 
-`POST http://localhost:3000/song/labors`
 
-## 修改-edit、update
+## 修改-update
 > 响应数据:
 
 ```ruby
 @labor
 ```
 
-### 跳转到edit页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/song/labors/<ID>/edit`
+`PUT http://localhost:3000/song/labors/<ID>.json`
+
+`PATCH http://localhost:3000/song/labors/<ID>.json`
 
 ### URL 参数
 
@@ -174,11 +171,6 @@ name | 期望职位 | 是
 --------- | -----------
 ID | 根据ID修改工友
 
-### update时的HTTP 请求
-
-`PUT http://localhost:3000/song/labors/<ID>`
-
-`PATCH http://localhost:3000/song/labors/<ID>`
 
 ## 删除-destroy
 
@@ -190,7 +182,7 @@ ID | 根据ID修改工友
 
 ### HTTP 请求
 
-`DELETE http://localhost:3000/song/labors/<ID>`
+`DELETE http://localhost:3000/song/labors/<ID>.json`
 
 ### URL 参数
 
@@ -209,9 +201,9 @@ ID | 根据ID删除工友
 ```ruby
 @contacts
 ```
-### 跳转到index页面的HTTP 请求
+### index页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/contacts`
+`GET http://localhost:3000/zhao/contacts.json`
 
 ### URL 参数
 
@@ -235,9 +227,9 @@ contacts | 所有的联系人
   "updated_at":"2016-01-25T09:06:27.638Z"
 }
 ```
-### 跳转到show页面的HTTP 请求
+### show页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/contacts/<ID>`
+`GET http://localhost:3000/zhao/contacts/<ID>.json`
 
 ### URL 参数
 
@@ -245,15 +237,15 @@ contacts | 所有的联系人
 --------- | -----------
 ID | 根据ID查看联系人
 
-## 新增-new、create
+## 新增-create
 > 响应数据:
 
 ```ruby
 @contact
 ```
-### 跳转到new页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/contacts/new`
+`POST http://localhost:3000/zhao/contacts.json`
 
 ### URL 参数
 
@@ -263,20 +255,19 @@ name | 联系人名称 | 是
 mobile | 联系人电话 | 是
 gender | 联系人性别 | 是
 
-### create时的HTTP 请求
 
-`POST http://localhost:3000/zhao/contacts`
-
-## 修改-edit、update
+## 修改-update
 > 响应数据:
 
 ```ruby
 @contact
 ```
 
-### 跳转到edit页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/contacts/<ID>/edit`
+`PUT http://localhost:3000/zhao/contacts/<ID>.json`
+
+`PATCH http://localhost:3000/zhao/contacts/<ID>.json`
 
 ### URL 参数
 
@@ -284,11 +275,6 @@ gender | 联系人性别 | 是
 --------- | -----------
 ID | 根据ID修改联系人
 
-### update时的HTTP 请求
-
-`PUT http://localhost:3000/zhao/contacts/<ID>`
-
-`PATCH http://localhost:3000/zhao/contacts/<ID>`
 
 ## 删除-destroy
 
@@ -300,7 +286,7 @@ ID | 根据ID修改联系人
 
 ### HTTP 请求
 
-`DELETE http://localhost:3000/zhao/contacts/<ID>`
+`DELETE http://localhost:3000/zhao/contacts/<ID>.json`
 
 ### URL 参数
 
@@ -319,9 +305,9 @@ ID | 根据ID删除联系人
 ```ruby
 @companies
 ```
-### 跳转到index页面的HTTP 请求
+### index页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/companies`
+`GET http://localhost:3000/zhao/companies.json`
 
 ### URL 参数
 
@@ -348,9 +334,9 @@ companies | 所有的代招企业
   "updated_at":"2016-01-25T09:06:27.529Z"
 }
 ```
-### 跳转到show页面的HTTP 请求
+### show页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/companies/<ID>`
+`GET http://localhost:3000/zhao/companies/<ID>.json`
 
 ### URL 参数
 
@@ -358,16 +344,16 @@ companies | 所有的代招企业
 --------- | -----------
 ID | 根据ID查看代招企业
 
-## 新增-new、create
+## 新增-create
 > 响应数据:
 
 ```ruby
 @company
 ```
 
-### 跳转到new页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/companies/new`
+`POST http://localhost:3000/zhao/companies.json`
 
 ### URL 参数
 
@@ -380,20 +366,19 @@ district | 县 | 是
 address | 代招企业地址 | 是
 introduction | 代招企业公司简介 | 是
 
-### create时的HTTP 请求
 
-`POST http://localhost:3000/zhao/companies`
-
-## 修改-edit、update
+## 修改-update
 > 响应数据:
 
 ```ruby
 @company
 ```
 
-### 跳转到edit页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/companies/<ID>/edit`
+`PUT http://localhost:3000/zhao/companies/<ID>.json`
+
+`PATCH http://localhost:3000/zhao/companies/<ID>.json`
 
 ### URL 参数
 
@@ -401,11 +386,6 @@ introduction | 代招企业公司简介 | 是
 --------- | -----------
 ID | 根据ID修改代招企业
 
-### update时的HTTP 请求
-
-`PUT http://localhost:3000/zhao/companies/<ID>`
-
-`PATCH http://localhost:3000/zhao/companies/<ID>`
 
 ## 删除-destroy
 
@@ -417,7 +397,7 @@ ID | 根据ID修改代招企业
 
 ### HTTP 请求
 
-`DELETE http://localhost:3000/zhao/companies/<ID>`
+`DELETE http://localhost:3000/zhao/companies/<ID>.json`
 
 ### URL 参数
 
@@ -435,9 +415,9 @@ ID | 根据ID删除代招企业
 ```ruby
 @jobs
 ```
-### 跳转到index页面的HTTP 请求
+### index页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/jobs`
+`GET http://localhost:3000/zhao/jobs.json`
 
 ### URL 参数
 
@@ -495,9 +475,9 @@ jobs | 所有的招聘职位
 }
 ```
 
-### 跳转到show页面的HTTP 请求
+### show页面的HTTP 请求
 
-`GET http://localhost:3000/zhao/jobs/<ID>`
+`GET http://localhost:3000/zhao/jobs/<ID>.json`
 
 ### URL 参数
 
@@ -505,7 +485,7 @@ jobs | 所有的招聘职位
 --------- | -----------
 ID | 根据ID查看招聘职位信息
 
-## 新增-new、create
+## 新增-create
 
 > 响应数据:
 
@@ -513,9 +493,9 @@ ID | 根据ID查看招聘职位信息
 @job
 ```
 
-### 跳转到new页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/jobs/new`
+`POST http://localhost:3000/zhao/jobs.json`
 
 ### URL 参数
 
@@ -564,20 +544,19 @@ gender | 员工性别 | 是
 deadline | 入职多少天 | 是
 amount | 返多少钱 | 是
 
-### create时的HTTP 请求
 
-`POST http://localhost:3000/zhao/jobs`
-
-## 修改-edit、update
+## 修改-update
 > 响应数据:
 
 ```ruby
 @job
 ```
 
-### 跳转到edit页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/zhao/jobs/<ID>/edit`
+`PUT http://localhost:3000/zhao/jobs/<ID>.json`
+
+`PATCH http://localhost:3000/zhao/jobs/<ID>.json`
 
 ### URL 参数
 
@@ -585,11 +564,6 @@ amount | 返多少钱 | 是
 --------- | -----------
 ID | 根据ID修改招聘职位
 
-### update时的HTTP 请求
-
-`PUT http://localhost:3000/zhao/jobs/<ID>`
-
-`PATCH http://localhost:3000/zhao/jobs/<ID>`
 
 ## 删除-destroy
 
@@ -601,7 +575,7 @@ ID | 根据ID修改招聘职位
 
 ### HTTP 请求
 
-`DELETE http://localhost:3000/zhao/jobs/<ID>`
+`DELETE http://localhost:3000/zhao/jobs/<ID>.json`
 
 ### URL 参数
 
@@ -613,16 +587,16 @@ ID | 根据ID删除招聘职位
 
 # 绑定银行借记卡-Debit
 
-## 新增-new、create
+## 新增-create
 > 响应数据:
 
 ```ruby
 @debit
 ```
 
-### 跳转到new页面的HTTP 请求
+### HTTP 请求
 
-`GET http://localhost:3000/song/debit/new`
+`POST http://localhost:3000/song/debit.json`
 
 ### URL 参数
 
@@ -632,7 +606,3 @@ bank_id | 银行名称 | 是
 name | 用户名 | 是
 account | 银行账户 | 是
 deposit | 开户行 | 是
-
-### create时的HTTP 请求
-
-`POST http://localhost:3000/song/debit`

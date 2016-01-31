@@ -53,17 +53,6 @@ Welcome to API!
 
 <h1 id="login">登录-Login</h1>
 
-<h2 id="new-create">新增-new、create</h2>
-
-<blockquote>
-<p>登录数据:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"account"</span><span class="p">:</span><span class="s2">"zhao@91tbm.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"password"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <blockquote>
 <p>Token数据:</p>
 </blockquote>
@@ -80,9 +69,18 @@ Welcome to API!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="login-http">跳转到Login页面的HTTP 请求</h3>
+<blockquote>
+<p>登录数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"account"</span><span class="p">:</span><span class="s2">"zhao@91tbm.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"password"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<p><code class="prettyprint">GET http://localhost:3000/enterprises/sign_in</code></p>
+<h3 id="http">HTTP 请求</h3>
+
+<p><code class="prettyprint">POST http://localhost:3000/enterprises/sign_in</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -105,9 +103,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="http">点击登录按钮 HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/enterprises/sign_in</code></p>
+<h3 id="login">Login之后，用户根据自己是招聘方、还是送人方，选择相应的菜单选项。</h3>
 
 <h1 id="labor">工友-Labor</h1>
 
@@ -119,9 +115,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@labors</span>
 </code></pre>
 
-<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+<h3 id="index-http">index页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/song/labors</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/song/labors.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -160,13 +156,13 @@ Welcome to API!
   </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"520300"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"520321"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level5"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"厨师/厨师长"</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"叉车工"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+<h3 id="show-http">show页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/song/labors/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/song/labors/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -182,7 +178,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h2 id="new-create">新增-new、create</h2>
+<h2 id="create">新增-create</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -190,9 +186,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@labor</span>
 </code></pre>
 
-<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/song/labors/new</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/song/labors.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -271,11 +267,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="create-http">create时的HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/song/labors</code></p>
-
-<h2 id="edit-update">修改-edit、update</h2>
+<h2 id="update">修改-update</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -283,9 +275,11 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@labor</span>
 </code></pre>
 
-<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/song/labors/&lt;ID&gt;/edit</code></p>
+<p><code class="prettyprint">PUT http://localhost:3000/song/labors/&lt;ID&gt;.json</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/song/labors/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -301,12 +295,6 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="update-http">update时的HTTP 请求</h3>
-
-<p><code class="prettyprint">PUT http://localhost:3000/song/labors/&lt;ID&gt;</code></p>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/song/labors/&lt;ID&gt;</code></p>
-
 <h2 id="destroy">删除-destroy</h2>
 
 <blockquote>
@@ -317,7 +305,7 @@ Welcome to API!
 
 <h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">DELETE http://localhost:3000/song/labors/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">DELETE http://localhost:3000/song/labors/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -343,9 +331,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@contacts</span>
 </code></pre>
 
-<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+<h3 id="index-http">index页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -376,9 +364,9 @@ Welcome to API!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+<h3 id="show-http">show页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -394,7 +382,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h2 id="new-create">新增-new、create</h2>
+<h2 id="create">新增-create</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -402,9 +390,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@contact</span>
 </code></pre>
 
-<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/new</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/zhao/contacts.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -432,11 +420,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="create-http">create时的HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/zhao/contacts</code></p>
-
-<h2 id="edit-update">修改-edit、update</h2>
+<h2 id="update">修改-update</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -444,9 +428,11 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@contact</span>
 </code></pre>
 
-<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/contacts/&lt;ID&gt;/edit</code></p>
+<p><code class="prettyprint">PUT http://localhost:3000/zhao/contacts/&lt;ID&gt;.json</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/zhao/contacts/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -462,12 +448,6 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="update-http">update时的HTTP 请求</h3>
-
-<p><code class="prettyprint">PUT http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
-
 <h2 id="destroy">删除-destroy</h2>
 
 <blockquote>
@@ -478,7 +458,7 @@ Welcome to API!
 
 <h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">DELETE http://localhost:3000/zhao/contacts/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">DELETE http://localhost:3000/zhao/contacts/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -504,9 +484,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@companies</span>
 </code></pre>
 
-<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+<h3 id="index-http">index页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/companies</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/companies.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -540,9 +520,9 @@ Welcome to API!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+<h3 id="show-http">show页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/companies/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/companies/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -558,7 +538,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h2 id="new-create">新增-new、create</h2>
+<h2 id="create">新增-create</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -566,9 +546,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@company</span>
 </code></pre>
 
-<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/companies/new</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/zhao/companies.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -611,11 +591,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="create-http">create时的HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/zhao/companies</code></p>
-
-<h2 id="edit-update">修改-edit、update</h2>
+<h2 id="update">修改-update</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -623,9 +599,11 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@company</span>
 </code></pre>
 
-<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/companies/&lt;ID&gt;/edit</code></p>
+<p><code class="prettyprint">PUT http://localhost:3000/zhao/companies/&lt;ID&gt;.json</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/zhao/companies/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -641,12 +619,6 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="update-http">update时的HTTP 请求</h3>
-
-<p><code class="prettyprint">PUT http://localhost:3000/zhao/companies/&lt;ID&gt;</code></p>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/zhao/companies/&lt;ID&gt;</code></p>
-
 <h2 id="destroy">删除-destroy</h2>
 
 <blockquote>
@@ -657,7 +629,7 @@ Welcome to API!
 
 <h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">DELETE http://localhost:3000/zhao/companies/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">DELETE http://localhost:3000/zhao/companies/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -683,9 +655,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@jobs</span>
 </code></pre>
 
-<h3 id="index-http">跳转到index页面的HTTP 请求</h3>
+<h3 id="index-http">index页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -749,9 +721,9 @@ Welcome to API!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="show-http">跳转到show页面的HTTP 请求</h3>
+<h3 id="show-http">show页面的HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -767,7 +739,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h2 id="new-create">新增-new、create</h2>
+<h2 id="create">新增-create</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -775,9 +747,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@job</span>
 </code></pre>
 
-<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/new</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/zhao/jobs.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -973,11 +945,7 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="create-http">create时的HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/zhao/jobs</code></p>
-
-<h2 id="edit-update">修改-edit、update</h2>
+<h2 id="update">修改-update</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -985,9 +953,11 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@job</span>
 </code></pre>
 
-<h3 id="edit-http">跳转到edit页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/zhao/jobs/&lt;ID&gt;/edit</code></p>
+<p><code class="prettyprint">PUT http://localhost:3000/zhao/jobs/&lt;ID&gt;.json</code></p>
+
+<p><code class="prettyprint">PATCH http://localhost:3000/zhao/jobs/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -1003,12 +973,6 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="update-http">update时的HTTP 请求</h3>
-
-<p><code class="prettyprint">PUT http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
-
-<p><code class="prettyprint">PATCH http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
-
 <h2 id="destroy">删除-destroy</h2>
 
 <blockquote>
@@ -1019,7 +983,7 @@ Welcome to API!
 
 <h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">DELETE http://localhost:3000/zhao/jobs/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">DELETE http://localhost:3000/zhao/jobs/&lt;ID&gt;.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -1037,7 +1001,7 @@ Welcome to API!
 
 <h1 id="debit">绑定银行借记卡-Debit</h1>
 
-<h2 id="new-create">新增-new、create</h2>
+<h2 id="create">新增-create</h2>
 
 <blockquote>
 <p>响应数据:</p>
@@ -1045,9 +1009,9 @@ Welcome to API!
 <pre class="highlight ruby"><code><span class="vi">@debit</span>
 </code></pre>
 
-<h3 id="new-http">跳转到new页面的HTTP 请求</h3>
+<h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">GET http://localhost:3000/song/debit/new</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/song/debit.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -1079,10 +1043,6 @@ Welcome to API!
 <td>是</td>
 </tr>
 </tbody></table>
-
-<h3 id="create-http">create时的HTTP 请求</h3>
-
-<p><code class="prettyprint">POST http://localhost:3000/song/debit</code></p>
 
       </div>
       <div class="dark-box">
