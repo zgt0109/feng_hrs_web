@@ -54,6 +54,15 @@ Welcome to API!
 <h1 id="login">登录-Login</h1>
 
 <blockquote>
+<p>登录数据:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"enterprise[account]"</span><span class="p">:</span><span class="s2">"zhao@91tbm.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise[password]"</span><span class="p">:</span><span class="s2">"password"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
 <p>Token数据:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -69,18 +78,9 @@ Welcome to API!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>登录数据:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"account"</span><span class="p">:</span><span class="s2">"zhao@91tbm.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"password"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <h3 id="http">HTTP 请求</h3>
 
-<p><code class="prettyprint">POST http://localhost:3000/enterprises/sign_in</code></p>
+<p><code class="prettyprint">POST http://localhost:3000/enterprises/sign_in.json</code></p>
 
 <h3 id="url">URL 参数</h3>
 
@@ -103,17 +103,52 @@ Welcome to API!
 </tr>
 </tbody></table>
 
-<h3 id="login">Login之后，用户根据自己是招聘方、还是送人方，选择相应的菜单选项。</h3>
+<h3 id="login-authentication_token-request-header">Login之后，后台返回用户信息，客户端将信息中的authentication_token保存在本地，随后的request的header中附带如下数据即可通过验证：</h3>
+
+<p><code class="prettyprint">Authorization: Token token=authentication_token</code></p>
 
 <h1 id="labor">工友-Labor</h1>
 
 <h2 id="index-show">查看-index、show</h2>
 
 <blockquote>
-<p>响应数据:</p>
+<p>响应的分页JSON数据:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="vi">@labors</span>
-</code></pre>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"next_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prev_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>取出响应的工友集合JSON数据中的一条:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"邹国涛123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13554028363"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"idcard"</span><span class="p">:</span><span class="s2">"420923199001091231"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"birthday"</span><span class="p">:</span><span class="s2">"1991-09-16"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"province"</span><span class="p">:</span><span class="s2">"520000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"520300"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"520321"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"registed"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-27T07:33:29.683Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-27T07:33:29.683Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"province"</span><span class="p">:</span><span class="s2">"520000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"520300"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"520321"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby工程师"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre>
 
 <h3 id="index-http">index页面的HTTP 请求</h3>
 
@@ -128,8 +163,24 @@ Welcome to API!
 </tr>
 </thead><tbody>
 <tr>
-<td>labors</td>
-<td>所有的工友</td>
+<td>current_page</td>
+<td>当前页面</td>
+</tr>
+<tr>
+<td>next_page</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>prev_page</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>total_count</td>
+<td>总条数</td>
 </tr>
 </tbody></table>
 
@@ -156,7 +207,7 @@ Welcome to API!
   </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"520300"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"520321"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"level5"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"叉车工"</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ruby工程师"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -174,7 +225,83 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>根据ID查看工友</td>
+<td>工友ID</td>
+</tr>
+<tr>
+<td>enterprise_id</td>
+<td>企业用户ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>工友名称</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>工友电话</td>
+</tr>
+<tr>
+<td>idcard</td>
+<td>身份证号码</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>工友性别，男：male，女：female</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>生日</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>工友来源，网上登记：web</td>
+</tr>
+<tr>
+<td>province</td>
+<td>现居住省，6个数字是中国城市代码表，下同</td>
+</tr>
+<tr>
+<td>city</td>
+<td>现居住市</td>
+</tr>
+<tr>
+<td>district</td>
+<td>现居住县</td>
+</tr>
+<tr>
+<td>state</td>
+<td>工友状态，registed: 已登记，appointed: 已报名，passed: 面试通过，rejected: 面试失败，checkin: 已入职，refused: 未入职，turnover: 已离职</td>
+</tr>
+<tr>
+<td>deleted_at</td>
+<td>删除时间</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>更新时间</td>
+</tr>
+<tr>
+<td>province</td>
+<td>期望居住省</td>
+</tr>
+<tr>
+<td>city</td>
+<td>期望居住市</td>
+</tr>
+<tr>
+<td>district</td>
+<td>期望居住县</td>
+</tr>
+<tr>
+<td>salary</td>
+<td>期望薪资</td>
+</tr>
+<tr>
+<td>name</td>
+<td>期望职位</td>
 </tr>
 </tbody></table>
 
@@ -326,10 +453,31 @@ Welcome to API!
 <h2 id="index-show">查看-index、show</h2>
 
 <blockquote>
-<p>响应数据:</p>
+<p>响应的分页JSON数据:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="vi">@contacts</span>
-</code></pre>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"next_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prev_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>取出响应的联系人集合JSON数据中的一条:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"联系人5号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"13092618905"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.638Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.638Z"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre>
 
 <h3 id="index-http">index页面的HTTP 请求</h3>
 
@@ -344,8 +492,24 @@ Welcome to API!
 </tr>
 </thead><tbody>
 <tr>
-<td>contacts</td>
-<td>所有的联系人</td>
+<td>current_page</td>
+<td>当前页面</td>
+</tr>
+<tr>
+<td>next_page</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>prev_page</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>total_count</td>
+<td>总条数</td>
 </tr>
 </tbody></table>
 
@@ -378,7 +542,23 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>根据ID查看联系人</td>
+<td>联系人ID</td>
+</tr>
+<tr>
+<td>enterprise_id</td>
+<td>企业用户ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>联系人名称</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>联系人电话</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>工友性别，男：male，女：female</td>
 </tr>
 </tbody></table>
 
@@ -415,7 +595,7 @@ Welcome to API!
 </tr>
 <tr>
 <td>gender</td>
-<td>联系人性别</td>
+<td>联系人性别， 男：male，女：female</td>
 <td>是</td>
 </tr>
 </tbody></table>
@@ -479,10 +659,34 @@ Welcome to API!
 <h2 id="index-show">查看-index、show</h2>
 
 <blockquote>
-<p>响应数据:</p>
+<p>响应的分页JSON数据:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="vi">@companies</span>
-</code></pre>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"next_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prev_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>取出响应的代招企业集合JSON数据中的一条:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"淘帮忙_5"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"province"</span><span class="p">:</span><span class="s2">"310000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"310100"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"district"</span><span class="p">:</span><span class="s2">"310115"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"上海外高桥保税区富特北路18号联安大厦5楼"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"introduction"</span><span class="p">:</span><span class="s2">"淘帮忙项目起源地,希望我们能离梦想更进一步"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.529Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-01-25T09:06:27.529Z"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre>
 
 <h3 id="index-http">index页面的HTTP 请求</h3>
 
@@ -497,8 +701,24 @@ Welcome to API!
 </tr>
 </thead><tbody>
 <tr>
-<td>companies</td>
-<td>所有的代招企业</td>
+<td>current_page</td>
+<td>当前页面</td>
+</tr>
+<tr>
+<td>next_page</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>prev_page</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>total_count</td>
+<td>总条数</td>
 </tr>
 </tbody></table>
 
@@ -534,7 +754,35 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>根据ID查看代招企业</td>
+<td>代招企业ID</td>
+</tr>
+<tr>
+<td>enterprise_id</td>
+<td>企业用户ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>代招企业名称</td>
+</tr>
+<tr>
+<td>province</td>
+<td>省</td>
+</tr>
+<tr>
+<td>city</td>
+<td>市</td>
+</tr>
+<tr>
+<td>district</td>
+<td>县</td>
+</tr>
+<tr>
+<td>address</td>
+<td>代招企业公司地址</td>
+</tr>
+<tr>
+<td>introduction</td>
+<td>代招企业简介</td>
 </tr>
 </tbody></table>
 
@@ -650,10 +898,43 @@ Welcome to API!
 <h2 id="index-show">查看-index、show</h2>
 
 <blockquote>
-<p>响应数据:</p>
+<p>响应的分页JSON数据:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="vi">@jobs</span>
-</code></pre>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"current_page"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"next_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prev_page"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_pages"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_count"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>取出响应的招聘信息集合JSON数据中的一条:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"enterprise_id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company_id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contact_id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"岗位标题456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wage"</span><span class="p">:</span><span class="mi">12000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="s2">"permonth"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"worktime"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"短白班"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">6</span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"royalty"</span><span class="p">:</span><span class="s2">"10%"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bonus"</span><span class="p">:</span><span class="s2">"3000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"channel"</span><span class="p">:</span><span class="s2">"cash"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wageday"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wageday_unit"</span><span class="p">:</span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"advance"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deleted_at"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2015-12-21T07:31:08.078Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2015-12-21T07:31:08.078Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"details"</span><span class="p">:</span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"advantages"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"五险一金"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">6</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"可打酱油"</span><span class="p">,</span><span class="nt">"taggings_count"</span><span class="p">:</span><span class="mi">7</span><span class="p">}]</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span></code></pre>
 
 <h3 id="index-http">index页面的HTTP 请求</h3>
 
@@ -668,8 +949,24 @@ Welcome to API!
 </tr>
 </thead><tbody>
 <tr>
-<td>jobs</td>
-<td>所有的招聘职位</td>
+<td>current_page</td>
+<td>当前页面</td>
+</tr>
+<tr>
+<td>next_page</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>prev_page</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td>total_count</td>
+<td>总条数</td>
 </tr>
 </tbody></table>
 
@@ -735,7 +1032,79 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>根据ID查看招聘职位信息</td>
+<td>招聘职位信息ID</td>
+</tr>
+<tr>
+<td>enterprise_id</td>
+<td>企业用户ID</td>
+</tr>
+<tr>
+<td>company_id</td>
+<td>公司ID</td>
+</tr>
+<tr>
+<td>contact_id</td>
+<td>联系人ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>招聘职位名称</td>
+</tr>
+<tr>
+<td>wage</td>
+<td>招聘职位薪资</td>
+</tr>
+<tr>
+<td>unit</td>
+<td>薪资发放方式, permonth: &lsquo;元/月&#39;，perhour: &#39;元/时&rsquo;</td>
+</tr>
+<tr>
+<td>worktime</td>
+<td>工作时长, &ldquo;做五休二&rdquo;, &ldquo;三班倒&rdquo; , &ldquo;短白班&rdquo;</td>
+</tr>
+<tr>
+<td>royalty</td>
+<td>提成</td>
+</tr>
+<tr>
+<td>bonus</td>
+<td>奖金</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>工资的发放方式, cash: &#39;现金&rsquo;, card: &#39;银行卡&rsquo;</td>
+</tr>
+<tr>
+<td>wageday</td>
+<td>工资发放日</td>
+</tr>
+<tr>
+<td>wageday_unit</td>
+<td>工资发放形式, month: &#39;按月&rsquo;, day: &#39;按天&rsquo;</td>
+</tr>
+<tr>
+<td>advance</td>
+<td>预支工资</td>
+</tr>
+<tr>
+<td>deleted_at</td>
+<td>招聘职位删除时间</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>招聘职位创建时间</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>招聘职位更新时间</td>
+</tr>
+<tr>
+<td>details</td>
+<td>招聘职位岗位要求</td>
+</tr>
+<tr>
+<td>advantages</td>
+<td>职位亮点, &ldquo;加班费&rdquo;, &ldquo;年终奖&rdquo;, &ldquo;五险一金&quot;等</td>
 </tr>
 </tbody></table>
 
@@ -782,7 +1151,7 @@ Welcome to API!
 </tr>
 <tr>
 <td>unit</td>
-<td>工资的计费方式，如：元/月，元/时</td>
+<td>工资的计费方式，如：permonth: &#39;元/月&#39;，perhour: &#39;元/时&rsquo;</td>
 <td>是</td>
 </tr>
 <tr>
@@ -827,7 +1196,7 @@ Welcome to API!
 </tr>
 <tr>
 <td>channel</td>
-<td>工资的发放方式，如：银行卡，现金</td>
+<td>工资的发放方式, cash: &#39;现金&rsquo;, card: &#39;银行卡&rsquo;</td>
 <td>是</td>
 </tr>
 <tr>
@@ -837,7 +1206,7 @@ Welcome to API!
 </tr>
 <tr>
 <td>wageday_unit</td>
-<td>工资如何发放，如：按月，按天</td>
+<td>工资如何发放, month: &#39;按月&rsquo;, day: &#39;按天&rsquo;</td>
 <td>是</td>
 </tr>
 <tr>
@@ -858,7 +1227,7 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>gender</td>
-<td>员工性别</td>
+<td>员工性别， 男：male，女：female</td>
 <td>是</td>
 </tr>
 <tr>
@@ -894,7 +1263,7 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>gender</td>
-<td>员工性别</td>
+<td>员工性别， 男：male，女：female</td>
 <td>是</td>
 </tr>
 <tr>
@@ -930,7 +1299,7 @@ Welcome to API!
 </thead><tbody>
 <tr>
 <td>gender</td>
-<td>员工性别</td>
+<td>员工性别， 男：male，女：female</td>
 <td>是</td>
 </tr>
 <tr>

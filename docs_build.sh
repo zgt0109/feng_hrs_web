@@ -1,8 +1,10 @@
 #!/bin/bash
-bundle
 
 app_dir=`pwd`
 cd $app_dir/app/docs/slate
+
+# 执行slate相关的Gem文件
+bundle
 
 bundle exec middleman build --clean
 
